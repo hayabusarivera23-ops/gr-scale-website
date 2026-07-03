@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --bg: #080b10;
+  --bg-card: #0d1117;
+  --bg-card-hover: #111820;
+  --border: rgba(255,255,255,0.07);
+  --border-hover: rgba(14,165,233,0.4);
+  --brand: #0ea5e9;
+  --brand-dim: rgba(14,165,233,0.15);
+  --text: #f0f6fc;
+  --text-muted: #8b949e;
+  --text-dim: #484f58;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
+}
+
+/* ── Typography ── */
+.h1 { @apply text-5xl font-extrabold leading-tight tracking-tight md:text-6xl lg:text-7xl; }
+.h2 { @apply text-3xl font-bold leading-tight tracking-tight md:text-4xl; }
+.h3 { @apply text-xl font-semibold md:text-2xl; }
+.lead { @apply text-lg text-[var(--text-muted)] md:text-xl; }
+
+/* ── Layout ── */
+.container-site { @apply mx-auto max-w-6xl px-4 sm:px-6 lg:px-8; }
+.section { @apply py-20 md:py-28; }
+
+/* ── Components ── */
+.btn-primary {
+  @apply inline-flex items-center gap-2 rounded-xl bg-brand-500 px-6 py-3 text-sm font-semibold text-white
+         transition-all hover:bg-brand-400 hover:shadow-[0_0_24px_rgba(14,165,233,0.4)] active:scale-95;
+}
+.btn-ghost {
+  @apply inline-flex items-center gap-2 rounded-xl border border-white/10 px-6 py-3 text-sm font-semibold text-white/80
+         transition-all hover:border-white/30 hover:text-white hover:bg-white/5 active:scale-95;
+}
+.card {
+  @apply rounded-2xl border bg-[var(--bg-card)] p-6 transition-all;
+  border-color: var(--border);
+}
+.card:hover { border-color: var(--border-hover); background: var(--bg-card-hover); }
+
+.badge {
+  @apply inline-flex items-center gap-1.5 rounded-full border border-brand-500/30 bg-brand-500/10
+         px-3 py-1 text-xs font-semibold text-brand-400 uppercase tracking-widest;
+}
+
+/* ── Glow effects ── */
+.glow-brand { box-shadow: 0 0 40px rgba(14,165,233,0.2); }
+.text-gradient {
+  background: linear-gradient(135deg, #f0f6fc 0%, #0ea5e9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Grid ── */
+.services-grid { @apply grid gap-6 sm:grid-cols-2 lg:grid-cols-3; }
+.pricing-grid  { @apply grid gap-6 md:grid-cols-3; }
