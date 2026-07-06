@@ -89,7 +89,7 @@ const DEMOS = [
   {
     name:     'Elite Plumbing Co',
     niche:    'Plumbing',
-    url:      'https://demos.grscale.com/plumbing',
+    url:      'https://gr-scale-demos.vercel.app/plumbing',
     status:   'Demo',
     color:    'from-blue-500/20 to-cyan-600/10',
     tagColor: 'bg-blue-500/10 text-blue-400 border-blue-500/20',
@@ -98,7 +98,7 @@ const DEMOS = [
   {
     name:     'Peak Roofing Solutions',
     niche:    'Roofing',
-    url:      'https://demos.grscale.com/roofing',
+    url:      'https://gr-scale-demos.vercel.app/roofing',
     status:   'Demo',
     color:    'from-amber-500/20 to-orange-600/10',
     tagColor: 'bg-amber-500/10 text-amber-400 border-amber-500/20',
@@ -107,7 +107,7 @@ const DEMOS = [
   {
     name:     'SparkClean Pressure Wash',
     niche:    'Pressure Washing',
-    url:      'https://demos.grscale.com/pressure-washing',
+    url:      'https://gr-scale-demos.vercel.app/pressure-washing',
     status:   'Demo',
     color:    'from-orange-500/20 to-red-600/10',
     tagColor: 'bg-orange-500/10 text-orange-400 border-orange-500/20',
@@ -116,7 +116,7 @@ const DEMOS = [
   {
     name:     'GreenEdge Landscaping',
     niche:    'Landscaping',
-    url:      'https://demos.grscale.com/landscaping',
+    url:      'https://gr-scale-demos.vercel.app/landscaping',
     status:   'Demo',
     color:    'from-green-500/20 to-emerald-600/10',
     tagColor: 'bg-green-500/10 text-green-400 border-green-500/20',
