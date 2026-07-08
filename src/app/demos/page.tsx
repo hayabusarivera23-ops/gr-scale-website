@@ -13,6 +13,11 @@ export const metadata: Metadata = {
 
 const DEMO_BASE = 'https://gr-scale-demos.vercel.app'
 
+/** Real client/portfolio domains override the generic demo for these niches. */
+const URL_OVERRIDES: Record<string, string> = {
+  barber: 'https://lexthebarber.com',
+}
+
 const BADGES = [
   { icon: Smartphone, label: 'Mobile Friendly' },
   { icon: Search,     label: 'SEO Ready' },
@@ -26,7 +31,7 @@ const DEMOS = [
   { slug: 'plumbing',         icon: Droplets,  niche: 'Plumbing',         name: 'Elite Plumbing Co',       desc: '24/7 emergency-first design that turns burst-pipe panic into booked jobs.', features: ['Emergency call flow', 'Flat-rate trust badges', 'Hero quote form', 'Review showcase'] },
   { slug: 'hvac',             icon: Flame,     niche: 'HVAC',             name: 'CoolPro HVAC',            desc: 'Same-day service positioning with maintenance plan upsells built in.', features: ['Same-day CTA', 'Maintenance plans', 'Animated trust stats', 'Service area map'] },
   { slug: 'electrician',      icon: Zap,       niche: 'Electrical',       name: 'Bright Current Electric', desc: 'EV charger and panel upgrade pages that capture high-ticket searches.', features: ['EV charger page', 'Safety inspection offer', 'Financing section', 'Emergency CTA'] },
-  { slug: 'barber',           icon: Scissors,  niche: 'Barbershop',       name: 'Barber Demo',             desc: 'Booking-first barbershop site that fills chairs while you cut.', features: ['Booking CTA', 'Service menu + pricing', 'Gallery', 'Brand-forward design'] },
+  { slug: 'barber',           icon: Scissors,  niche: 'Barbershop',       name: 'Lex The Barber (Real Client)', desc: 'Live client site — booking-first barbershop that fills chairs while you cut.', features: ['Booking CTA', 'Service menu + pricing', 'Gallery', 'Brand-forward design'] },
   { slug: 'pest-control',     icon: Bug,       niche: 'Pest Control',     name: 'ShieldPro Pest',          desc: 'Monthly protection plans front and center — recurring revenue by design.', features: ['Protection plans', 'Re-treat guarantee', 'Pest library', 'Quote form'] },
   { slug: 'painting',         icon: Paintbrush,niche: 'Painting',         name: 'TrueCoat Painting',       desc: 'Portfolio-driven design with free color consultation lead magnet.', features: ['Project portfolio', 'Color consult offer', 'Cabinet painting page', '5-yr warranty badges'] },
   { slug: 'flooring',         icon: Layers,    niche: 'Flooring',         name: 'Solid Ground Flooring',   desc: 'Big-ticket flooring sales supported by financing and in-home estimate flow.', features: ['Financing section', 'In-home estimate CTA', 'Material comparison', 'Install warranty'] },
@@ -84,7 +89,7 @@ export default function DemosPage() {
                   </div>
                 ))}
               </div>
-              <a href="https://meloair-v2.vercel.app" target="_blank" rel="noopener noreferrer"
+              <a href="https://www.meloair.net" target="_blank" rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-xl bg-sky-500 px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-sky-500/25 hover:bg-sky-400 transition">
                 View Live Website <ExternalLink className="h-4 w-4" />
               </a>
@@ -136,7 +141,7 @@ export default function DemosPage() {
                     ))}
                   </div>
                   <div className="mt-auto flex items-center gap-2">
-                    <a href={`${DEMO_BASE}/${d.slug}`} target="_blank" rel="noopener noreferrer"
+                    <a href={URL_OVERRIDES[d.slug] ?? `${DEMO_BASE}/${d.slug}`} target="_blank" rel="noopener noreferrer"
                       className="flex-1 inline-flex items-center justify-center gap-2 rounded-xl bg-zinc-800 group-hover:bg-sky-500 px-4 py-2.5 text-sm font-bold text-zinc-200 group-hover:text-white transition">
                       View Live Demo <ExternalLink className="h-4 w-4" />
                     </a>
