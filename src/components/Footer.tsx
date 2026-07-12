@@ -38,8 +38,8 @@ export default function Footer() {
               We build fast, modern websites that help local service businesses generate more customers online. Based in Orlando, serving nationwide.
             </p>
             <div className="mt-6 flex flex-col gap-2.5 text-sm text-[var(--text-muted)]">
-              <a href="tel:+14078082898" className="flex items-center gap-2 hover:text-white transition">
-                <Phone className="h-3.5 w-3.5 text-brand-400" /> (407) 808-2898
+              <a href="tel:+18138695917" className="flex items-center gap-2 hover:text-white transition">
+                <Phone className="h-3.5 w-3.5 text-brand-400" /> (813) 869-5917
               </a>
               <a href="mailto:gio@grscales.com" className="flex items-center gap-2 hover:text-white transition">
                 <Mail className="h-3.5 w-3.5 text-brand-400" /> gio@grscales.com
