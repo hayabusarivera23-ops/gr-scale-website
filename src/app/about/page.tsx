@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ArrowRight, Target, Heart, Zap, Users, CheckCircle, Star } from 'lucide-react'
+import { ArrowRight, Target, Zap, Search, Users, CheckCircle } from 'lucide-react'
 
 const VALUES = [
   {
@@ -13,28 +13,28 @@ const VALUES = [
     desc: "We don't build pretty websites for a portfolio. Every layout, every headline, every button is built to get someone to call you. If it doesn't help you get customers, it doesn't go in.",
   },
   {
-    icon: Heart,
-    title: 'Local Specialist',
-    desc: 'We only work with local service businesses — HVAC, plumbing, roofing, landscaping, barbershops. We know what converts in these niches because that\'s all we do.',
+    icon: Search,
+    title: 'Built to Be Found',
+    desc: 'A website nobody sees is a business card in a drawer. Every site ships mobile-first, fast-loading, and structured to rank for the searches your customers actually type.',
   },
   {
     icon: Users,
-    title: 'You Deal with Gio Directly',
-    desc: 'No account managers. No middlemen. You text me, I respond. You get one person who knows your business and actually cares whether you\'re getting results.',
+    title: 'Niche Specialists',
+    desc: 'We only work with local service businesses — HVAC, plumbing, roofing, landscaping, barbershops, and more. We know what converts in these niches because that\'s all we do.',
   },
 ]
 
 const STATS = [
-  { number: '6+',   label: 'Industries served'         },
-  { number: '14',   label: 'Max days to launch'        },
-  { number: '100%', label: 'Client retention rate'     },
-  { number: '5★',   label: 'Client satisfaction'       },
+  { number: '2',     label: 'Client sites live on real domains' },
+  { number: '13',    label: 'Industry demo sites built'         },
+  { number: '7–14',  label: 'Days from audit to launch'         },
+  { number: '100%',  label: 'Mobile responsive'                 },
 ]
 
 const WHY_DIFFERENT = [
-  'No agency overhead — you pay for the work, not a team of account managers',
+  'No agency overhead — you pay for the work, not a floor of account managers',
   'You see a demo for your exact niche before you pay anything',
-  'One point of contact from audit to launch',
+  'One dedicated point of contact from audit to launch',
   'Sites built to rank on Google, not just look good',
   'No long-term contracts on design work',
   'Ongoing support after launch — you\'re not abandoned',
@@ -50,72 +50,69 @@ export default function AboutPage() {
   return (
     <div className="pt-24">
 
-      {/* ── HEADER / STORY ── */}
+      {/* ── HEADER ── */}
       <section className="section pb-0">
         <div className="container-site max-w-4xl">
           <div className="grid gap-12 lg:grid-cols-2 items-start">
             <div>
               <span className="badge mb-4">About</span>
               <h1 className="h1 mb-6">
-                I&apos;m 16. I Build Websites That{' '}
+                Websites That{' '}
                 <span className="text-gradient">Get You Customers.</span>
               </h1>
 
               <p className="text-[var(--text-muted)] leading-relaxed mb-5">
-                My name is Gio. I&apos;m a 16-year-old from Orlando, Florida. I&apos;m also a competitive wrestler, a high school student, and the founder of GR Scale.
+                GR Scale exists because of a pattern we kept seeing: great local businesses — the best barber in town, the plumber everyone recommends, the HVAC company with hundreds of 5-star reviews — losing customers every day to competitors with worse service and better websites.
               </p>
 
               <p className="text-[var(--text-muted)] leading-relaxed mb-5">
-                I started noticing something: local businesses I used — barbers, plumbers, HVAC guys — were losing customers online every single day. Not because they weren&apos;t good at their job, but because their website was embarrassing, or they didn&apos;t have one at all. Meanwhile, their competitor — maybe not even as good — was getting all the calls because they showed up on Google with a clean site.
-              </p>
-
-              <p className="text-[var(--text-muted)] leading-relaxed mb-5">
-                That bothered me. So I started building websites.
-              </p>
-
-              <p className="text-[var(--text-muted)] leading-relaxed mb-5">
-                Wrestling taught me how to grind — to show up, do the work, and not quit when it gets hard. I apply the same discipline to every website I build. You get fast delivery, direct communication, and someone who takes your business as seriously as you do.
+                When someone searches for your service, they make a decision in seconds. If your site is slow, outdated, broken on their phone — or doesn&apos;t exist — that customer calls the next name on the list. Your reputation never even gets a chance to speak.
               </p>
 
               <p className="text-[var(--text-muted)] leading-relaxed mb-8">
-                You&apos;re not a ticket number here. You&apos;re working directly with me — one person who knows your niche, knows what converts, and will fight to get you results.
+                So that&apos;s the entire job here: make sure the business that deserves the call gets the call. Fast, modern, mobile-first websites for local service businesses — built in days, not months, and built to convert searches into phone calls.
               </p>
 
               <Link href="/book" className="btn-primary">
-                Work With Me <ArrowRight className="h-4 w-4" />
+                Get Your Free Audit <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
 
-            {/* Right column: stats + trust */}
+            {/* Right column: stats + real work */}
             <div className="flex flex-col gap-4">
               <div className="grid grid-cols-2 gap-4">
                 {STATS.map(s => (
                   <div key={s.label} className="card text-center">
-                    <p className="text-3xl font-extrabold text-brand-400 mb-1">{s.number}</p>
+                    <p className="stat-number text-3xl font-extrabold text-brand-400 mb-1">{s.number}</p>
                     <p className="text-xs text-[var(--text-muted)]">{s.label}</p>
                   </div>
                 ))}
               </div>
 
-              {/* Quote callout */}
+              {/* Real work callout */}
               <div className="card bg-gradient-to-br from-brand-500/15 to-transparent border-brand-500/20">
-                <div className="flex gap-0.5 mb-3">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
-                  ))}
+                <p className="text-sm font-semibold text-white mb-3">See the work, not promises:</p>
+                <div className="flex flex-col gap-2">
+                  <a href="https://meloair.net" target="_blank" rel="noopener noreferrer"
+                     className="flex items-center gap-2 text-sm text-brand-400 hover:text-brand-300 transition">
+                    <ArrowRight className="h-3.5 w-3.5" /> meloair.net — Tampa HVAC company
+                  </a>
+                  <a href="https://lexthebarber.com" target="_blank" rel="noopener noreferrer"
+                     className="flex items-center gap-2 text-sm text-brand-400 hover:text-brand-300 transition">
+                    <ArrowRight className="h-3.5 w-3.5" /> lexthebarber.com — Orlando barbershop
+                  </a>
+                  <Link href="/demos"
+                     className="flex items-center gap-2 text-sm text-brand-400 hover:text-brand-300 transition">
+                    <ArrowRight className="h-3.5 w-3.5" /> 13 industry demos — see your niche
+                  </Link>
                 </div>
-                <p className="text-sm text-[var(--text-muted)] leading-relaxed italic mb-3">
-                  &ldquo;Gio built me a new site in less than two weeks and my online bookings went up immediately. Best investment I made for my business.&rdquo;
-                </p>
-                <p className="text-xs font-semibold text-white">Lex T.</p>
-                <p className="text-xs text-[var(--text-dim)]">Owner, Barbershop — Orlando, FL</p>
               </div>
 
               {/* CTA card */}
               <div className="card">
                 <p className="text-sm font-semibold text-white mb-2">Ready to grow your business online?</p>
                 <p className="text-xs text-[var(--text-muted)] mb-4 leading-relaxed">
-                  Free 20-minute audit call. We review your Google presence and tell you exactly what&apos;s holding you back.
+                  Free 20-minute audit. We review your Google presence and tell you exactly what&apos;s holding you back.
                 </p>
                 <Link href="/book" className="btn-primary text-sm py-2 px-4 justify-center">
                   Book Free Audit Call <ArrowRight className="h-4 w-4" />
@@ -177,9 +174,9 @@ export default function AboutPage() {
       <section className="section bg-[#0d1117]">
         <div className="container-site max-w-3xl text-center">
           <span className="badge mb-4">Who We Work With</span>
-          <h2 className="h2 mb-6">Local Florida Service Businesses</h2>
+          <h2 className="h2 mb-6">Local Service Businesses Nationwide</h2>
           <p className="lead mb-10">
-            If your customers find you on Google, we can help you get more of them. We specialize in service-based local businesses.
+            Based in Orlando, working with service businesses anywhere in the U.S. If your customers find you on Google, we can help you get more of them.
           </p>
 
           <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 mb-8">
@@ -204,7 +201,7 @@ export default function AboutPage() {
         <div className="container-site max-w-2xl text-center">
           <h2 className="h2 mb-4">Let&apos;s Talk About Your Business</h2>
           <p className="lead mb-8">
-            Book a free 20-minute call. I&apos;ll audit your Google presence and show you exactly what&apos;s missing — no charge, no obligation.
+            Book a free 20-minute call. We&apos;ll audit your Google presence and show you exactly what&apos;s missing — no charge, no obligation.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link href="/book" className="btn-primary px-8 py-4 text-base">
