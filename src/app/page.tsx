@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import {
-  ArrowRight, CheckCircle, Zap, Globe, Search, Star,
+  ArrowRight, CheckCircle, Zap, Globe, Search,
   Clock, Phone, TrendingUp, Shield, MessageSquare, ChevronRight,
   AlertCircle, MapPin,
 } from 'lucide-react'
@@ -69,13 +69,13 @@ const PROCESS = [
 
 const DEMOS = [
   {
-    name:     'AC Orlando HVAC',
+    name:     'Melo Air',
     niche:    'HVAC',
-    url:      'https://acorlandohvac.com',
+    url:      'https://meloair.net',
     status:   'Live',
     color:    'from-sky-500/20 to-blue-600/10',
     tagColor: 'bg-sky-500/10 text-sky-400 border-sky-500/20',
-    desc:     'Full HVAC company site with service pages, online quote form, and mobile optimization.',
+    desc:     'Real client build for a Tampa HVAC company — full site with services, financing options, and quote form, live on the client\'s own domain.',
   },
   {
     name:     'LexTheBarber',
@@ -124,32 +124,38 @@ const DEMOS = [
   },
 ]
 
-const TESTIMONIALS = [
+const REAL_WORK = [
   {
-    name:  'Marco R.',
-    role:  'Owner, HVAC Company — Orlando, FL',
-    quote: 'Before GR Scale, I had zero online presence. Now I get 3–5 calls a week from my website alone. Best investment I made for my business.',
-    stars: 5,
+    name:   'Melo Air',
+    niche:  'HVAC · Tampa, FL',
+    url:    'https://meloair.net',
+    domain: 'meloair.net',
+    tagColor: 'bg-sky-500/10 text-sky-400 border-sky-500/20',
+    points: [
+      'Complete website build for a working Tampa HVAC company',
+      'Services, financing, and quote request — built to turn visitors into calls',
+      'Live on the client\'s own domain right now',
+    ],
   },
   {
-    name:  'Lex T.',
-    role:  'Owner, Barbershop — Orlando, FL',
-    quote: 'My old site looked terrible on phones. Gio built me a new one in less than two weeks and my online bookings went up immediately.',
-    stars: 5,
-  },
-  {
-    name:  'Daniel M.',
-    role:  'Owner, Plumbing Company — Kissimmee, FL',
-    quote: "I didn't even have a website. Gio found me on Google Maps and showed me what I was missing. Now my site ranks for 'plumber near me' in my area.",
-    stars: 5,
+    name:   'LexTheBarber',
+    niche:  'Barbershop · Orlando, FL',
+    url:    'https://lexthebarber.com',
+    domain: 'lexthebarber.com',
+    tagColor: 'bg-violet-500/10 text-violet-400 border-violet-500/20',
+    points: [
+      'Premium barber portfolio site built from scratch',
+      'Booking integration, cut gallery, and full service menu',
+      'Mobile-first design — most of his customers find him on their phone',
+    ],
   },
 ]
 
 const RESULTS = [
-  { number: '7–14',  label: 'Day avg. build time'        },
-  { number: '$500+', label: 'Avg. monthly lead value'     },
-  { number: '100%',  label: 'Mobile responsive'           },
-  { number: '5★',    label: 'Client satisfaction rating'  },
+  { number: '2',     label: 'Client sites live on real domains' },
+  { number: '13',    label: 'Industry demo sites built'         },
+  { number: '7–14',  label: 'Day avg. build time'               },
+  { number: '100%',  label: 'Mobile responsive'                 },
 ]
 
 const FAQS = [
@@ -170,16 +176,6 @@ const FAQS = [
     a: 'We primarily serve Florida businesses right now, but we work with any local service business in the U.S. remotely.',
   },
 ]
-
-function Stars({ count = 5 }: { count?: number }) {
-  return (
-    <div className="flex gap-0.5">
-      {Array.from({ length: count }).map((_, i) => (
-        <Star key={i} className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
-      ))}
-    </div>
-  )
-}
 
 export default function HomePage() {
   return (
@@ -292,26 +288,50 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── TESTIMONIALS ── */}
-      <section id="testimonials" className="section">
+      {/* ── REAL WORK / PROOF ── */}
+      <section id="proof" className="section">
         <div className="container-site">
           <div className="text-center mb-12">
-            <span className="badge mb-4">Real Results</span>
-            <h2 className="h2 mb-4">What Business Owners Say</h2>
+            <span className="badge mb-4">Real Work</span>
+            <h2 className="h2 mb-4">Built by GR Scale. Live Right Now.</h2>
+            <p className="lead max-w-2xl mx-auto">
+              No stock testimonials, no made-up reviews. These are real businesses on real domains —
+              click through and judge the work yourself.
+            </p>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-3">
-            {TESTIMONIALS.map(t => (
-              <div key={t.name} className="card flex flex-col gap-4">
-                <Stars count={t.stars} />
-                <p className="text-sm text-[var(--text-muted)] leading-relaxed flex-1">
-                  &ldquo;{t.quote}&rdquo;
-                </p>
-                <div>
-                  <p className="text-sm font-semibold text-white">{t.name}</p>
-                  <p className="text-xs text-[var(--text-dim)]">{t.role}</p>
+          <div className="grid gap-6 md:grid-cols-2 max-w-4xl mx-auto">
+            {REAL_WORK.map(w => (
+              <a
+                key={w.name}
+                href={w.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="card group flex flex-col gap-4 hover:scale-[1.01] transition-transform"
+              >
+                <div className="flex items-start justify-between">
+                  <div>
+                    <span className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-[11px] font-semibold ${w.tagColor} mb-2`}>
+                      {w.niche}
+                    </span>
+                    <h3 className="text-lg font-semibold text-white">{w.name}</h3>
+                  </div>
+                  <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-green-500/10 text-green-400 border border-green-500/20">
+                    Live
+                  </span>
                 </div>
-              </div>
+                <ul className="flex flex-col gap-2 flex-1">
+                  {w.points.map(pt => (
+                    <li key={pt} className="flex gap-2 items-start text-sm text-[var(--text-muted)] leading-relaxed">
+                      <CheckCircle className="h-4 w-4 text-brand-400 shrink-0 mt-0.5" />
+                      {pt}
+                    </li>
+                  ))}
+                </ul>
+                <span className="flex items-center gap-1.5 text-xs font-semibold text-brand-400 group-hover:gap-2.5 transition-all">
+                  Visit {w.domain} <ArrowRight className="h-3.5 w-3.5" />
+                </span>
+              </a>
             ))}
           </div>
         </div>
