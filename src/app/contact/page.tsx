@@ -60,17 +60,17 @@ export default function ContactPage() {
               <div>
                 <h2 className="h3 mb-6">Contact Info</h2>
                 <div className="flex flex-col gap-4">
-                  <a href="tel:+14078082898" className="flex items-center gap-3 text-sm text-[var(--text-muted)] hover:text-white transition group">
+                  <a href="tel:+18138695917" className="flex items-center gap-3 text-sm text-[var(--text-muted)] hover:text-white transition group">
                     <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand-500/10 group-hover:bg-brand-500/20 transition">
                       <Phone className="h-4 w-4 text-brand-400" />
                     </div>
-                    (407) 808-2898
+                    (813) 869-5917
                   </a>
-                  <a href="mailto:gio@grscale.com" className="flex items-center gap-3 text-sm text-[var(--text-muted)] hover:text-white transition group">
+                  <a href="mailto:gio@grscales.com" className="flex items-center gap-3 text-sm text-[var(--text-muted)] hover:text-white transition group">
                     <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand-500/10 group-hover:bg-brand-500/20 transition">
                       <Mail className="h-4 w-4 text-brand-400" />
                     </div>
-                    gio@grscale.com
+                    gio@grscales.com
                   </a>
                   <span className="flex items-center gap-3 text-sm text-[var(--text-muted)]">
                     <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand-500/10">
@@ -142,7 +142,7 @@ export default function ContactPage() {
                       <input
                         required
                         type="tel"
-                        placeholder="(407) 555-0100"
+                        placeholder="(813) 555-0100"
                         value={form.phone}
                         onChange={e => setForm({ ...form, phone: e.target.value })}
                         className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-[var(--text-dim)] focus:border-brand-500/50 focus:outline-none focus:ring-1 focus:ring-brand-500/30 transition"
