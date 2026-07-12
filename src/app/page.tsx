@@ -173,8 +173,8 @@ const FAQS = [
     a: "If it's old, slow, or not generating leads, we can redesign it. We'll audit it free and tell you exactly what's wrong before you pay anything.",
   },
   {
-    q: 'Do you work with businesses outside Orlando?',
-    a: 'We primarily serve Florida businesses right now, but we work with any local service business in the U.S. remotely.',
+    q: 'Where do you work?',
+    a: 'Everywhere. We build and support websites for local service businesses anywhere in the U.S. — everything is done remotely, fast, and with the same quality no matter your city.',
   },
 ]
 
@@ -555,7 +555,7 @@ export default function HomePage() {
             </div>
             <p className="mt-6 text-xs text-[var(--text-dim)]">
               <Clock className="inline h-3.5 w-3.5 mr-1" />
-              Respond within a few hours · Orlando & Central Florida businesses
+              Respond within a few hours · Serving businesses nationwide
             </p>
           </div>
         </div>
