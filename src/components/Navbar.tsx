@@ -2,7 +2,9 @@
 
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
-import { Zap, Menu, X } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
+
+const LOGO = '/ChatGPT%20Image%20Jul%2012,%202026,%2003_38_02%20PM.png'
 
 const NAV_LINKS = [
   { href: '/services',  label: 'Services' },
@@ -33,8 +35,9 @@ export default function Navbar() {
       <nav className="container-site flex h-16 items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2.5 group">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-500 transition group-hover:bg-brand-400">
-            <Zap className="h-4 w-4 text-white" />
+          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-white overflow-hidden transition group-hover:scale-105 shadow-[0_0_12px_rgba(14,165,233,0.25)]">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={LOGO} alt="GR Scale logo" className="h-full w-full object-cover" />
           </div>
           <span className="text-sm font-bold text-white tracking-tight">GR Scale</span>
         </Link>

@@ -1,5 +1,7 @@
 import Link from 'next/link'
-import { Zap, Phone, Mail, MapPin } from 'lucide-react'
+import { Phone, Mail, MapPin } from 'lucide-react'
+
+const LOGO = '/ChatGPT%20Image%20Jul%2012,%202026,%2003_38_02%20PM.png'
 
 const LINKS = {
   Services: [
@@ -29,8 +31,9 @@ export default function Footer() {
           {/* Brand */}
           <div className="md:col-span-2">
             <Link href="/" className="flex items-center gap-2.5 mb-4">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-500">
-                <Zap className="h-4 w-4 text-white" />
+              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-white overflow-hidden">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={LOGO} alt="GR Scale logo" className="h-full w-full object-cover" />
               </div>
               <span className="text-sm font-bold text-white">GR Scale</span>
             </Link>
