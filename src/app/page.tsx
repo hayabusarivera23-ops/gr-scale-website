@@ -182,32 +182,35 @@ export default function HomePage() {
     <div className="overflow-x-hidden">
 
       {/* ── HERO ── */}
-      <section className="relative flex min-h-screen flex-col items-center justify-center px-4 pt-24 pb-16 text-center">
+      <section className="relative flex min-h-screen flex-col items-center justify-center px-4 pt-24 pb-16 text-center overflow-hidden">
+        {/* Animated grid backdrop */}
+        <div aria-hidden className="hero-grid" />
+
         {/* Ambient glow */}
         <div aria-hidden className="pointer-events-none absolute inset-0 flex items-center justify-center">
-          <div className="h-[600px] w-[600px] rounded-full bg-brand-500/5 blur-3xl" />
+          <div className="orb-pulse h-[600px] w-[600px] rounded-full bg-brand-500/5 blur-3xl" />
         </div>
 
         {/* Location badge */}
-        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs text-[var(--text-muted)]">
+        <div className="reveal-up mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs text-[var(--text-muted)]">
           <MapPin className="h-3.5 w-3.5 text-brand-400" />
-          Based in Orlando, FL · Serving Local Businesses Statewide
+          Based in Orlando, FL · Serving Businesses Nationwide
         </div>
 
         {/* Headline */}
-        <h1 className="h1 mb-5 max-w-4xl">
+        <h1 className="h1 reveal-up rd-1 mb-5 max-w-4xl">
           Your Competitors Are Getting Customers{' '}
           <span className="text-gradient">Online. Are You?</span>
         </h1>
 
-        <p className="lead mb-4 max-w-2xl">
-          GR Scale builds fast, modern websites for local Florida service businesses —
+        <p className="lead reveal-up rd-2 mb-4 max-w-2xl">
+          GR Scale builds fast, modern websites for local service businesses —
           HVAC, plumbing, roofing, barbershops, and more.
           Professional design, local SEO, Google Business optimization.
         </p>
 
         {/* Niche strip */}
-        <div className="mb-10 flex flex-wrap justify-center gap-2">
+        <div className="reveal-up rd-2 mb-10 flex flex-wrap justify-center gap-2">
           {NICHES.map(n => (
             <span key={n.label} className={`inline-flex items-center rounded-full border px-3 py-1 text-xs font-semibold ${n.color}`}>
               {n.label}
@@ -216,8 +219,8 @@ export default function HomePage() {
         </div>
 
         {/* CTAs */}
-        <div className="flex flex-col sm:flex-row items-center gap-4">
-          <Link href="/book" className="btn-primary px-8 py-4 text-base">
+        <div className="reveal-up rd-3 flex flex-col sm:flex-row items-center gap-4">
+          <Link href="/book" className="btn-primary pulse-glow px-8 py-4 text-base">
             Get Your Free Website Audit <ArrowRight className="h-4 w-4" />
           </Link>
           <Link href="/demos" className="btn-ghost px-8 py-4 text-base">
@@ -226,7 +229,7 @@ export default function HomePage() {
         </div>
 
         {/* Trust bar */}
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-6 text-sm text-[var(--text-muted)]">
+        <div className="reveal-up rd-4 mt-10 flex flex-wrap items-center justify-center gap-6 text-sm text-[var(--text-muted)]">
           <span className="flex items-center gap-2">
             <CheckCircle className="h-4 w-4 text-brand-400" /> Free audit — no card required
           </span>
@@ -242,10 +245,10 @@ export default function HomePage() {
         </div>
 
         {/* Stats */}
-        <div className="mt-20 grid grid-cols-2 gap-6 sm:grid-cols-4 max-w-3xl w-full">
+        <div className="reveal-up rd-4 mt-20 grid grid-cols-2 gap-6 sm:grid-cols-4 max-w-3xl w-full">
           {RESULTS.map(r => (
             <div key={r.label} className="card text-center">
-              <p className="text-3xl font-extrabold text-brand-400 mb-1">{r.number}</p>
+              <p className="stat-number text-3xl font-extrabold text-brand-400 mb-1">{r.number}</p>
               <p className="text-xs text-[var(--text-muted)]">{r.label}</p>
             </div>
           ))}
