@@ -35,14 +35,14 @@ export default function Footer() {
               <span className="text-sm font-bold text-white">GR Scale</span>
             </Link>
             <p className="text-sm text-[var(--text-muted)] leading-relaxed max-w-sm">
-              We build fast, modern websites that help local Florida businesses generate more customers online.
+              We build fast, modern websites that help local service businesses generate more customers online. Based in Orlando, serving nationwide.
             </p>
             <div className="mt-6 flex flex-col gap-2.5 text-sm text-[var(--text-muted)]">
               <a href="tel:+14078082898" className="flex items-center gap-2 hover:text-white transition">
                 <Phone className="h-3.5 w-3.5 text-brand-400" /> (407) 808-2898
               </a>
-              <a href="mailto:gio@grscale.com" className="flex items-center gap-2 hover:text-white transition">
-                <Mail className="h-3.5 w-3.5 text-brand-400" /> gio@grscale.com
+              <a href="mailto:gio@grscales.com" className="flex items-center gap-2 hover:text-white transition">
+                <Mail className="h-3.5 w-3.5 text-brand-400" /> gio@grscales.com
               </a>
               <span className="flex items-center gap-2">
                 <MapPin className="h-3.5 w-3.5 text-brand-400" /> Orlando, Florida
