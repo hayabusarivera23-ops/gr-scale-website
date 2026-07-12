@@ -24,10 +24,43 @@ export const metadata: Metadata = {
   },
 }
 
+const BUSINESS_SCHEMA = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: 'GR Scale',
+  description:
+    'Website design, redesign, local SEO, and Google Business Profile optimization for local service businesses nationwide.',
+  url: 'https://grscales.com',
+  logo: 'https://grscales.com' + LOGO,
+  image: 'https://grscales.com' + LOGO,
+  telephone: '+1-813-869-5917',
+  email: 'gio@grscales.com',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Orlando',
+    addressRegion: 'FL',
+    addressCountry: 'US',
+  },
+  areaServed: { '@type': 'Country', name: 'United States' },
+  priceRange: '$99 - $599/mo',
+  serviceType: [
+    'Website Design',
+    'Website Redesign',
+    'Landing Pages',
+    'Local SEO',
+    'Google Business Profile Optimization',
+    'Website Maintenance',
+  ],
+}
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(BUSINESS_SCHEMA) }}
+        />
         <Navbar />
         <main>{children}</main>
         <Footer />
