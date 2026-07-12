@@ -4,6 +4,7 @@ import {
   Clock, Phone, TrendingUp, Shield, MessageSquare, ChevronRight,
   AlertCircle, MapPin,
 } from 'lucide-react'
+import { Reveal, CursorGlow, ScrollZoomBrowser, Marquee } from '@/components/FX'
 
 /* ── DATA ── */
 const NICHES = [
@@ -186,6 +187,9 @@ export default function HomePage() {
         {/* Animated grid backdrop */}
         <div aria-hidden className="hero-grid" />
 
+        {/* Cursor-follow glow */}
+        <CursorGlow />
+
         {/* Ambient glow */}
         <div aria-hidden className="pointer-events-none absolute inset-0 flex items-center justify-center">
           <div className="orb-pulse h-[600px] w-[600px] rounded-full bg-brand-500/5 blur-3xl" />
@@ -255,6 +259,9 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── NICHE MARQUEE ── */}
+      <Marquee items={['HVAC', 'Roofing', 'Plumbing', 'Barbershops', 'Pressure Washing', 'Landscaping', 'Electricians', 'Pest Control', 'Auto Repair', 'Pool Service']} />
+
       {/* ── PROBLEM SECTION ── */}
       <section className="section bg-[#0d1117]">
         <div className="container-site max-w-4xl">
@@ -294,14 +301,16 @@ export default function HomePage() {
       {/* ── REAL WORK / PROOF ── */}
       <section id="proof" className="section">
         <div className="container-site">
-          <div className="text-center mb-12">
-            <span className="badge mb-4">Real Work</span>
-            <h2 className="h2 mb-4">Built by GR Scale. Live Right Now.</h2>
-            <p className="lead max-w-2xl mx-auto">
-              No stock testimonials, no made-up reviews. These are real businesses on real domains —
-              click through and judge the work yourself.
-            </p>
-          </div>
+          <Reveal>
+            <div className="text-center mb-12">
+              <span className="badge mb-4">Real Work</span>
+              <h2 className="h2 mb-4">Built by GR Scale. Live Right Now.</h2>
+              <p className="lead max-w-2xl mx-auto">
+                No stock testimonials, no made-up reviews. These are real businesses on real domains —
+                click through and judge the work yourself.
+              </p>
+            </div>
+          </Reveal>
 
           <div className="grid gap-6 md:grid-cols-2 max-w-4xl mx-auto">
             {REAL_WORK.map(w => (
@@ -340,16 +349,45 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── LIVE SHOWCASE ── */}
+      <section className="section bg-[#0d1117] overflow-hidden">
+        <div className="container-site max-w-5xl">
+          <Reveal>
+            <div className="text-center mb-12">
+              <span className="badge mb-4">Live Demo</span>
+              <h2 className="h2 mb-4">This Is a Real Website. <span className="text-gradient">Scroll It.</span></h2>
+              <p className="lead max-w-2xl mx-auto">
+                The window below isn&apos;t a screenshot — it&apos;s a live site we built, running right now.
+                Scroll inside it, click around. Your business gets this same level of polish.
+              </p>
+            </div>
+          </Reveal>
+          <ScrollZoomBrowser
+            src="https://gr-scale-demos.vercel.app/roofing"
+            url="gr-scale-demos.vercel.app/roofing"
+          />
+          <Reveal delay={150}>
+            <div className="mt-10 text-center">
+              <Link href="/demos" className="btn-primary px-8 py-3">
+                See All 13 Demo Sites <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* ── SERVICES ── */}
-      <section id="services" className="section bg-[#0d1117]">
+      <section id="services" className="section">
         <div className="container-site">
-          <div className="text-center mb-16">
-            <span className="badge mb-4">What We Do</span>
-            <h2 className="h2 mb-4">Everything Your Online Presence Needs</h2>
-            <p className="lead max-w-2xl mx-auto">
-              From your first website to local SEO that keeps the phone ringing — we handle all of it.
-            </p>
-          </div>
+          <Reveal>
+            <div className="text-center mb-16">
+              <span className="badge mb-4">What We Do</span>
+              <h2 className="h2 mb-4">Everything Your Online Presence Needs</h2>
+              <p className="lead max-w-2xl mx-auto">
+                From your first website to local SEO that keeps the phone ringing — we handle all of it.
+              </p>
+            </div>
+          </Reveal>
 
           <div className="services-grid">
             {SERVICES.map(s => {
@@ -404,13 +442,15 @@ export default function HomePage() {
       {/* ── DEMO GALLERY ── */}
       <section id="portfolio" className="section bg-[#0d1117]">
         <div className="container-site">
-          <div className="text-center mb-16">
-            <span className="badge mb-4">Our Work</span>
-            <h2 className="h2 mb-4">See Your Future Website</h2>
-            <p className="lead max-w-xl mx-auto">
-              We build a demo for your exact niche — so you see what yours will look like before you pay.
-            </p>
-          </div>
+          <Reveal>
+            <div className="text-center mb-16">
+              <span className="badge mb-4">Our Work</span>
+              <h2 className="h2 mb-4">See Your Future Website</h2>
+              <p className="lead max-w-xl mx-auto">
+                We build a demo for your exact niche — so you see what yours will look like before you pay.
+              </p>
+            </div>
+          </Reveal>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {DEMOS.map(d => (
