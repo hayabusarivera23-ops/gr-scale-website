@@ -4,7 +4,7 @@ import {
   Clock, Phone, TrendingUp, Shield, MessageSquare, ChevronRight,
   AlertCircle, MapPin,
 } from 'lucide-react'
-import { Reveal, CursorGlow, ScrollZoomBrowser, Marquee } from '@/components/FX'
+import { Reveal, CursorGlow, ScrollZoomBrowser, Marquee, ParticleField, TypeWords, Magnetic, ScrollProgress } from '@/components/FX'
 
 /* ── DATA ── */
 const NICHES = [
@@ -184,8 +184,14 @@ export default function HomePage() {
 
       {/* ── HERO ── */}
       <section className="relative flex min-h-screen flex-col items-center justify-center px-4 pt-24 pb-16 text-center overflow-hidden">
+        {/* Scroll progress beam */}
+        <ScrollProgress />
+
         {/* Animated grid backdrop */}
         <div aria-hidden className="hero-grid" />
+
+        {/* Particle constellation */}
+        <ParticleField />
 
         {/* Cursor-follow glow */}
         <CursorGlow />
@@ -208,9 +214,12 @@ export default function HomePage() {
         </h1>
 
         <p className="lead reveal-up rd-2 mb-4 max-w-2xl">
-          GR Scale builds fast, modern websites for local service businesses —
-          HVAC, plumbing, roofing, barbershops, and more.
-          Professional design, local SEO, Google Business optimization.
+          GR Scale builds fast, modern websites for{' '}
+          <TypeWords
+            words={['roofers', 'HVAC pros', 'plumbers', 'barbers', 'landscapers', 'contractors']}
+            className="text-brand-400 font-semibold"
+          />
+          {' '}— professional design, local SEO, Google Business optimization.
         </p>
 
         {/* Niche strip */}
@@ -224,9 +233,11 @@ export default function HomePage() {
 
         {/* CTAs */}
         <div className="reveal-up rd-3 flex flex-col sm:flex-row items-center gap-4">
-          <Link href="/book" className="btn-primary pulse-glow px-8 py-4 text-base">
-            Get Your Free Website Audit <ArrowRight className="h-4 w-4" />
-          </Link>
+          <Magnetic>
+            <Link href="/book" className="btn-primary pulse-glow px-8 py-4 text-base">
+              Get Your Free Website Audit <ArrowRight className="h-4 w-4" />
+            </Link>
+          </Magnetic>
           <Link href="/demos" className="btn-ghost px-8 py-4 text-base">
             See Demo Sites
           </Link>
@@ -319,7 +330,7 @@ export default function HomePage() {
                 href={w.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="card group flex flex-col gap-4 hover:scale-[1.01] transition-transform"
+                className="card beam-card group flex flex-col gap-4 hover:scale-[1.01] transition-transform"
               >
                 <div className="flex items-start justify-between">
                   <div>
