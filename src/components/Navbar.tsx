@@ -48,7 +48,7 @@ export default function Navbar() {
             <Link
               key={l.href}
               href={l.href}
-              className="px-4 py-2 text-sm text-[var(--text-muted)] hover:text-white rounded-lg hover:bg-white/5 transition"
+              className="nav-link px-4 py-2 text-sm text-[var(--text-muted)] hover:text-white rounded-lg hover:bg-white/5 transition"
             >
               {l.label}
             </Link>

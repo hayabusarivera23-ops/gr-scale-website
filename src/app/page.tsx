@@ -4,7 +4,10 @@ import {
   Clock, Phone, TrendingUp, Shield, MessageSquare, ChevronRight,
   AlertCircle, MapPin,
 } from 'lucide-react'
-import { Reveal, CursorGlow, ScrollZoomBrowser, Marquee, ParticleField, TypeWords, Magnetic, ScrollProgress } from '@/components/FX'
+import {
+  Reveal, CursorGlow, ScrollZoomBrowser, Marquee, ParticleField, TypeWords,
+  Magnetic, ScrollProgress, CountUp, Tilt, Aurora, GlowDivider, Parallax,
+} from '@/components/FX'
 
 /* ── DATA ── */
 const NICHES = [
@@ -190,15 +193,20 @@ export default function HomePage() {
         {/* Animated grid backdrop */}
         <div aria-hidden className="hero-grid" />
 
+        {/* Drifting aurora depth */}
+        <Aurora dim />
+
         {/* Particle constellation */}
         <ParticleField />
 
         {/* Cursor-follow glow */}
         <CursorGlow />
 
-        {/* Ambient glow */}
+        {/* Ambient glow — drifts slower than the page (parallax) */}
         <div aria-hidden className="pointer-events-none absolute inset-0 flex items-center justify-center">
-          <div className="orb-pulse h-[600px] w-[600px] rounded-full bg-brand-500/5 blur-3xl" />
+          <Parallax speed={0.12}>
+            <div className="orb-pulse h-[600px] w-[600px] rounded-full bg-brand-500/5 blur-3xl" />
+          </Parallax>
         </div>
 
         {/* Location badge */}
@@ -225,7 +233,7 @@ export default function HomePage() {
         {/* Niche strip */}
         <div className="reveal-up rd-2 mb-10 flex flex-wrap justify-center gap-2">
           {NICHES.map(n => (
-            <span key={n.label} className={`inline-flex items-center rounded-full border px-3 py-1 text-xs font-semibold ${n.color}`}>
+            <span key={n.label} className={`chip-glow inline-flex items-center rounded-full border px-3 py-1 text-xs font-semibold ${n.color}`}>
               {n.label}
             </span>
           ))}
@@ -263,7 +271,9 @@ export default function HomePage() {
         <div className="reveal-up rd-4 mt-20 grid grid-cols-2 gap-6 sm:grid-cols-4 max-w-3xl w-full">
           {RESULTS.map(r => (
             <div key={r.label} className="card text-center">
-              <p className="stat-number text-3xl font-extrabold text-brand-400 mb-1">{r.number}</p>
+              <p className="stat-number text-3xl font-extrabold text-brand-400 mb-1">
+                <CountUp text={r.number} />
+              </p>
               <p className="text-xs text-[var(--text-muted)]">{r.label}</p>
             </div>
           ))}
@@ -273,39 +283,50 @@ export default function HomePage() {
       {/* ── NICHE MARQUEE ── */}
       <Marquee items={['HVAC', 'Roofing', 'Plumbing', 'Barbershops', 'Pressure Washing', 'Landscaping', 'Electricians', 'Pest Control', 'Auto Repair', 'Pool Service']} />
 
+      <GlowDivider />
+
       {/* ── PROBLEM SECTION ── */}
       <section className="section bg-[#0d1117]">
         <div className="container-site max-w-4xl">
-          <div className="text-center mb-12">
-            <span className="badge mb-4">Sound Familiar?</span>
-            <h2 className="h2 mb-4">Most Local Businesses Are Invisible Online</h2>
-            <p className="lead max-w-2xl mx-auto">
-              If a customer can&apos;t find you on Google or doesn&apos;t trust what they see — they&apos;re calling your competitor.
-            </p>
-          </div>
+          <Reveal>
+            <div className="text-center mb-12">
+              <span className="badge mb-4">Sound Familiar?</span>
+              <h2 className="h2 mb-4">Most Local Businesses Are Invisible Online</h2>
+              <p className="lead max-w-2xl mx-auto">
+                If a customer can&apos;t find you on Google or doesn&apos;t trust what they see — they&apos;re calling your competitor.
+              </p>
+            </div>
+          </Reveal>
 
           <div className="grid gap-4 sm:grid-cols-3 mb-12">
-            {PAIN_POINTS.map(p => {
+            {PAIN_POINTS.map((p, i) => {
               const Icon = p.icon
               return (
-                <div key={p.text} className="card border-red-500/10 bg-red-500/5 flex gap-3 items-start">
-                  <Icon className="h-5 w-5 text-red-400 shrink-0 mt-0.5" />
-                  <p className="text-sm text-[var(--text-muted)] leading-relaxed">{p.text}</p>
-                </div>
+                <Reveal key={p.text} delay={i * 120} className="h-full">
+                  <div className="card h-full border-red-500/10 bg-red-500/5 flex gap-3 items-start">
+                    <Icon className="h-5 w-5 text-red-400 shrink-0 mt-0.5" />
+                    <p className="text-sm text-[var(--text-muted)] leading-relaxed">{p.text}</p>
+                  </div>
+                </Reveal>
               )
             })}
           </div>
 
-          <div className="rounded-2xl border border-brand-500/20 bg-brand-500/5 p-8 text-center">
-            <p className="text-white font-semibold mb-2">We fix all of this — starting with a free audit.</p>
-            <p className="text-sm text-[var(--text-muted)] mb-6">
-              We look at your Google presence, your current site (if you have one), and what your competitors are doing.
-              Then we show you exactly how to fix it.
-            </p>
-            <Link href="/book" className="btn-primary px-8 py-3">
-              Book Free Audit Call <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
+          <Reveal delay={150}>
+            <div className="relative overflow-hidden rounded-2xl border border-brand-500/20 bg-brand-500/5 p-8 text-center">
+              <Aurora dim />
+              <div className="relative z-10">
+                <p className="text-white font-semibold mb-2">We fix all of this — starting with a free audit.</p>
+                <p className="text-sm text-[var(--text-muted)] mb-6">
+                  We look at your Google presence, your current site (if you have one), and what your competitors are doing.
+                  Then we show you exactly how to fix it.
+                </p>
+                <Link href="/book" className="btn-primary px-8 py-3">
+                  Book Free Audit Call <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 
@@ -324,13 +345,14 @@ export default function HomePage() {
           </Reveal>
 
           <div className="grid gap-6 md:grid-cols-2 max-w-4xl mx-auto">
-            {REAL_WORK.map(w => (
+            {REAL_WORK.map((w, i) => (
+              <Reveal key={w.name} delay={i * 140} className="h-full">
+              <Tilt max={6}>
               <a
-                key={w.name}
                 href={w.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="card beam-card group flex flex-col gap-4 hover:scale-[1.01] transition-transform"
+                className="card beam-card group flex flex-col gap-4 h-full"
               >
                 <div className="flex items-start justify-between">
                   <div>
@@ -355,6 +377,8 @@ export default function HomePage() {
                   Visit {w.domain} <ArrowRight className="h-3.5 w-3.5" />
                 </span>
               </a>
+              </Tilt>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -387,6 +411,8 @@ export default function HomePage() {
         </div>
       </section>
 
+      <GlowDivider />
+
       {/* ── SERVICES ── */}
       <section id="services" className="section">
         <div className="container-site">
@@ -401,17 +427,21 @@ export default function HomePage() {
           </Reveal>
 
           <div className="services-grid">
-            {SERVICES.map(s => {
+            {SERVICES.map((s, i) => {
               const Icon = s.icon
               return (
-                <div key={s.title} className="card group">
-                  <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-brand-500/10 transition group-hover:bg-brand-500/20">
-                    <Icon className="h-5 w-5 text-brand-400" />
-                  </div>
-                  <h3 className="h3 mb-2">{s.title}</h3>
-                  <p className="text-sm text-[var(--text-muted)] leading-relaxed mb-4">{s.desc}</p>
-                  <span className="text-xs font-semibold text-brand-400">{s.price}</span>
-                </div>
+                <Reveal key={s.title} delay={(i % 3) * 110} className="h-full">
+                  <Tilt max={6}>
+                    <div className="card group h-full">
+                      <div className="icon-bob mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-brand-500/10 transition group-hover:bg-brand-500/20">
+                        <Icon className="h-5 w-5 text-brand-400" />
+                      </div>
+                      <h3 className="h3 mb-2">{s.title}</h3>
+                      <p className="text-sm text-[var(--text-muted)] leading-relaxed mb-4">{s.desc}</p>
+                      <span className="text-xs font-semibold text-brand-400">{s.price}</span>
+                    </div>
+                  </Tilt>
+                </Reveal>
               )
             })}
           </div>
@@ -427,24 +457,28 @@ export default function HomePage() {
       {/* ── PROCESS ── */}
       <section id="process" className="section">
         <div className="container-site">
-          <div className="text-center mb-16">
-            <span className="badge mb-4">How It Works</span>
-            <h2 className="h2 mb-4">Audit to Live in 2 Weeks</h2>
-            <p className="lead max-w-xl mx-auto">
-              No long timelines. No confusion. A clear process from first call to launch.
-            </p>
-          </div>
+          <Reveal>
+            <div className="text-center mb-16">
+              <span className="badge mb-4">How It Works</span>
+              <h2 className="h2 mb-4">Audit to Live in 2 Weeks</h2>
+              <p className="lead max-w-xl mx-auto">
+                No long timelines. No confusion. A clear process from first call to launch.
+              </p>
+            </div>
+          </Reveal>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {PROCESS.map((p, i) => (
-              <div key={p.step} className="relative card">
-                {i < PROCESS.length - 1 && (
-                  <div className="hidden lg:block absolute top-10 left-full w-6 h-px bg-brand-500/20 z-10" />
-                )}
-                <div className="mb-4 text-4xl font-black text-brand-500/20">{p.step}</div>
-                <h3 className="text-base font-semibold text-white mb-2">{p.title}</h3>
-                <p className="text-sm text-[var(--text-muted)] leading-relaxed">{p.desc}</p>
-              </div>
+              <Reveal key={p.step} delay={i * 130} className="h-full">
+                <div className="relative card h-full">
+                  {i < PROCESS.length - 1 && (
+                    <div className="connector-pulse hidden lg:block absolute top-10 left-full w-6 h-px bg-brand-500/40 z-10" />
+                  )}
+                  <div className="mb-4 text-4xl font-black text-brand-500/20">{p.step}</div>
+                  <h3 className="text-base font-semibold text-white mb-2">{p.title}</h3>
+                  <p className="text-sm text-[var(--text-muted)] leading-relaxed">{p.desc}</p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -464,13 +498,14 @@ export default function HomePage() {
           </Reveal>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {DEMOS.map(d => (
+            {DEMOS.map((d, i) => (
+              <Reveal key={d.name} delay={(i % 3) * 110} className="h-full">
+              <Tilt max={7}>
               <a
-                key={d.name}
                 href={d.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`card group relative overflow-hidden bg-gradient-to-br ${d.color} hover:scale-[1.02] transition-transform`}
+                className={`card group relative overflow-hidden bg-gradient-to-br ${d.color} h-full flex flex-col`}
               >
                 <div className="flex items-start justify-between mb-4">
                   <div>
@@ -487,11 +522,13 @@ export default function HomePage() {
                     {d.status}
                   </span>
                 </div>
-                <p className="text-sm text-[var(--text-muted)] leading-relaxed mb-4">{d.desc}</p>
+                <p className="text-sm text-[var(--text-muted)] leading-relaxed mb-4 flex-1">{d.desc}</p>
                 <span className="flex items-center gap-1.5 text-xs font-semibold text-brand-400 group-hover:gap-2.5 transition-all">
                   {d.status === 'Live' ? 'View Live Site' : 'View Demo'} <ArrowRight className="h-3.5 w-3.5" />
                 </span>
               </a>
+              </Tilt>
+              </Reveal>
             ))}
           </div>
 
@@ -506,17 +543,21 @@ export default function HomePage() {
       {/* ── FAQ ── */}
       <section id="faq" className="section">
         <div className="container-site max-w-3xl">
-          <div className="text-center mb-16">
-            <span className="badge mb-4">FAQ</span>
-            <h2 className="h2 mb-4">Common Questions</h2>
-          </div>
+          <Reveal>
+            <div className="text-center mb-16">
+              <span className="badge mb-4">FAQ</span>
+              <h2 className="h2 mb-4">Common Questions</h2>
+            </div>
+          </Reveal>
 
           <div className="flex flex-col gap-4">
-            {FAQS.map(f => (
-              <div key={f.q} className="card">
-                <h3 className="text-sm font-semibold text-white mb-2">{f.q}</h3>
-                <p className="text-sm text-[var(--text-muted)] leading-relaxed">{f.a}</p>
-              </div>
+            {FAQS.map((f, i) => (
+              <Reveal key={f.q} delay={i * 90}>
+                <div className="card">
+                  <h3 className="text-sm font-semibold text-white mb-2">{f.q}</h3>
+                  <p className="text-sm text-[var(--text-muted)] leading-relaxed">{f.a}</p>
+                </div>
+              </Reveal>
             ))}
           </div>
 
@@ -528,14 +569,19 @@ export default function HomePage() {
         </div>
       </section>
 
+      <GlowDivider />
+
       {/* ── CTA BANNER ── */}
       <section className="section bg-[#0d1117]">
         <div className="container-site">
+          <Reveal>
           <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-brand-500/20 via-brand-600/10 to-transparent border border-brand-500/20 px-8 py-16 text-center glow-brand">
+            <Aurora />
             <div
               aria-hidden
               className="pointer-events-none absolute -top-20 left-1/2 -translate-x-1/2 h-64 w-64 rounded-full bg-brand-500/10 blur-3xl"
             />
+            <div className="relative z-10">
             <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-500 mx-auto mb-6">
               <Phone className="h-6 w-6 text-white" />
             </div>
@@ -557,7 +603,9 @@ export default function HomePage() {
               <Clock className="inline h-3.5 w-3.5 mr-1" />
               Respond within a few hours · Serving businesses nationwide
             </p>
+            </div>
           </div>
+          </Reveal>
         </div>
       </section>
 
