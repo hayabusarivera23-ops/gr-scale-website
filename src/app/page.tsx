@@ -1,13 +1,29 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import {
   ArrowRight, CheckCircle, Zap, Globe, Search,
-  Clock, Phone, TrendingUp, Shield, MessageSquare, ChevronRight,
-  AlertCircle, MapPin,
+  Clock, TrendingUp, Shield, MessageSquare, ChevronRight, MapPin,
 } from 'lucide-react'
 import {
   Reveal, CursorGlow, ScrollZoomBrowser, Marquee, ParticleField, TypeWords,
   Magnetic, ScrollProgress, CountUp, Tilt, Aurora, GlowDivider, Parallax,
+  ParallaxImg, SlideIn,
 } from '@/components/FX'
+
+/* ── IMAGERY ──
+ * Professional Unsplash photos — every URL verified live before shipping.
+ * PRIORITY SWAP: when brand-1.png … brand-5.png land in /public (Gio's
+ * AI-generated brand images), replace these values with '/brand-1.png' etc.
+ */
+const LOGO = '/ChatGPT%20Image%20Jul%2012,%202026,%2003_38_02%20PM.png'
+
+const IMG = {
+  roofer:   'https://images.unsplash.com/photo-1632759145351-1d592919f522?q=80&w=1000&auto=format&fit=crop',
+  plumber:  'https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?q=80&w=1000&auto=format&fit=crop',
+  barber:   'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=1000&auto=format&fit=crop',
+  hvacTech: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=1800&auto=format&fit=crop',
+  builder:  'https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1800&auto=format&fit=crop',
+}
 
 /* ── DATA ── */
 const NICHES = [
@@ -20,55 +36,55 @@ const NICHES = [
 ]
 
 const PAIN_POINTS = [
-  { icon: AlertCircle, text: 'Customers Google you and find nothing — or worse, a competitor.' },
-  { icon: AlertCircle, text: 'Your website loads slow, looks bad on phones, and loses you jobs.' },
-  { icon: AlertCircle, text: 'You don\'t show up when locals search for your service on Google.' },
+  { img: IMG.roofer,  alt: 'Roofer working on a roof',        claim: 'They Google you.',        sub: 'They find your competitor.' },
+  { img: IMG.plumber, alt: 'Plumber repairing a sink',        claim: 'Your site is slow.',      sub: 'Every second costs you jobs.' },
+  { img: IMG.barber,  alt: 'Barber cutting a client\'s hair', claim: 'Great work. Invisible.',  sub: 'That gap is their revenue.' },
 ]
 
 const SERVICES = [
   {
     icon: Globe,
     title: 'Website Design & Build',
-    desc:  'A brand-new professional website built from scratch. Fast, mobile-first, and designed to convert visitors into calls.',
+    desc:  'A brand-new site built to turn visitors into calls.',
     price: 'From $500',
   },
   {
     icon: Zap,
     title: 'Website Redesign',
-    desc:  'Your outdated site is losing you customers every day. We rebuild it fast, modern, and conversion-focused.',
+    desc:  'Outdated site? Rebuilt fast, modern, conversion-first.',
     price: 'From $400',
   },
   {
     icon: Search,
     title: 'Google Business Profile',
-    desc:  'Optimize your GBP so you appear when local customers search your service. More calls, zero ad spend.',
+    desc:  'Show up when locals search. Zero ad spend.',
     price: 'From $150',
   },
   {
     icon: TrendingUp,
     title: 'Local SEO',
-    desc:  'Rank at the top of Google for searches in your area. Long-term traffic that doesn\'t cost per click.',
+    desc:  'Rank at the top of Google in your area.',
     price: 'From $200/mo',
   },
   {
     icon: MessageSquare,
     title: 'Landing Pages',
-    desc:  'Dedicated pages built for one goal: get the visitor to call, fill out a form, or book an appointment.',
+    desc:  'One page, one goal: make the phone ring.',
     price: 'From $300',
   },
   {
     icon: Shield,
     title: 'Monthly Maintenance',
-    desc:  'Keep your site fast, secure, and updated. We handle hosting, backups, and small edits whenever you need them.',
+    desc:  'Hosting, backups, edits — handled for you.',
     price: 'From $99/mo',
   },
 ]
 
 const PROCESS = [
-  { step: '01', title: 'Free Website Audit',  desc: 'We review your online presence and show you exactly what\'s costing you customers — no charge, no obligation.' },
-  { step: '02', title: 'Strategy Call',        desc: 'We walk you through what we found and present a clear plan. You decide if you want to move forward.' },
-  { step: '03', title: '7–14 Day Build',       desc: 'We build fast. You review, we refine. Your new site launches in under two weeks.' },
-  { step: '04', title: 'You Start Growing',    desc: 'Site goes live. More calls start coming in. We track results and keep things running.' },
+  { step: '01', title: 'Free Website Audit',  desc: 'We audit your online presence. No charge, no obligation.' },
+  { step: '02', title: 'Strategy Call',        desc: 'We show you what we found. You decide.' },
+  { step: '03', title: '7–14 Day Build',       desc: 'We build fast. You review from your phone.' },
+  { step: '04', title: 'You Start Growing',    desc: 'Launch. Calls come in. We keep it running.' },
 ]
 
 const DEMOS = [
@@ -77,54 +93,66 @@ const DEMOS = [
     niche:    'HVAC',
     url:      'https://meloair.net',
     status:   'Live',
+    img:      'https://images.unsplash.com/photo-1585129777188-94600bc7b4b3?q=80&w=900&auto=format&fit=crop',
+    alt:      'Air conditioning units on a wall',
     color:    'from-sky-500/20 to-blue-600/10',
     tagColor: 'bg-sky-500/10 text-sky-400 border-sky-500/20',
-    desc:     'Real client build for a Tampa HVAC company — full site with services, financing options, and quote form, live on the client\'s own domain.',
+    desc:     'Real client build — live on the client\'s own domain.',
   },
   {
     name:     'LexTheBarber',
     niche:    'Barbershop',
     url:      'https://lexthebarber.com',
     status:   'Live',
+    img:      'https://images.unsplash.com/photo-1585747860715-2ba37e788b70?q=80&w=900&auto=format&fit=crop',
+    alt:      'Barbershop interior',
     color:    'from-violet-500/20 to-purple-600/10',
     tagColor: 'bg-violet-500/10 text-violet-400 border-violet-500/20',
-    desc:     'Premium barber portfolio with booking integration, gallery, and service menu.',
+    desc:     'Booking-first barber site. Real client.',
   },
   {
     name:     'Elite Plumbing Co',
     niche:    'Plumbing',
     url:      'https://gr-scale-demos.vercel.app/plumbing',
     status:   'Demo',
+    img:      'https://images.unsplash.com/photo-1542013936693-884638332954?q=80&w=900&auto=format&fit=crop',
+    alt:      'Industrial pipes',
     color:    'from-blue-500/20 to-cyan-600/10',
     tagColor: 'bg-blue-500/10 text-blue-400 border-blue-500/20',
-    desc:     'Emergency plumbing site with 24/7 CTA, trust badges, service pages, and quote form.',
+    desc:     '24/7 emergency design that books jobs.',
   },
   {
     name:     'Peak Roofing Solutions',
     niche:    'Roofing',
     url:      'https://gr-scale-demos.vercel.app/roofing',
     status:   'Demo',
+    img:      'https://images.unsplash.com/photo-1635424710928-0544e8512eae?q=80&w=900&auto=format&fit=crop',
+    alt:      'House roof shingles',
     color:    'from-amber-500/20 to-orange-600/10',
     tagColor: 'bg-amber-500/10 text-amber-400 border-amber-500/20',
-    desc:     'Roofing site with before/after gallery, free inspection offer, and storm damage lead capture.',
+    desc:     'Storm-damage leads + free inspection flow.',
   },
   {
     name:     'SparkClean Pressure Wash',
     niche:    'Pressure Washing',
     url:      'https://gr-scale-demos.vercel.app/pressure-washing',
     status:   'Demo',
+    img:      'https://images.unsplash.com/photo-1616432043562-3671ea2e5242?q=80&w=900&auto=format&fit=crop',
+    alt:      'Pressure washing a surface',
     color:    'from-orange-500/20 to-red-600/10',
     tagColor: 'bg-orange-500/10 text-orange-400 border-orange-500/20',
-    desc:     'Pressure washing site with before/after gallery, instant quote form, and service areas.',
+    desc:     'Before/after gallery that sells itself.',
   },
   {
     name:     'GreenEdge Landscaping',
     niche:    'Landscaping',
     url:      'https://gr-scale-demos.vercel.app/landscaping',
     status:   'Demo',
+    img:      'https://images.unsplash.com/photo-1558904541-efa843a96f01?q=80&w=900&auto=format&fit=crop',
+    alt:      'Landscaped garden lawn',
     color:    'from-green-500/20 to-emerald-600/10',
     tagColor: 'bg-green-500/10 text-green-400 border-green-500/20',
-    desc:     'Landscaping site with portfolio gallery, seasonal services, maintenance plans, and booking.',
+    desc:     'Seasonal packages, year-round contracts.',
   },
 ]
 
@@ -165,19 +193,19 @@ const RESULTS = [
 const FAQS = [
   {
     q: 'How long does it take to build a website?',
-    a: 'Most websites are done in 7–14 business days. Simple landing pages can be done in 3–5 days.',
+    a: 'Most sites: 7–14 business days. Landing pages: 3–5.',
   },
   {
     q: 'Do I need a website if I already have a Google Business Profile?',
-    a: "Yes. A GBP gets you found — a website closes the deal. Customers check your site before calling. If you don't have one, many won't call.",
+    a: 'Yes. A GBP gets you found — your website closes the deal.',
   },
   {
     q: 'What if I already have a website?',
-    a: "If it's old, slow, or not generating leads, we can redesign it. We'll audit it free and tell you exactly what's wrong before you pay anything.",
+    a: "We audit it free and tell you exactly what's wrong — before you pay anything.",
   },
   {
     q: 'Where do you work?',
-    a: 'Everywhere. We build and support websites for local service businesses anywhere in the U.S. — everything is done remotely, fast, and with the same quality no matter your city.',
+    a: 'Anywhere in the U.S. Everything is done remotely — same quality in every city.',
   },
 ]
 
@@ -209,10 +237,12 @@ export default function HomePage() {
           </Parallax>
         </div>
 
-        {/* Location badge */}
-        <div className="reveal-up mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs text-[var(--text-muted)]">
-          <MapPin className="h-3.5 w-3.5 text-brand-400" />
-          Based in Orlando, FL · Serving Businesses Nationwide
+        {/* Location badge — animated gradient border */}
+        <div className="badge-beam reveal-up mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 text-xs text-[var(--text-muted)]">
+            <MapPin className="h-3.5 w-3.5 text-brand-400" />
+            Based in Orlando, FL · Serving Businesses Nationwide
+          </div>
         </div>
 
         {/* Headline */}
@@ -222,12 +252,12 @@ export default function HomePage() {
         </h1>
 
         <p className="lead reveal-up rd-2 mb-4 max-w-2xl">
-          GR Scale builds fast, modern websites for{' '}
+          Fast, modern websites for{' '}
           <TypeWords
             words={['roofers', 'HVAC pros', 'plumbers', 'barbers', 'landscapers', 'contractors']}
             className="text-brand-400 font-semibold"
           />
-          {' '}— professional design, local SEO, Google Business optimization.
+          {' '}— built to make your phone ring.
         </p>
 
         {/* Niche strip */}
@@ -287,40 +317,37 @@ export default function HomePage() {
 
       {/* ── PROBLEM SECTION ── */}
       <section className="section bg-[#0d1117]">
-        <div className="container-site max-w-4xl">
+        <div className="container-site max-w-5xl">
           <Reveal>
             <div className="text-center mb-12">
               <span className="badge mb-4">Sound Familiar?</span>
               <h2 className="h2 mb-4">Most Local Businesses Are Invisible Online</h2>
               <p className="lead max-w-2xl mx-auto">
-                If a customer can&apos;t find you on Google or doesn&apos;t trust what they see — they&apos;re calling your competitor.
+                Great work isn&apos;t enough — the job goes to whoever shows up on Google.
               </p>
             </div>
           </Reveal>
 
-          <div className="grid gap-4 sm:grid-cols-3 mb-12">
-            {PAIN_POINTS.map((p, i) => {
-              const Icon = p.icon
-              return (
-                <Reveal key={p.text} delay={i * 120} className="h-full">
-                  <div className="card h-full border-red-500/10 bg-red-500/5 flex gap-3 items-start">
-                    <Icon className="h-5 w-5 text-red-400 shrink-0 mt-0.5" />
-                    <p className="text-sm text-[var(--text-muted)] leading-relaxed">{p.text}</p>
+          <div className="grid gap-5 sm:grid-cols-3 mb-12">
+            {PAIN_POINTS.map((p, i) => (
+              <SlideIn key={p.claim} from={i % 2 === 0 ? 'left' : 'right'} delay={i * 120} className="h-full">
+                <div className="group relative h-full overflow-hidden rounded-2xl border border-white/10 photo-overlay img-zoom min-h-[300px]">
+                  <Image src={p.img} alt={p.alt} fill sizes="(max-width: 640px) 100vw, 33vw"
+                    className="object-cover" />
+                  <div className="absolute inset-x-0 bottom-0 z-10 p-5">
+                    <p className="text-xl font-extrabold text-white leading-tight">{p.claim}</p>
+                    <p className="text-sm text-[var(--text-muted)] mt-1">{p.sub}</p>
                   </div>
-                </Reveal>
-              )
-            })}
+                </div>
+              </SlideIn>
+            ))}
           </div>
 
           <Reveal delay={150}>
             <div className="relative overflow-hidden rounded-2xl border border-brand-500/20 bg-brand-500/5 p-8 text-center">
               <Aurora dim />
               <div className="relative z-10">
-                <p className="text-white font-semibold mb-2">We fix all of this — starting with a free audit.</p>
-                <p className="text-sm text-[var(--text-muted)] mb-6">
-                  We look at your Google presence, your current site (if you have one), and what your competitors are doing.
-                  Then we show you exactly how to fix it.
-                </p>
+                <p className="text-white text-lg font-bold mb-5">We fix all of this — starting with a free audit.</p>
                 <Link href="/book" className="btn-primary px-8 py-3">
                   Get Your Free Website Audit <ArrowRight className="h-4 w-4" />
                 </Link>
@@ -334,19 +361,31 @@ export default function HomePage() {
       <section id="proof" className="section">
         <div className="container-site">
           <Reveal>
-            <div className="text-center mb-12">
+            <div className="text-center mb-10">
               <span className="badge mb-4">Real Work</span>
               <h2 className="h2 mb-4">Built by GR Scale. Live Right Now.</h2>
               <p className="lead max-w-2xl mx-auto">
-                No stock testimonials, no made-up reviews. These are real businesses on real domains —
-                click through and judge the work yourself.
+                Real businesses on real domains — judge the work yourself.
               </p>
+            </div>
+          </Reveal>
+
+          {/* Builder at work — wide visual anchor with scroll parallax */}
+          <Reveal className="max-w-4xl mx-auto mb-10">
+            <div className="group relative rounded-3xl border border-white/10 overflow-hidden photo-overlay img-zoom">
+              <ParallaxImg strength={30} className="h-56 md:h-72">
+                <Image src={IMG.builder} alt="Developer building a website on a laptop" fill sizes="(max-width: 1024px) 100vw, 896px"
+                  className="object-cover" />
+              </ParallaxImg>
+              <div className="absolute inset-x-0 bottom-0 z-10 p-6 text-center">
+                <p className="text-2xl md:text-3xl font-extrabold text-white">Built like products. Not brochures.</p>
+              </div>
             </div>
           </Reveal>
 
           <div className="grid gap-6 md:grid-cols-2 max-w-4xl mx-auto">
             {REAL_WORK.map((w, i) => (
-              <Reveal key={w.name} delay={i * 140} className="h-full">
+              <SlideIn key={w.name} from={i % 2 === 0 ? 'left' : 'right'} delay={i * 140} className="h-full">
               <Tilt max={6}>
               <a
                 href={w.url}
@@ -378,7 +417,7 @@ export default function HomePage() {
                 </span>
               </a>
               </Tilt>
-              </Reveal>
+              </SlideIn>
             ))}
           </div>
         </div>
@@ -392,8 +431,7 @@ export default function HomePage() {
               <span className="badge mb-4">Live Demo</span>
               <h2 className="h2 mb-4">This Is a Real Website. <span className="text-gradient">Scroll It.</span></h2>
               <p className="lead max-w-2xl mx-auto">
-                The window below isn&apos;t a screenshot — it&apos;s a live site we built, running right now.
-                Scroll inside it, click around. Your business gets this same level of polish.
+                Not a screenshot — a live site running right now. Scroll it. Click it.
               </p>
             </div>
           </Reveal>
@@ -417,14 +455,27 @@ export default function HomePage() {
       <section id="services" className="section">
         <div className="container-site">
           <Reveal>
-            <div className="text-center mb-16">
+            <div className="text-center mb-10">
               <span className="badge mb-4">What We Do</span>
               <h2 className="h2 mb-4">Everything Your Online Presence Needs</h2>
               <p className="lead max-w-2xl mx-auto">
-                From your first website to local SEO that keeps the phone ringing — we handle all of it.
+                First website to local SEO — handled.
               </p>
             </div>
           </Reveal>
+
+          {/* Trades visual anchor — we build for people who work with their hands */}
+          <SlideIn from="right" className="max-w-4xl mx-auto mb-10">
+            <div className="group relative rounded-3xl border border-white/10 overflow-hidden photo-overlay img-zoom">
+              <ParallaxImg strength={30} className="h-56 md:h-72">
+                <Image src={IMG.hvacTech} alt="Technician working on equipment" fill sizes="(max-width: 1024px) 100vw, 896px"
+                  className="object-cover" />
+              </ParallaxImg>
+              <div className="absolute inset-x-0 bottom-0 z-10 p-6 text-center">
+                <p className="text-2xl md:text-3xl font-extrabold text-white">You do the work. Your website sells it.</p>
+              </div>
+            </div>
+          </SlideIn>
 
           <div className="services-grid">
             {SERVICES.map((s, i) => {
@@ -505,25 +556,30 @@ export default function HomePage() {
                 href={d.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`card group relative overflow-hidden bg-gradient-to-br ${d.color} h-full flex flex-col`}
+                className={`group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br ${d.color} h-full flex flex-col min-h-[240px] p-6 transition-colors hover:border-brand-500/40`}
               >
-                <div className="flex items-start justify-between mb-4">
+                {/* Niche photo background; gradient above remains the fallback */}
+                <div className="absolute inset-0 img-zoom photo-overlay-full">
+                  <Image src={d.img} alt={d.alt} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover" />
+                </div>
+                <div className="relative z-10 flex items-start justify-between mb-4">
                   <div>
-                    <span className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-[11px] font-semibold ${d.tagColor} mb-2`}>
+                    <span className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-[11px] font-semibold ${d.tagColor} mb-2 backdrop-blur`}>
                       {d.niche}
                     </span>
-                    <h3 className="text-base font-semibold text-white">{d.name}</h3>
+                    <h3 className="text-base font-bold text-white">{d.name}</h3>
                   </div>
-                  <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${
+                  <span className={`text-xs font-medium px-2 py-0.5 rounded-full backdrop-blur ${
                     d.status === 'Live'
-                      ? 'bg-green-500/10 text-green-400 border border-green-500/20'
-                      : 'bg-zinc-500/10 text-zinc-400 border border-zinc-500/20'
+                      ? 'bg-green-500/15 text-green-400 border border-green-500/25'
+                      : 'bg-zinc-800/60 text-zinc-300 border border-zinc-600/40'
                   }`}>
                     {d.status}
                   </span>
                 </div>
-                <p className="text-sm text-[var(--text-muted)] leading-relaxed mb-4 flex-1">{d.desc}</p>
-                <span className="flex items-center gap-1.5 text-xs font-semibold text-brand-400 group-hover:gap-2.5 transition-all">
+                <p className="relative z-10 text-sm text-zinc-300 leading-relaxed mb-4 flex-1">{d.desc}</p>
+                <span className="relative z-10 flex items-center gap-1.5 text-xs font-semibold text-brand-400 group-hover:gap-2.5 transition-all">
                   {d.status === 'Live' ? 'View Live Site' : 'View Demo'} <ArrowRight className="h-3.5 w-3.5" />
                 </span>
               </a>
@@ -582,14 +638,14 @@ export default function HomePage() {
               className="pointer-events-none absolute -top-20 left-1/2 -translate-x-1/2 h-64 w-64 rounded-full bg-brand-500/10 blur-3xl"
             />
             <div className="relative z-10">
-            <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-500 mx-auto mb-6">
-              <Phone className="h-6 w-6 text-white" />
+            <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-white overflow-hidden shadow-[0_0_28px_rgba(14,165,233,0.35)]">
+              <Image src={LOGO} alt="GR Scale logo" width={64} height={64} className="h-full w-full object-cover" />
             </div>
             <h2 className="h2 mb-4 max-w-2xl mx-auto">
               Your Competitors Already Have a Website. Let&apos;s Build Yours.
             </h2>
             <p className="lead mb-8 max-w-xl mx-auto">
-              Book a free 20-minute audit call. We review your Google presence and show you exactly what&apos;s costing you customers — no charge, no obligation.
+              One free 20-minute call shows you exactly what&apos;s costing you customers.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link href="/book" className="btn-primary px-10 py-4 text-base">
