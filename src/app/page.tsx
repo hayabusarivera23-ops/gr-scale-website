@@ -322,7 +322,7 @@ export default function HomePage() {
                   Then we show you exactly how to fix it.
                 </p>
                 <Link href="/book" className="btn-primary px-8 py-3">
-                  Book Free Audit Call <ArrowRight className="h-4 w-4" />
+                  Get Your Free Website Audit <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
             </div>
@@ -593,7 +593,7 @@ export default function HomePage() {
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link href="/book" className="btn-primary px-10 py-4 text-base">
-                Book Your Free Audit <ArrowRight className="h-4 w-4" />
+                Get Your Free Website Audit <ArrowRight className="h-4 w-4" />
               </Link>
               <a href="tel:+18138695917" className="btn-ghost px-10 py-4 text-base">
                 Call (813) 869-5917

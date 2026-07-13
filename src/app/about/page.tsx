@@ -74,7 +74,7 @@ export default function AboutPage() {
               </p>
 
               <Link href="/book" className="btn-primary">
-                Get Your Free Audit <ArrowRight className="h-4 w-4" />
+                Get Your Free Website Audit <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
 
@@ -205,7 +205,7 @@ export default function AboutPage() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link href="/book" className="btn-primary px-8 py-4 text-base">
-              Book Free Audit Call <ArrowRight className="h-4 w-4" />
+              Get Your Free Website Audit <ArrowRight className="h-4 w-4" />
             </Link>
             <Link href="/contact" className="btn-ghost px-8 py-4 text-base">
               Send a Message

@@ -7,6 +7,7 @@ const PLANS = [
     price: '$500',
     note: 'One-time',
     desc: 'Perfect for local businesses that need a professional web presence fast.',
+    compare: 'Best if you just need a clean, professional site live fast — nothing you don\'t need.',
     highlight: false,
     features: [
       'Custom homepage design',
@@ -26,6 +27,7 @@ const PLANS = [
     price: '$800',
     note: 'One-time',
     desc: 'For businesses ready to dominate their local market online.',
+    compare: 'The sweet spot — more pages, Google Business setup, and social proof baked in. Most clients pick this.',
     highlight: true,
     features: [
       'Everything in Starter',
@@ -46,6 +48,7 @@ const PLANS = [
     price: '$1,200',
     note: 'One-time',
     desc: 'Complete package for businesses serious about generating leads online.',
+    compare: 'For lead generation as a system — booking, blog, and SEO working from day one.',
     highlight: false,
     features: [
       'Everything in Growth',
@@ -120,6 +123,10 @@ export default function PricingPage() {
                   ))}
                 </ul>
 
+                <p className={`text-xs leading-relaxed mb-5 -mt-3 ${p.highlight ? 'text-brand-300/90' : 'text-[var(--text-dim)]'}`}>
+                  {p.compare}
+                </p>
+
                 <Link
                   href={p.cta}
                   className={`text-center justify-center ${p.highlight ? 'btn-primary' : 'btn-ghost'}`}
@@ -134,6 +141,13 @@ export default function PricingPage() {
             All prices are in USD. Need something custom?{' '}
             <Link href="/contact" className="text-brand-400 hover:text-brand-300 transition">Contact us</Link>.
           </p>
+
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm">
+            <span className="text-[var(--text-dim)]">Common questions:</span>
+            <Link href="/faq" className="text-brand-400 hover:text-brand-300 transition">How long does a build take?</Link>
+            <Link href="/faq" className="text-brand-400 hover:text-brand-300 transition">Do I own my site?</Link>
+            <Link href="/faq" className="text-brand-400 hover:text-brand-300 transition">See all FAQs →</Link>
+          </div>
         </div>
       </section>
 
@@ -164,7 +178,7 @@ export default function PricingPage() {
             Not sure which plan is right for you? Book a free call. We&apos;ll audit your online presence and recommend the right package — no sales pressure.
           </p>
           <Link href="/book" className="btn-primary px-10 py-4 text-base">
-            Book Free Call <ArrowRight className="h-4 w-4" />
+            Get Your Free Website Audit <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
       </section>
