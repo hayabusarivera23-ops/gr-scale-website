@@ -510,6 +510,102 @@ export function Parallax({ children, speed = 0.18, className = '' }: {
 }
 
 /* ─────────────────────────────────────────────────────────────
+   ParallaxImg — wraps an image; the inner content drifts gently
+   against the scroll direction. Skipped on touch devices and
+   for users who prefer reduced motion.
+──────────────────────────────────────────────────────────────── */
+export function ParallaxImg({ children, strength = 26, className = '' }: {
+  children: ReactNode
+  strength?: number
+  className?: string
+}) {
+  const ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    if (window.matchMedia('(pointer: coarse)').matches) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const inner = el.firstElementChild as HTMLElement | null
+    if (!inner) return
+
+    let raf = 0
+    const onScroll = () => {
+      cancelAnimationFrame(raf)
+      raf = requestAnimationFrame(() => {
+        const rect = el.getBoundingClientRect()
+        const vh = window.innerHeight || 1
+        // -1 (below viewport) … 1 (above viewport)
+        const p = ((rect.top + rect.height / 2) / vh - 0.5) * -2
+        inner.style.transform = `translateY(${(p * strength).toFixed(1)}px) scale(1.08)`
+      })
+    }
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll)
+    return () => {
+      cancelAnimationFrame(raf)
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+    }
+  }, [strength])
+
+  return <div ref={ref} className={`overflow-hidden ${className}`}><div className="h-full w-full will-change-transform">{children}</div></div>
+}
+
+/* ─────────────────────────────────────────────────────────────
+   SlideIn — like Reveal, but content slides in from the left or
+   right, letting alternating sections sweep in from both sides.
+──────────────────────────────────────────────────────────────── */
+export function SlideIn({ children, from = 'left', delay = 0, className = '' }: {
+  children: ReactNode
+  from?: 'left' | 'right'
+  delay?: number
+  className?: string
+}) {
+  const ref = useRef<HTMLDivElement>(null)
+  const [visible, setVisible] = useState(false)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    if (typeof IntersectionObserver === 'undefined') {
+      setVisible(true)
+      return
+    }
+    const obs = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setVisible(true)
+            obs.disconnect()
+          }
+        })
+      },
+      { threshold: 0.15 }
+    )
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [])
+
+  const offset = from === 'left' ? '-56px' : '56px'
+  return (
+    <div
+      ref={ref}
+      className={className}
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? 'translateX(0px)' : `translateX(${offset})`,
+        transition: `opacity 0.9s cubic-bezier(0.16,1,0.3,1) ${delay}ms, transform 0.9s cubic-bezier(0.16,1,0.3,1) ${delay}ms`,
+        willChange: 'opacity, transform',
+      }}
+    >
+      {children}
+    </div>
+  )
+}
+
+/* ─────────────────────────────────────────────────────────────
    LiveThumb — a real, living website as a card thumbnail.
    Renders the actual site in a scaled-down, non-interactive
    iframe that only mounts when the card nears the viewport, so
