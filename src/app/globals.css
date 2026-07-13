@@ -424,6 +424,48 @@ body {
 }
 .connector-pulse { animation: connector-pulse 2.4s ease-in-out infinite; }
 
+/* ── LiveThumb — scaled living-site card thumbnails ── */
+.live-thumb {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  border-radius: 12px;
+}
+.live-thumb iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 0;
+  transform-origin: top left;
+  pointer-events: none;
+  transition: opacity .6s ease;
+  background: transparent;
+}
+
+/* ── Demo Theater viewer ── */
+.theater-frame {
+  animation: theater-in .55s cubic-bezier(.16,1,.3,1) both;
+}
+@keyframes theater-in {
+  from { opacity: 0; transform: perspective(1200px) rotateX(7deg) scale(.97); }
+  to   { opacity: 1; transform: perspective(1200px) rotateX(0deg) scale(1); }
+}
+.theater-frame iframe {
+  width: 100%;
+  height: 62vh;
+  min-height: 380px;
+  max-height: 640px;
+  border: 0;
+  display: block;
+  background: #0d1117;
+}
+@media (max-width: 640px) {
+  .theater-frame iframe { height: 60vh; min-height: 320px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .theater-frame { animation: none; }
+}
+
 /* ── Nav link underline grows from center on hover ── */
 .nav-link { position: relative; }
 .nav-link::after {

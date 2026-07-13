@@ -510,6 +510,82 @@ export function Parallax({ children, speed = 0.18, className = '' }: {
 }
 
 /* ─────────────────────────────────────────────────────────────
+   LiveThumb — a real, living website as a card thumbnail.
+   Renders the actual site in a scaled-down, non-interactive
+   iframe that only mounts when the card nears the viewport, so
+   there are zero screenshots to maintain and no wasted loads.
+   Until the frame paints, the card's gradient fallback shows.
+──────────────────────────────────────────────────────────────── */
+const THUMB_DESIGN_WIDTH = 1200
+
+export function LiveThumb({ src, label, className = '' }: {
+  src: string
+  label: string
+  className?: string
+}) {
+  const wrapRef = useRef<HTMLDivElement>(null)
+  const [mount, setMount] = useState(false)
+  const [loaded, setLoaded] = useState(false)
+  const [scale, setScale] = useState(0.25)
+
+  useEffect(() => {
+    const el = wrapRef.current
+    if (!el) return
+
+    const setScaleFromWidth = () => {
+      if (el.clientWidth > 0) setScale(el.clientWidth / THUMB_DESIGN_WIDTH)
+    }
+    setScaleFromWidth()
+    const ro = new ResizeObserver(setScaleFromWidth)
+    ro.observe(el)
+
+    if (typeof IntersectionObserver === 'undefined') {
+      setMount(true)
+      return () => ro.disconnect()
+    }
+    // Phones get a tighter margin so only demos actually being viewed load
+    const coarse = window.matchMedia('(pointer: coarse)').matches
+    const obs = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setMount(true)
+            obs.disconnect()
+          }
+        })
+      },
+      { rootMargin: coarse ? '120px' : '400px' }
+    )
+    obs.observe(el)
+    return () => {
+      obs.disconnect()
+      ro.disconnect()
+    }
+  }, [])
+
+  return (
+    <div ref={wrapRef} className={`live-thumb ${className}`}>
+      {mount && (
+        <iframe
+          src={src}
+          title={`Live preview: ${label}`}
+          loading="lazy"
+          tabIndex={-1}
+          aria-hidden
+          onLoad={() => setLoaded(true)}
+          style={{
+            width: THUMB_DESIGN_WIDTH,
+            height: Math.round(THUMB_DESIGN_WIDTH * 0.625),
+            transform: `scale(${scale})`,
+            opacity: loaded ? 1 : 0,
+          }}
+        />
+      )}
+    </div>
+  )
+}
+
+/* ─────────────────────────────────────────────────────────────
    Marquee — infinite scrolling strip of niches
 ──────────────────────────────────────────────────────────────── */
 export function Marquee({ items }: { items: string[] }) {
