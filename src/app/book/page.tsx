@@ -1,10 +1,17 @@
 'use client'
 
-import { useState } from 'react'
-import { CheckCircle, Calendar, Clock, Phone, ArrowRight, AlertCircle } from 'lucide-react'
+import { Suspense, useState } from 'react'
+import { useSearchParams } from 'next/navigation'
+import { CheckCircle, Calendar, Clock, Phone, ArrowRight, AlertCircle, MessageSquare, PhoneCall, Rocket } from 'lucide-react'
 import { submitLead } from '@/lib/submitLead'
 
 const TIME_SLOTS = ['9:00 AM', '10:00 AM', '11:00 AM', '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM']
+
+const INDUSTRIES = [
+  'HVAC', 'Plumbing', 'Roofing', 'Electrical', 'Barbershop', 'Pest Control',
+  'Painting', 'Flooring', 'Tree Service', 'Cleaning', 'Landscaping',
+  'Pressure Washing', 'Restaurant', 'Auto Repair', 'Other',
+]
 
 const WHAT_TO_EXPECT = [
   { title: 'Free Website Audit', desc: 'We review your current online presence before the call so we can show you exactly what\'s hurting you.' },
@@ -12,13 +19,35 @@ const WHAT_TO_EXPECT = [
   { title: '20 Minutes', desc: 'Fast, focused, and actionable. You\'ll leave knowing exactly what your next step is.' },
 ]
 
+const NEXT_STEPS = [
+  { icon: Calendar,  title: '1. Book',              desc: 'Pick a time below — takes 60 seconds.' },
+  { icon: PhoneCall, title: '2. 20-min audit call', desc: 'We show you what we found. You decide.' },
+  { icon: Rocket,    title: '3. Live in 7–14 days', desc: 'You approve, we build, your site launches.' },
+]
+
+const TRUST_BULLETS = [
+  'Free audit — no card, no obligation',
+  'No long-term contracts',
+  'Real client work live at meloair.net',
+]
+
 export default function BookPage() {
+  return (
+    <Suspense fallback={null}>
+      <BookInner />
+    </Suspense>
+  )
+}
+
+function BookInner() {
+  const niche = useSearchParams().get('niche')
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
   const [errorMsg, setErrorMsg] = useState('')
   const submitted = status === 'sent'
   const [form, setForm] = useState({
     name: '', business: '', phone: '', email: '',
-    industry: '', hasWebsite: '', date: '', time: '', goal: '',
+    industry: niche && INDUSTRIES.includes(niche) ? niche : '',
+    hasWebsite: '', date: '', time: '', goal: '',
   })
 
   async function handleSubmit(e: React.FormEvent) {
@@ -42,12 +71,45 @@ export default function BookPage() {
     <div className="pt-24">
       <section className="section pb-8">
         <div className="container-site text-center max-w-2xl">
-          <span className="badge mb-4">Book a Call</span>
+          <span className="badge mb-4">Get Your Free Website Audit</span>
           <h1 className="h1 mb-4">Book Your Free Strategy Call</h1>
           <p className="lead">
             20 minutes. We audit your online presence, show you what&apos;s missing, and tell you exactly how to fix it.
             No charge. No obligation.
           </p>
+          {niche && (
+            <p className="mt-4 inline-flex items-center gap-2 rounded-full border border-brand-500/30 bg-brand-500/10 px-4 py-2 text-sm text-brand-300">
+              <CheckCircle className="h-4 w-4 text-brand-400 shrink-0" />
+              Liked the {niche} demo? We&apos;ll build yours to that same standard.
+            </p>
+          )}
+        </div>
+      </section>
+
+      {/* What happens next — 3 steps */}
+      <section className="pb-10">
+        <div className="container-site max-w-3xl">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            {NEXT_STEPS.map(s => {
+              const Icon = s.icon
+              return (
+                <div key={s.title} className="card py-4 px-5 flex sm:block items-center gap-3">
+                  <Icon className="h-5 w-5 text-brand-400 shrink-0 sm:mb-2" />
+                  <div>
+                    <p className="text-sm font-bold text-white">{s.title}</p>
+                    <p className="text-xs text-[var(--text-muted)] leading-relaxed mt-0.5">{s.desc}</p>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+          <div className="mt-4 flex flex-wrap justify-center gap-x-6 gap-y-2">
+            {TRUST_BULLETS.map(b => (
+              <span key={b} className="flex items-center gap-1.5 text-xs text-[var(--text-muted)]">
+                <CheckCircle className="h-3.5 w-3.5 text-brand-400 shrink-0" /> {b}
+              </span>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -72,10 +134,18 @@ export default function BookPage() {
                   <Phone className="h-4 w-4 text-brand-400" />
                   <p className="text-sm font-semibold text-white">Prefer to call directly?</p>
                 </div>
-                <p className="text-sm text-[var(--text-muted)] mb-3">Call or text us anytime:</p>
-                <a href="tel:+14078082898" className="text-brand-400 font-semibold text-sm hover:text-brand-300 transition">
-                  (407) 808-2898
+                <a href="tel:+18138695917" className="text-brand-400 font-semibold text-sm hover:text-brand-300 transition">
+                  (813) 869-5917
                 </a>
+                <div className="mt-3 pt-3 border-t border-white/5 flex items-center gap-2">
+                  <MessageSquare className="h-4 w-4 text-brand-400 shrink-0" />
+                  <p className="text-sm text-[var(--text-muted)]">
+                    Prefer to text?{' '}
+                    <a href="sms:+18138695917" className="text-brand-400 font-semibold hover:text-brand-300 transition">
+                      (813) 869-5917
+                    </a>
+                  </p>
+                </div>
               </div>
             </div>
 
@@ -114,7 +184,7 @@ export default function BookPage() {
                     </div>
                     <div>
                       <label className="text-xs font-medium text-[var(--text-dim)] uppercase tracking-wider mb-1.5 block">Phone *</label>
-                      <input required type="tel" placeholder="(407) 555-0100"
+                      <input required type="tel" placeholder="(555) 123-4567"
                         value={form.phone} onChange={e => setForm({ ...form, phone: e.target.value })}
                         className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-[var(--text-dim)] focus:border-brand-500/50 focus:outline-none focus:ring-1 focus:ring-brand-500/30 transition" />
                     </div>
@@ -129,7 +199,7 @@ export default function BookPage() {
                       <select required value={form.industry} onChange={e => setForm({ ...form, industry: e.target.value })}
                         className="w-full rounded-lg border border-white/10 bg-[#0d1117] px-4 py-2.5 text-sm text-[var(--text-muted)] focus:border-brand-500/50 focus:outline-none focus:ring-1 focus:ring-brand-500/30 transition">
                         <option value="">Select your industry...</option>
-                        {['HVAC', 'Plumbing', 'Roofing', 'Barbershop', 'Pressure Washing', 'Landscaping', 'Auto Repair', 'Restaurant', 'Other'].map(i => (
+                        {INDUSTRIES.map(i => (
                           <option key={i} value={i}>{i}</option>
                         ))}
                       </select>
