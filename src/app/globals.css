@@ -288,3 +288,163 @@ body {
 /* ── Grid ── */
 .services-grid { @apply grid gap-6 sm:grid-cols-2 lg:grid-cols-3; }
 .pricing-grid  { @apply grid gap-6 md:grid-cols-3; }
+
+/* ════════════════════════════════════════════════════════════
+   FX v3 — tilt cards, aurora, dividers, sheen, count-up polish
+   ════════════════════════════════════════════════════════════ */
+
+/* ── 3D tilt card + cursor spotlight (driven by FX Tilt) ── */
+.tilt-card {
+  position: relative;
+  height: 100%;
+  transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition: transform .18s ease-out;
+  will-change: transform;
+}
+.tilt-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: 16px;
+  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgba(56,189,248,0.12), transparent 55%);
+  opacity: 0;
+  transition: opacity .35s ease;
+  pointer-events: none;
+}
+.tilt-card:hover::after { opacity: 1; }
+
+/* ── Aurora — drifting gradient blobs ── */
+.aurora {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+.aurora-blob {
+  position: absolute;
+  width: 44vw;
+  height: 44vw;
+  min-width: 340px;
+  min-height: 340px;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: .28;
+}
+.aurora-dim .aurora-blob { opacity: .15; }
+.aurora-b1 {
+  background: radial-gradient(circle, rgba(14,165,233,.55), transparent 65%);
+  top: -12%; left: -8%;
+  animation: aurora-drift-1 24s ease-in-out infinite alternate;
+}
+.aurora-b2 {
+  background: radial-gradient(circle, rgba(56,189,248,.4), transparent 65%);
+  bottom: -18%; right: -8%;
+  animation: aurora-drift-2 28s ease-in-out infinite alternate;
+}
+.aurora-b3 {
+  background: radial-gradient(circle, rgba(2,132,199,.45), transparent 65%);
+  top: 32%; left: 52%;
+  animation: aurora-drift-3 32s ease-in-out infinite alternate;
+}
+@keyframes aurora-drift-1 {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(10vw, 8vh) scale(1.2); }
+}
+@keyframes aurora-drift-2 {
+  from { transform: translate(0, 0) scale(1.1); }
+  to   { transform: translate(-9vw, -6vh) scale(.9); }
+}
+@keyframes aurora-drift-3 {
+  from { transform: translate(0, 0) scale(.9); }
+  to   { transform: translate(-8vw, 9vh) scale(1.15); }
+}
+
+/* ── Glow divider — traveling light beam between sections ── */
+.glow-divider {
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(14,165,233,.55) 35%,
+    rgba(125,211,252,.95) 50%,
+    rgba(14,165,233,.55) 65%,
+    transparent);
+  background-size: 200% 100%;
+  animation: divider-sweep 6s linear infinite;
+  opacity: .55;
+}
+@keyframes divider-sweep {
+  from { background-position: 200% 0; }
+  to   { background-position: -200% 0; }
+}
+
+/* ── Primary button sheen sweep on hover ── */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -70%;
+  width: 45%;
+  background: linear-gradient(100deg, transparent, rgba(255,255,255,.35), transparent);
+  transform: skewX(-20deg);
+  transition: left .55s ease;
+  pointer-events: none;
+}
+.btn-primary:hover::after { left: 135%; }
+
+/* ── Service icon bob on card hover ── */
+@keyframes icon-bob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-5px); }
+}
+.group:hover .icon-bob { animation: icon-bob 1.1s ease-in-out infinite; }
+
+/* ── Niche chips lift + glow on hover ── */
+.chip-glow {
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.chip-glow:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 18px rgba(14,165,233,.3);
+}
+
+/* ── Marquee pauses while hovered ── */
+.marquee:hover .marquee-track { animation-play-state: paused; }
+
+/* ── Process connector pulse ── */
+@keyframes connector-pulse {
+  0%, 100% { opacity: .25; }
+  50%      { opacity: 1; }
+}
+.connector-pulse { animation: connector-pulse 2.4s ease-in-out infinite; }
+
+/* ── Nav link underline grows from center on hover ── */
+.nav-link { position: relative; }
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 4px;
+  width: 0;
+  height: 1.5px;
+  background: linear-gradient(90deg, #0ea5e9, #7dd3fc);
+  transform: translateX(-50%);
+  transition: width .3s ease;
+  border-radius: 2px;
+}
+.nav-link:hover::after { width: calc(100% - 2rem); }
+
+/* ── Reduced motion: kill all FX v3 animation ── */
+@media (prefers-reduced-motion: reduce) {
+  .aurora-blob, .glow-divider, .connector-pulse,
+  .group:hover .icon-bob { animation: none; }
+  .tilt-card { transform: none; transition: none; }
+  .btn-primary::after { display: none; }
+  .chip-glow, .chip-glow:hover { transform: none; box-shadow: none; }
+}

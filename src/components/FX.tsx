@@ -362,6 +362,154 @@ export function ScrollZoomBrowser({ src, url }: { src: string; url: string }) {
 }
 
 /* ─────────────────────────────────────────────────────────────
+   CountUp — numbers count up from 0 when scrolled into view.
+   Animates every digit-run in the string, so "7–14" and "100%"
+   both work without special cases.
+──────────────────────────────────────────────────────────────── */
+export function CountUp({ text, duration = 1500, className = '' }: {
+  text: string
+  duration?: number
+  className?: string
+}) {
+  const ref = useRef<HTMLSpanElement>(null)
+  const [display, setDisplay] = useState(() => text.replace(/\d+/g, '0'))
+  const [done, setDone] = useState(false)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    if (
+      typeof IntersectionObserver === 'undefined' ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    ) {
+      setDone(true)
+      return
+    }
+    let raf = 0
+    const obs = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return
+          obs.disconnect()
+          const start = performance.now()
+          const step = (now: number) => {
+            const p = Math.min(1, (now - start) / duration)
+            const eased = 1 - Math.pow(1 - p, 3)
+            setDisplay(text.replace(/\d+/g, m => String(Math.round(parseInt(m, 10) * eased))))
+            if (p < 1) raf = requestAnimationFrame(step)
+            else setDone(true)
+          }
+          raf = requestAnimationFrame(step)
+        })
+      },
+      { threshold: 0.4 }
+    )
+    obs.observe(el)
+    return () => {
+      obs.disconnect()
+      cancelAnimationFrame(raf)
+    }
+  }, [text, duration])
+
+  return <span ref={ref} className={className}>{done ? text : display}</span>
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Tilt — 3D card tilt + cursor spotlight. Follows the pointer,
+   springs back on leave. No-op on touch devices and for users
+   who prefer reduced motion.
+──────────────────────────────────────────────────────────────── */
+export function Tilt({ children, max = 8, className = '' }: {
+  children: ReactNode
+  max?: number
+  className?: string
+}) {
+  const ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    if (window.matchMedia('(pointer: coarse)').matches) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+    const onMove = (e: MouseEvent) => {
+      const r = el.getBoundingClientRect()
+      const px = (e.clientX - r.left) / r.width
+      const py = (e.clientY - r.top) / r.height
+      el.style.setProperty('--rx', `${((0.5 - py) * max).toFixed(2)}deg`)
+      el.style.setProperty('--ry', `${((px - 0.5) * max).toFixed(2)}deg`)
+      el.style.setProperty('--mx', `${(px * 100).toFixed(1)}%`)
+      el.style.setProperty('--my', `${(py * 100).toFixed(1)}%`)
+    }
+    const onLeave = () => {
+      el.style.setProperty('--rx', '0deg')
+      el.style.setProperty('--ry', '0deg')
+    }
+    el.addEventListener('mousemove', onMove)
+    el.addEventListener('mouseleave', onLeave)
+    return () => {
+      el.removeEventListener('mousemove', onMove)
+      el.removeEventListener('mouseleave', onLeave)
+    }
+  }, [max])
+
+  return <div ref={ref} className={`tilt-card ${className}`}>{children}</div>
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Aurora — slow-drifting gradient blobs that give a section
+   living depth. Pure CSS animation, sits behind content.
+──────────────────────────────────────────────────────────────── */
+export function Aurora({ dim = false }: { dim?: boolean }) {
+  return (
+    <div className={`aurora ${dim ? 'aurora-dim' : ''}`} aria-hidden>
+      <div className="aurora-blob aurora-b1" />
+      <div className="aurora-blob aurora-b2" />
+      <div className="aurora-blob aurora-b3" />
+    </div>
+  )
+}
+
+/* ─────────────────────────────────────────────────────────────
+   GlowDivider — animated light beam separating major sections
+──────────────────────────────────────────────────────────────── */
+export function GlowDivider() {
+  return <div className="glow-divider" aria-hidden />
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Parallax — child drifts slower than the page as you scroll
+──────────────────────────────────────────────────────────────── */
+export function Parallax({ children, speed = 0.18, className = '' }: {
+  children: ReactNode
+  speed?: number
+  className?: string
+}) {
+  const ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    let raf = 0
+    const onScroll = () => {
+      cancelAnimationFrame(raf)
+      raf = requestAnimationFrame(() => {
+        el.style.transform = `translateY(${(window.scrollY * speed).toFixed(1)}px)`
+      })
+    }
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => {
+      cancelAnimationFrame(raf)
+      window.removeEventListener('scroll', onScroll)
+    }
+  }, [speed])
+
+  return <div ref={ref} className={className} style={{ willChange: 'transform' }}>{children}</div>
+}
+
+/* ─────────────────────────────────────────────────────────────
    Marquee — infinite scrolling strip of niches
 ──────────────────────────────────────────────────────────────── */
 export function Marquee({ items }: { items: string[] }) {
