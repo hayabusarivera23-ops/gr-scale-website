@@ -176,7 +176,7 @@ export default function AboutPage() {
           <span className="badge mb-4">Who We Work With</span>
           <h2 className="h2 mb-6">Local Service Businesses Nationwide</h2>
           <p className="lead mb-10">
-            Based in Orlando, working with service businesses anywhere in the U.S. If your customers find you on Google, we can help you get more of them.
+            Based in Tampa, working with service businesses anywhere in the U.S. If your customers find you on Google, we can help you get more of them.
           </p>
 
           <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 mb-8">
