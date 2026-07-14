@@ -241,7 +241,7 @@ export default function HomePage() {
         <div className="badge-beam reveal-up mb-6">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 text-xs text-[var(--text-muted)]">
             <MapPin className="h-3.5 w-3.5 text-brand-400" />
-            Based in Orlando, FL · Serving Businesses Nationwide
+            Based in Tampa, FL · Serving Businesses Nationwide
           </div>
         </div>
 
