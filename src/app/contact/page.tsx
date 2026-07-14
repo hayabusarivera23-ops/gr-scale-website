@@ -76,7 +76,7 @@ export default function ContactPage() {
                     <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand-500/10">
                       <MapPin className="h-4 w-4 text-brand-400" />
                     </div>
-                    Orlando, Florida
+                    Tampa, Florida
                   </span>
                   <span className="flex items-center gap-3 text-sm text-[var(--text-muted)]">
                     <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand-500/10">
