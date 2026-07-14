@@ -38,7 +38,7 @@ const BUSINESS_SCHEMA = {
   email: 'gio@grscales.com',
   address: {
     '@type': 'PostalAddress',
-    addressLocality: 'Orlando',
+    addressLocality: 'Tampa',
     addressRegion: 'FL',
     addressCountry: 'US',
   },
