@@ -38,7 +38,7 @@ export default function Footer() {
               <span className="text-sm font-bold text-white">GR Scale</span>
             </Link>
             <p className="text-sm text-[var(--text-muted)] leading-relaxed max-w-sm">
-              We build fast, modern websites that help local service businesses generate more customers online. Based in Orlando, serving nationwide.
+              We build fast, modern websites that help local service businesses generate more customers online. Based in Tampa, serving nationwide.
             </p>
             <div className="mt-6 flex flex-col gap-2.5 text-sm text-[var(--text-muted)]">
               <a href="tel:+18138695917" className="flex items-center gap-2 hover:text-white transition">
@@ -48,7 +48,7 @@ export default function Footer() {
                 <Mail className="h-3.5 w-3.5 text-brand-400" /> gio@grscales.com
               </a>
               <span className="flex items-center gap-2">
-                <MapPin className="h-3.5 w-3.5 text-brand-400" /> Orlando, Florida
+                <MapPin className="h-3.5 w-3.5 text-brand-400" /> Tampa, Florida
               </span>
             </div>
           </div>
@@ -78,7 +78,7 @@ export default function Footer() {
             © {year} GR Scale. All rights reserved.
           </p>
           <p className="text-xs text-[var(--text-dim)]">
-            Built in Orlando, FL 🌴
+            Built in Tampa, FL 🌴
           </p>
         </div>
       </div>
