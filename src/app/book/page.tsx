@@ -5,6 +5,9 @@ import { useSearchParams } from 'next/navigation'
 import { CheckCircle, Calendar, Clock, Phone, ArrowRight, AlertCircle, MessageSquare, PhoneCall, Rocket } from 'lucide-react'
 import { submitLead } from '@/lib/submitLead'
 
+const CALENDLY_URL =
+  'https://calendly.com/gio-grscales/free-website-audit-20-min?hide_gdpr_banner=1&background_color=0d1117&text_color=ffffff&primary_color=0ea5e9'
+
 const TIME_SLOTS = ['9:00 AM', '10:00 AM', '11:00 AM', '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM']
 
 const INDUSTRIES = [
@@ -113,6 +116,27 @@ function BookInner() {
         </div>
       </section>
 
+      {/* Instant booking — live calendar */}
+      <section className="pb-12">
+        <div className="container-site max-w-3xl">
+          <div className="card p-0 overflow-hidden">
+            <div className="px-6 pt-5 pb-4 border-b border-white/5 flex items-center gap-2">
+              <Calendar className="h-4 w-4 text-brand-400 shrink-0" />
+              <p className="text-sm font-semibold text-white">Book instantly — pick any open time slot</p>
+            </div>
+            <iframe
+              src={CALENDLY_URL}
+              title="Book your free website audit"
+              className="w-full"
+              style={{ height: 720, border: 0 }}
+            />
+          </div>
+          <p className="text-center text-xs text-[var(--text-dim)] mt-3">
+            Prefer we reach out instead? Use the request form below and we&apos;ll confirm your slot by text.
+          </p>
+        </div>
+      </section>
+
       <section className="section pt-0">
         <div className="container-site">
           <div className="grid gap-10 lg:grid-cols-3">
@@ -210,8 +234,8 @@ function BookInner() {
                         className="w-full rounded-lg border border-white/10 bg-[#0d1117] px-4 py-2.5 text-sm text-[var(--text-muted)] focus:border-brand-500/50 focus:outline-none focus:ring-1 focus:ring-brand-500/30 transition">
                         <option value="">Select...</option>
                         <option value="no">No website</option>
-                        <option value="old">Yes, but it's outdated</option>
-                        <option value="ok">Yes, and it's decent</option>
+                        <option value="old">Yes, but it&apos;s outdated</option>
+                        <option value="ok">Yes, and it&apos;s decent</option>
                       </select>
                     </div>
 
