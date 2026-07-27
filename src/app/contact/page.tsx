@@ -16,9 +16,10 @@ const SERVICES = [
 ]
 
 export default function ContactPage() {
-  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
+  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'draft' | 'error'>('idle')
   const [errorMsg, setErrorMsg] = useState('')
-  const sent = status === 'sent'
+  const sent = status === 'sent' || status === 'draft'
+  const draft = status === 'draft'
   const [form, setForm] = useState({
     name: '', business: '', phone: '', email: '', service: '', message: '',
   })
@@ -28,12 +29,12 @@ export default function ContactPage() {
     setStatus('sending')
     setErrorMsg('')
     try {
-      await submitLead({
+      const result = await submitLead({
         _subject: `New website inquiry — ${form.business || form.name}`,
         source: 'Contact Form',
         ...form,
       })
-      setStatus('sent')
+      setStatus(result === 'email-draft' ? 'draft' : 'sent')
     } catch (err) {
       setStatus('error')
       setErrorMsg(err instanceof Error ? err.message : 'Something went wrong. Please try again.')
@@ -104,9 +105,11 @@ export default function ContactPage() {
               {sent ? (
                 <div className="card flex flex-col items-center text-center py-16 gap-4">
                   <CheckCircle className="h-12 w-12 text-green-400" />
-                  <h2 className="h3 text-white">Message Sent!</h2>
+                  <h2 className="h3 text-white">{draft ? 'Email Draft Opened' : 'Message Sent!'}</h2>
                   <p className="text-sm text-[var(--text-muted)] max-w-sm leading-relaxed">
-                    Thanks for reaching out. We&apos;ll get back to you within a few hours.
+                    {draft
+                      ? 'Your email app should open with the message filled in. Press send there, or call/text us directly.'
+                      : 'Thanks for reaching out. We&apos;ll get back to you within a few hours.'}
                     In the meantime, feel free to{' '}
                     <Link href="/demos" className="text-brand-400 hover:underline">view our demo sites</Link>.
                   </p>

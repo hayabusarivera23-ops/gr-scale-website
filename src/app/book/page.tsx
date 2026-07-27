@@ -44,9 +44,10 @@ export default function BookPage() {
 
 function BookInner() {
   const niche = useSearchParams().get('niche')
-  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
+  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'draft' | 'error'>('idle')
   const [errorMsg, setErrorMsg] = useState('')
-  const submitted = status === 'sent'
+  const submitted = status === 'sent' || status === 'draft'
+  const draft = status === 'draft'
   const [form, setForm] = useState({
     name: '', business: '', phone: '', email: '',
     industry: niche && INDUSTRIES.includes(niche) ? niche : '',
@@ -58,12 +59,12 @@ function BookInner() {
     setStatus('sending')
     setErrorMsg('')
     try {
-      await submitLead({
+      const result = await submitLead({
         _subject: `New call request — ${form.business || form.name} (${form.date} ${form.time})`,
         source: 'Book a Call',
         ...form,
       })
-      setStatus('sent')
+      setStatus(result === 'email-draft' ? 'draft' : 'sent')
     } catch (err) {
       setStatus('error')
       setErrorMsg(err instanceof Error ? err.message : 'Something went wrong. Please try again.')
@@ -180,9 +181,11 @@ function BookInner() {
                   <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-green-500/10">
                     <Calendar className="h-8 w-8 text-green-400" />
                   </div>
-                  <h2 className="h3 text-white">Call Requested!</h2>
+                  <h2 className="h3 text-white">{draft ? 'Email Draft Opened' : 'Call Requested!'}</h2>
                   <p className="text-sm text-[var(--text-muted)] max-w-sm leading-relaxed">
-                    We&apos;ll confirm your time slot within a few hours. Check your phone for a text or call from us to confirm.
+                    {draft
+                      ? 'Your email app should open with the request filled in. Press send there, or call/text us directly.'
+                      : 'We&apos;ll confirm your time slot within a few hours. Check your phone for a text or call from us to confirm.'}
                   </p>
                   <p className="text-xs text-[var(--text-dim)]">
                     In the meantime, check out our{' '}
