@@ -6,7 +6,7 @@ import {
 } from 'lucide-react'
 import {
   Reveal, CursorGlow, ScrollZoomBrowser, Marquee, ParticleField, TypeWords,
-  Magnetic, ScrollProgress, CountUp, Tilt, Aurora, GlowDivider, Parallax,
+  Magnetic, ScrollProgress, Tilt, Aurora, GlowDivider, Parallax,
   ParallaxImg, SlideIn,
 } from '@/components/FX'
 
@@ -302,7 +302,7 @@ export default function HomePage() {
           {RESULTS.map(r => (
             <div key={r.label} className="card text-center">
               <p className="stat-number text-3xl font-extrabold text-brand-400 mb-1">
-                <CountUp text={r.number} />
+                {r.number}
               </p>
               <p className="text-xs text-[var(--text-muted)]">{r.label}</p>
             </div>
