@@ -61,7 +61,7 @@ export default function RoofingMarketingPage() {
             build it for roofers.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/book" className="btn-primary px-8 py-4">
+            <Link href="/free-website-audit" className="btn-primary px-8 py-4">
               Get Your Free Website Audit <ArrowRight className="h-4 w-4" />
             </Link>
             <a
