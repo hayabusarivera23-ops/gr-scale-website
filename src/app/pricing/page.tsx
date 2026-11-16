@@ -10,9 +10,10 @@ export const metadata: Metadata = {
 
 const BUNDLE = [
   'Website with online booking',
+  'Google Profile setup ($197 value)',
   'Missed-call text-back',
-  'Review Getter (Google reviews by text)',
-  'Setup done for you in 48 hours',
+  'Review Getter + counter QR card',
+  'All setup done for you',
   'Edits and support by text',
   'Month to month — cancel anytime',
 ]
@@ -20,7 +21,7 @@ const BUNDLE = [
 const PAY_STEPS = [
   'We build your free demo first.',
   'You like it → you get two links by text: the setup fee and the monthly plan.',
-  'We go live within 48 hours of payment.',
+  'You fill in a 5-minute setup form. Your website goes live within 48 hours, your Google profile within 3 days, and texting as soon as the carriers approve it (usually 1–2 weeks).',
 ]
 
 export default function PricingPage() {
@@ -77,6 +78,7 @@ export default function PricingPage() {
                   <span className="text-sm font-bold text-brand-300 whitespace-nowrap">{a.price}</span>
                 </div>
                 <p className="text-sm text-[var(--text-muted)] leading-relaxed flex-1">{a.does}</p>
+                <p className="mt-3 text-xs text-[var(--text-dim)]">{a.status === 'early' ? 'Early access · ' : ''}{a.setup}</p>
                 <Link href={`/book?plan=${encodeURIComponent(a.name)}`} className="mt-5 text-sm font-semibold text-brand-400 hover:text-brand-300 transition inline-flex items-center gap-1">
                   Get a free demo of this <ArrowRight className="h-3.5 w-3.5" />
                 </Link>

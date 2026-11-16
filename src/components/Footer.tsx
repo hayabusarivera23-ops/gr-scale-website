@@ -5,12 +5,13 @@ import { SITE } from '@/lib/site'
 const LOGO = '/ChatGPT%20Image%20Jul%2012,%202026,%2003_38_02%20PM.png'
 
 const LINKS = {
-  'AI Agents': [
-    { label: 'Front Desk Bundle',     href: '/#bundle'  },
-    { label: 'Website + Booking',     href: '/#agents'  },
-    { label: 'Missed-Call Text-Back', href: '/#agents'  },
-    { label: 'Review Getter',         href: '/#agents'  },
-    { label: 'AI Receptionist',       href: '/#agents'  },
+  Services: [
+    { label: 'Front Desk Bundle',     href: '/pricing'                },
+    { label: 'Website + Booking',     href: '/services#website'       },
+    { label: 'Google Profile Setup',  href: '/services#google'        },
+    { label: 'Missed-Call Text-Back', href: '/services#textback'      },
+    { label: 'Review Getter',         href: '/services#reviews'       },
+    { label: 'AI Receptionist',       href: '/services#receptionist'  },
   ],
   Company: [
     { label: 'Pricing',       href: '/pricing' },
@@ -19,6 +20,8 @@ const LINKS = {
     { label: 'About',         href: '/about'   },
     { label: 'FAQ',           href: '/faq'     },
     { label: 'Contact',       href: '/contact' },
+    { label: 'Terms',         href: '/terms'   },
+    { label: 'Privacy',       href: '/privacy' },
   ],
 }
 

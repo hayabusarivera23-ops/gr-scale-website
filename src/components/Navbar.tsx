@@ -7,7 +7,7 @@ import { Menu, X } from 'lucide-react'
 const LOGO = '/ChatGPT%20Image%20Jul%2012,%202026,%2003_38_02%20PM.png'
 
 const NAV_LINKS = [
-  { href: '/#agents',   label: 'AI Agents' },
+  { href: '/services',  label: 'Services' },
   { href: '/pricing',   label: 'Pricing'  },
   { href: '/demos',     label: 'Demos'    },
   { href: '/about',     label: 'About'    },

@@ -1,208 +1,109 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ArrowRight, Globe, Zap, Search, TrendingUp, MessageSquare, Shield, CheckCircle } from 'lucide-react'
+import { ArrowRight, CheckCircle, Clock, CalendarCheck, MapPin, MessageSquareText, Bot, Star } from 'lucide-react'
+import { AGENTS, STAGES, PRICE } from '@/lib/site'
 
-const SERVICES = [
-  {
-    id: 'design',
-    icon: Globe,
-    title: 'Website Design & Build',
-    tagline: 'A professional website built from scratch — fast.',
-    price: 'Starting at $500',
-    turnaround: '7–14 business days',
-    desc: 'You need a website that looks professional, loads fast on mobile, and convinces customers to call you. We build exactly that — from domain setup to launch.',
-    includes: [
-      'Custom designed homepage',
-      'Services, About, and Contact pages',
-      'Online quote or contact form',
-      'Mobile-first responsive design',
-      'Basic on-page SEO',
-      'Google Analytics setup',
-      'Domain + hosting configuration',
-      '30 days of post-launch support',
-    ],
-    cta: '/book',
-  },
-  {
-    id: 'redesign',
-    icon: Zap,
-    title: 'Website Redesign',
-    tagline: 'Your old site is costing you customers. We fix it.',
-    price: 'Starting at $400',
-    turnaround: '7–14 business days',
-    desc: "If your website is slow, outdated, or doesn't show up on mobile — it's actively hurting your business. We take your old site and rebuild it into something you're proud to share.",
-    includes: [
-      'Full design overhaul',
-      'Speed optimization',
-      'Mobile responsiveness fix',
-      'Updated copy and layout',
-      'Fresh photos and graphics',
-      'SEO improvements',
-      'Redirect setup from old URLs',
-      '30 days of post-launch support',
-    ],
-    cta: '/book',
-  },
-  {
-    id: 'gbp',
-    icon: Search,
-    title: 'Google Business Profile Optimization',
-    tagline: 'Show up when local customers search for your service.',
-    price: 'Starting at $150',
-    turnaround: '3–5 business days',
-    desc: "Google Business Profile is the first thing people see when they search for your service. If it's incomplete, you're invisible. We optimize it so you rank higher and get more calls.",
-    includes: [
-      'Complete profile setup or audit',
-      'Business category optimization',
-      'Service area configuration',
-      'Photo strategy and upload',
-      'Review response templates',
-      'Q&A setup',
-      'Post strategy for visibility',
-      'Monthly report (with maintenance plan)',
-    ],
-    cta: '/book',
-  },
-  {
-    id: 'seo',
-    icon: TrendingUp,
-    title: 'Local SEO',
-    tagline: 'Get to the top of Google searches in your area.',
-    price: 'Starting at $200/month',
-    turnaround: 'Ongoing monthly',
-    desc: "Local SEO means getting found on Google when people in your area search for your service. It takes time, but it's the most valuable long-term investment in your marketing.",
-    includes: [
-      'Keyword research for your area',
-      'On-page SEO optimization',
-      'Local citation building',
-      'Google Business Profile management',
-      'Monthly content creation',
-      'Competitor monitoring',
-      'Rank tracking and reports',
-      'Link building',
-    ],
-    cta: '/book',
-  },
-  {
-    id: 'landing',
-    icon: MessageSquare,
-    title: 'Landing Pages',
-    tagline: 'One page. One goal. Maximum conversions.',
-    price: 'Starting at $300',
-    turnaround: '3–7 business days',
-    desc: 'A landing page is built for one purpose: get the visitor to call, fill out a form, or book. Perfect for ad campaigns, seasonal promotions, or specific services.',
-    includes: [
-      'Single-page design',
-      'Headline and copy writing',
-      'Clear call-to-action above the fold',
-      'Trust signals (reviews, badges)',
-      'Lead capture form',
-      'Mobile optimized',
-      'A/B test ready',
-      'Connected to your CRM or email',
-    ],
-    cta: '/book',
-  },
-  {
-    id: 'maintenance',
-    icon: Shield,
-    title: 'Monthly Maintenance',
-    tagline: 'Keep your site fast, secure, and always up to date.',
-    price: 'Starting at $99/month',
-    turnaround: 'Ongoing monthly',
-    desc: "Websites need ongoing attention. Plugins break, security threats emerge, and content gets outdated. Our maintenance plans keep everything running so you don't have to think about it.",
-    includes: [
-      'Hosting management',
-      'Plugin and software updates',
-      'Daily backups',
-      'Uptime monitoring',
-      'Security scanning',
-      'Up to 2 hours of edits per month',
-      'Monthly performance report',
-      'Priority support',
-    ],
-    cta: '/book',
-  },
+export const metadata: Metadata = {
+  title: 'Services — GR Scale | Website, Google Profile, Text-Back, Reviews, AI Receptionist',
+  description: 'Everything a local business needs to get found, get booked and get reviews: website with online booking, Google Business Profile setup, missed-call text-back, Review Getter and an AI receptionist. Tampa, FL.',
+  alternates: { canonical: '/services' },
+}
+
+const ICONS: Record<string, typeof Bot> = { website: CalendarCheck, google: MapPin, textback: MessageSquareText, reviews: Star, receptionist: Bot }
+
+const HOW = [
+  { t: 'Free demo', d: 'We build a demo for your business first. You see it before you pay.' },
+  { t: 'Setup form', d: 'You say yes, pay the setup, and fill in a 5-minute form: services, prices, hours, photos.' },
+  { t: 'We build it', d: 'Website in 48 hours, Google profile in 3 days, texting after carrier approval.' },
+  { t: 'It runs', d: 'New bookings, missed callers and reviews come in. Edits and support by text.' },
 ]
 
 export default function ServicesPage() {
   return (
     <div className="pt-24">
-      {/* Header */}
-      <section className="section pb-0">
+      <section className="section pb-6">
         <div className="container-site text-center max-w-3xl">
           <span className="badge mb-4">Services</span>
-          <h1 className="h1 mb-4">Everything You Need Online</h1>
-          <p className="lead">
-            We handle your entire web presence — from building your website to making sure it shows up on Google and converts visitors into paying customers.
-          </p>
-        </div>
-      </section>
-
-      {/* Services */}
-      <section className="section">
-        <div className="container-site">
-          <div className="flex flex-col gap-12">
-            {SERVICES.map((s, i) => {
-              const Icon = s.icon
-              return (
-                <div
-                  key={s.id}
-                  id={s.id}
-                  className={`grid gap-8 lg:grid-cols-2 items-start ${i % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}
-                >
-                  {/* Info */}
-                  <div className={i % 2 === 1 ? 'lg:order-2' : ''}>
-                    <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-brand-500/10">
-                      <Icon className="h-6 w-6 text-brand-400" />
-                    </div>
-                    <h2 className="h2 mb-2">{s.title}</h2>
-                    <p className="text-brand-400 font-semibold mb-4">{s.tagline}</p>
-                    <p className="text-[var(--text-muted)] leading-relaxed mb-6">{s.desc}</p>
-                    <div className="flex items-center gap-6 mb-6">
-                      <div>
-                        <p className="text-xs text-[var(--text-dim)] uppercase tracking-wider mb-0.5">Price</p>
-                        <p className="text-sm font-semibold text-white">{s.price}</p>
-                      </div>
-                      <div className="w-px h-8 bg-white/10" />
-                      <div>
-                        <p className="text-xs text-[var(--text-dim)] uppercase tracking-wider mb-0.5">Timeline</p>
-                        <p className="text-sm font-semibold text-white">{s.turnaround}</p>
-                      </div>
-                    </div>
-                    <Link href={s.cta} className="btn-primary">
-                      Get Started <ArrowRight className="h-4 w-4" />
-                    </Link>
-                  </div>
-
-                  {/* Includes */}
-                  <div className={`card ${i % 2 === 1 ? 'lg:order-1' : ''}`}>
-                    <p className="text-xs font-bold uppercase tracking-widest text-[var(--text-dim)] mb-4">What&apos;s Included</p>
-                    <ul className="flex flex-col gap-2.5">
-                      {s.includes.map(item => (
-                        <li key={item} className="flex items-start gap-2.5 text-sm text-[var(--text-muted)]">
-                          <CheckCircle className="h-4 w-4 text-brand-400 shrink-0 mt-0.5" />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              )
-            })}
+          <h1 className="h1 mb-4">Everything your business needs to get found, booked and reviewed.</h1>
+          <p className="lead">Pick one service or get the Front Desk Bundle. Every service starts with a free demo, and there are no contracts.</p>
+          <div className="mt-6 flex flex-wrap justify-center gap-2">
+            {AGENTS.map(a => (
+              <a key={a.id} href={`#${a.id}`} className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/90 hover:border-brand-500/50 transition">{a.name}</a>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
+      {STAGES.map(st => (
+        <section key={st.id} className="section pt-8">
+          <div className="container-site max-w-5xl">
+            <div className="mb-6">
+              <p className="text-xs font-bold uppercase tracking-widest text-brand-400 mb-1">Step {STAGES.indexOf(st) + 1}</p>
+              <h2 className="h2">{st.title}</h2>
+              <p className="text-[var(--text-muted)] mt-1">{st.line}</p>
+            </div>
+            <div className="flex flex-col gap-6">
+              {AGENTS.filter(a => a.stage === st.id).map(a => {
+                const Icon = ICONS[a.id] || Bot
+                return (
+                  <article key={a.id} id={a.id} className="card scroll-mt-28">
+                    <div className="grid gap-6 md:grid-cols-[1.2fr_1fr]">
+                      <div>
+                        <div className="flex items-center gap-3 mb-3">
+                          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-500/10 border border-brand-500/20"><Icon className="h-5 w-5 text-brand-400" /></div>
+                          <h3 className="text-xl font-bold text-white">{a.name}</h3>
+                          {a.status === 'early' && <span className="text-[11px] font-bold uppercase tracking-wider text-amber-300 bg-amber-500/10 border border-amber-500/20 rounded-full px-2.5 py-1">Early access</span>}
+                        </div>
+                        <p className="text-sm font-semibold text-brand-300 mb-2">{a.short}</p>
+                        <p className="text-sm text-[var(--text-muted)] leading-relaxed">{a.does}</p>
+                        <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
+                          <span className="font-bold text-white">{a.price}</span>
+                          <span className="flex items-center gap-1.5 text-[var(--text-dim)]"><Clock className="h-4 w-4" /> {a.setup}</span>
+                          {a.bundle && <span className="text-emerald-400 font-semibold">Included in the bundle</span>}
+                        </div>
+                      </div>
+                      <div>
+                        <p className="text-xs font-semibold uppercase tracking-wider text-[var(--text-dim)] mb-3">What you get</p>
+                        <ul className="flex flex-col gap-2.5">
+                          {a.includes.map(t => (
+                            <li key={t} className="flex items-start gap-2.5 text-sm text-white/90"><CheckCircle className="h-4 w-4 text-emerald-400 shrink-0 mt-0.5" /> {t}</li>
+                          ))}
+                        </ul>
+                        <Link href={`/book?plan=${encodeURIComponent(a.name)}`} className="btn-primary mt-6 w-full justify-center py-3">
+                          {a.status === 'early' ? 'Join early access' : 'Get a free demo'} <ArrowRight className="h-4 w-4" />
+                        </Link>
+                      </div>
+                    </div>
+                  </article>
+                )
+              })}
+            </div>
+          </div>
+        </section>
+      ))}
+
       <section className="section bg-[#0d1117]">
-        <div className="container-site text-center max-w-2xl">
-          <h2 className="h2 mb-4">Not Sure What You Need?</h2>
-          <p className="lead mb-8">
-            Book a free call. We&apos;ll look at your current online presence and tell you exactly what will move the needle for your business.
-          </p>
-          <Link href="/book" className="btn-primary px-10 py-4 text-base">
-            Book a Free Strategy Call <ArrowRight className="h-4 w-4" />
-          </Link>
+        <div className="container-site max-w-5xl">
+          <h2 className="h2 text-center mb-8">How it works</h2>
+          <ol className="grid gap-4 md:grid-cols-4">
+            {HOW.map((h, i) => (
+              <li key={h.t} className="card">
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-500/15 text-brand-300 font-bold mb-3">{i + 1}</span>
+                <p className="font-bold text-white mb-1">{h.t}</p>
+                <p className="text-sm text-[var(--text-muted)] leading-relaxed">{h.d}</p>
+              </li>
+            ))}
+          </ol>
+          <div className="card mt-8 text-center border-brand-500/30">
+            <p className="text-sm font-semibold uppercase tracking-widest text-[var(--text-dim)] mb-2">Front Desk Bundle</p>
+            <p className="text-white text-lg mb-1">Website + Google profile + text-back + Review Getter</p>
+            <p className="text-3xl font-extrabold text-white">${PRICE.founding}<span className="text-base text-[var(--text-muted)] font-normal">/mo</span> <span className="text-base text-[var(--text-muted)] font-normal">+ ${PRICE.setup} setup</span></p>
+            <p className="text-xs text-[var(--text-dim)] mt-1">Founding price for the first {PRICE.foundingSpots} businesses (then ${PRICE.bundle}/mo)</p>
+            <div className="mt-5 flex flex-col sm:flex-row gap-3 justify-center">
+              <Link href="/book?plan=Front%20Desk%20Bundle" className="btn-primary justify-center px-6 py-3">Get a free demo <ArrowRight className="h-4 w-4" /></Link>
+              <Link href="/pricing" className="btn-ghost justify-center px-6 py-3">All prices</Link>
+            </div>
+          </div>
         </div>
       </section>
     </div>

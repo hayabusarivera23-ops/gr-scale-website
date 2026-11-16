@@ -31,7 +31,7 @@ const FAQS = [
   {
     category: 'Timing & Support',
     items: [
-      { q: 'How fast can I be live?', a: 'Within 48 hours after you approve the demo and pay the setup fee.' },
+      { q: 'How fast can I be live?', a: 'Your website goes live within 48 hours after you approve the demo and pay the setup fee. Your Google profile takes about 3 days. Texting (missed-call text-back and review texts) goes live once the phone carriers approve your business, usually 1–2 weeks. We file that for you on day one.' },
       { q: 'What if I need changes later?', a: 'Text us. Small edits (prices, hours, photos) are included in your monthly plan.' },
       { q: 'Who will I work with?', a: 'Gio Rivera, founder of GR Scale, based in Tampa. One person who sets it up and keeps it running.' },
     ],

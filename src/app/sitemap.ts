@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = 'https://grscales.com'
-  const pages = ['', '/pricing', '/book', '/demos', '/about', '/faq', '/contact', '/barbershop-websites', '/hvac-marketing', '/roofing-marketing']
+  const pages = ['', '/services', '/pricing', '/book', '/demos', '/about', '/faq', '/contact', '/barbershop-websites', '/hvac-marketing', '/roofing-marketing', '/terms', '/privacy']
   return pages.map(p => ({
     url: `${base}${p}`,
     lastModified: new Date(),

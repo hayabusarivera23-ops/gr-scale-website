@@ -4,13 +4,14 @@ import {
   MapPin, PhoneCall, Sparkles, Rocket, ShieldCheck,
 } from 'lucide-react'
 import { Reveal, TypeWords, Magnetic, Aurora, GlowDivider, Marquee, ScrollProgress } from '@/components/FX'
-import { SITE, PRICE, AGENTS } from '@/lib/site'
+import { SITE, PRICE, AGENTS, STAGES } from '@/lib/site'
 
 const ICONS: Record<string, typeof Bot> = {
   website: CalendarCheck,
   textback: MessageSquareText,
   reviews: Star,
   receptionist: Bot,
+  google: MapPin,
 }
 
 const PROBLEMS = [
@@ -21,15 +22,16 @@ const PROBLEMS = [
 
 const STEPS = [
   { icon: Sparkles, step: '01', title: 'Free demo', text: 'We build a demo for your business — your name, your services, your booking link. You see it before you pay anything.' },
-  { icon: Rocket, step: '02', title: 'Live in 48 hours', text: 'You say yes, we set everything up. You don’t touch any tech. You keep your phone number.' },
+  { icon: Rocket, step: '02', title: 'We set it all up', text: 'You say yes, we do the setup: website live in 48 hours, Google profile in 3 days, texting as soon as the carriers approve it. You keep your phone number.' },
   { icon: ShieldCheck, step: '03', title: 'It runs for you', text: 'Calls answered, missed calls texted back, reviews requested — every lead lands on your phone.' },
 ]
 
 const BUNDLE_INCLUDES = [
   'Website with online booking',
+  'Google Profile setup ($197 value)',
   'Missed-call text-back',
-  'Review Getter',
-  'Setup done for you in 48 hours',
+  'Review Getter + counter QR card',
+  'All setup done for you',
   'Edits and support by text',
   'Month to month — cancel anytime',
 ]
@@ -40,7 +42,8 @@ const REAL_WORK = [
 ]
 
 const FAQS = [
-  { q: 'Does the AI sound like a robot?', a: 'It sounds like a friendly front-desk person and it always says it’s an AI assistant. Call our line and hear it yourself.' },
+  { q: 'Does the AI receptionist sound like a robot?', a: 'It sounds like a friendly front-desk person and it always says it’s an AI assistant. It’s in early access right now, so spots are limited.' },
+  { q: 'Why does texting take 1–2 weeks?', a: 'US phone carriers require every business that sends texts to be registered and approved. We file it for you on day one. Your website, booking and Google profile go live while you wait.' },
   { q: 'Do I need a new phone number?', a: 'No. You keep your number. We connect the agents to it, so nothing changes for your regulars.' },
   { q: 'Is there a contract?', a: 'No. Month to month. Cancel anytime with 14 days’ notice.' },
   { q: 'I already have a website. Can I still use this?', a: 'Yes. We plug the agents into the site you have, or build you a new one if yours is slowing you down.' },
@@ -61,7 +64,7 @@ export default function HomePage() {
         <div className="badge-beam reveal-up mb-6">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 text-xs text-[var(--text-muted)]">
             <MapPin className="h-3.5 w-3.5 text-brand-400" />
-            Tampa Bay · AI front desk for local businesses
+            Tampa Bay · Get found, get booked, get reviews
           </div>
         </div>
 
@@ -71,7 +74,7 @@ export default function HomePage() {
         </h1>
 
         <p className="lead reveal-up rd-2 mb-8 max-w-2xl">
-          GR Scale sets up AI agents that answer, text back, book and get reviews for{' '}
+          GR Scale sets up your website, Google profile, online booking, missed-call text-back and review requests for{' '}
           <TypeWords words={['barbershops', 'salons', 'HVAC pros', 'lawn care', 'auto detailers']} className="text-brand-400 font-semibold" />
           {' '}— while you work.
         </p>
@@ -92,7 +95,7 @@ export default function HomePage() {
         </div>
 
         <div className="reveal-up rd-4 mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm text-[var(--text-muted)]">
-          {['Free demo before you pay', 'Live in 48 hours', 'No contracts', `Founding price $${PRICE.founding}/mo`].map(t => (
+          {['Free demo before you pay', 'Website live in 48 hours', 'No contracts', `Founding price $${PRICE.founding}/mo`].map(t => (
             <span key={t} className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-brand-400" /> {t}</span>
           ))}
         </div>
@@ -129,30 +132,48 @@ export default function HomePage() {
       <section id="agents" className="section">
         <div className="container-site max-w-6xl">
           <Reveal className="text-center mb-12">
-            <span className="badge mb-4">The agents</span>
-            <h2 className="h2 mb-4">Pick the agents your business needs.</h2>
-            <p className="lead max-w-2xl mx-auto">Each one does one job, all day, every day. Start with one or get the bundle.</p>
+            <span className="badge mb-4">Services</span>
+            <h2 className="h2 mb-4">Everything your business needs to run.</h2>
+            <p className="lead max-w-2xl mx-auto">Get found, get booked, get reviews. Start with one service or get the bundle that covers all three.</p>
           </Reveal>
-          <div className="grid gap-6 sm:grid-cols-2">
-            {AGENTS.map((a, i) => {
-              const Icon = ICONS[a.id] || Bot
-              return (
-                <Reveal key={a.id} delay={i * 100}>
-                  <div className="card h-full flex flex-col">
-                    <div className="flex items-start justify-between gap-4 mb-4">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-500/10 border border-brand-500/20">
-                        <Icon className="h-6 w-6 text-brand-400" />
-                      </div>
-                      {a.bundle && <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-2.5 py-1">In the bundle</span>}
-                    </div>
-                    <h3 className="text-xl font-bold text-white mb-1">{a.name}</h3>
-                    <p className="text-sm font-semibold text-brand-300 mb-3">{a.short}</p>
-                    <p className="text-sm text-[var(--text-muted)] leading-relaxed flex-1">{a.does}</p>
-                    <p className="mt-5 text-sm font-bold text-white">{a.price}</p>
-                  </div>
-                </Reveal>
-              )
-            })}
+          <div className="flex flex-col gap-10">
+            {STAGES.map(st => (
+              <div key={st.id}>
+                <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-1 mb-4">
+                  <h3 className="text-2xl font-extrabold text-white">{st.title}</h3>
+                  <p className="text-sm text-[var(--text-muted)]">{st.line}</p>
+                </div>
+                <div className="grid gap-6 sm:grid-cols-2">
+                  {AGENTS.filter(a => a.stage === st.id).map((a, i) => {
+                    const Icon = ICONS[a.id] || Bot
+                    return (
+                      <Reveal key={a.id} delay={i * 100}>
+                        <div className="card h-full flex flex-col">
+                          <div className="flex items-start justify-between gap-4 mb-4">
+                            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-500/10 border border-brand-500/20">
+                              <Icon className="h-6 w-6 text-brand-400" />
+                            </div>
+                            {a.status === 'early'
+                              ? <span className="text-[11px] font-bold uppercase tracking-wider text-amber-300 bg-amber-500/10 border border-amber-500/20 rounded-full px-2.5 py-1">Early access</span>
+                              : a.bundle && <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-2.5 py-1">In the bundle</span>}
+                          </div>
+                          <h4 className="text-xl font-bold text-white mb-1">{a.name}</h4>
+                          <p className="text-sm font-semibold text-brand-300 mb-3">{a.short}</p>
+                          <p className="text-sm text-[var(--text-muted)] leading-relaxed flex-1">{a.does}</p>
+                          <div className="mt-5 flex items-center justify-between gap-3">
+                            <p className="text-sm font-bold text-white">{a.price}</p>
+                            <p className="text-xs text-[var(--text-dim)] text-right">{a.setup}</p>
+                          </div>
+                        </div>
+                      </Reveal>
+                    )
+                  })}
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-10">
+            <Link href="/services" className="btn-ghost">See exactly what you get with each service <ArrowRight className="h-4 w-4" /></Link>
           </div>
         </div>
       </section>
@@ -166,7 +187,7 @@ export default function HomePage() {
                 <div>
                   <span className="badge mb-4">Most shops pick this</span>
                   <h2 className="h2 mb-3">Front Desk Bundle</h2>
-                  <p className="text-[var(--text-muted)] mb-6">Website + booking, missed-call text-back and the Review Getter — everything a busy shop needs to stop losing customers.</p>
+                  <p className="text-[var(--text-muted)] mb-6">Website + booking, Google profile setup, missed-call text-back and the Review Getter — everything a local business needs to get found, booked and reviewed.</p>
                   <div className="flex items-end gap-2 mb-1">
                     <span className="text-5xl font-extrabold text-white">${PRICE.founding}</span>
                     <span className="text-[var(--text-muted)] mb-2">/month</span>

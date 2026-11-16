@@ -16,7 +16,7 @@ const PLANS = ['Front Desk Bundle', ...AGENTS.map(a => a.name), 'Not sure yet']
 const STEPS = [
   { icon: Sparkles, title: '1. Tell us about your business', desc: 'Takes 60 seconds.' },
   { icon: Rocket, title: '2. We build your free demo', desc: 'Usually within 1–2 days. We text you the link.' },
-  { icon: ShieldCheck, title: '3. Like it? Go live in 48 hours', desc: 'Don’t like it? You pay nothing.' },
+  { icon: ShieldCheck, title: '3. Like it? Website live in 48 hours', desc: 'Don’t like it? You pay nothing.' },
 ]
 
 const input = 'w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-base text-white placeholder:text-[var(--text-dim)] focus:border-brand-500/50 focus:outline-none focus:ring-1 focus:ring-brand-500/30 transition'

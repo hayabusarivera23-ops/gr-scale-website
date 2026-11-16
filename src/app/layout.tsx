@@ -37,7 +37,7 @@ const SITE_SCHEMA = {
       '@id': 'https://grscales.com/#business',
       name: 'GR Scale',
       description:
-        'AI agents for local service businesses: website with online booking, missed-call text-back, Google review requests and a 24/7 AI receptionist. Set up in 48 hours after a free demo.',
+        'AI agents for local service businesses: website with online booking, missed-call text-back, Google review requests and a 24/7 AI receptionist. Website live in 48 hours after a free demo.',
       url: 'https://grscales.com',
       logo: 'https://grscales.com' + LOGO,
       image: 'https://grscales.com' + LOGO,
@@ -73,7 +73,7 @@ const SITE_SCHEMA = {
         { '@type': 'Question', name: 'Is there a free demo?', acceptedAnswer: { '@type': 'Answer',
           text: 'Yes. GR Scale builds a demo for your business first at grscales.com/book. You only pay if you want it.' } },
         { '@type': 'Question', name: 'How fast is setup?', acceptedAnswer: { '@type': 'Answer',
-          text: 'Live within 48 hours after you approve the demo and pay the setup fee.' } },
+          text: 'Website live within 48 hours after you approve the demo and pay the setup fee; texting goes live after carrier approval, usually 1-2 weeks.' } },
         { '@type': 'Question', name: 'Do I keep my phone number?', acceptedAnswer: { '@type': 'Answer',
           text: 'Yes. The agents connect to your existing number.' } },
         { '@type': 'Question', name: 'Is there a contract?', acceptedAnswer: { '@type': 'Answer',
