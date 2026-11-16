@@ -20,7 +20,7 @@ const FAQS = [
   },
   {
     q: 'How much does HVAC marketing cost?',
-    a: 'With us: a website build starts at $500 one-time, Google Business Profile optimization is $150 flat, local SEO is from $200/mo, and maintenance is $99/mo. No contracts, no agency retainers. One booked job typically covers the build. Full breakdown on our pricing page.',
+    a: 'With us: the Front Desk Bundle — website with online booking, missed-call text-back and Google review requests — is $297 setup + $197/mo, or $147/mo founding price for the first 5 businesses. No contracts. We build a free demo first. Full breakdown on our pricing page.',
   },
 ]
 
@@ -61,8 +61,8 @@ export default function HvacMarketingPage() {
             Profile, reviews, and local SEO working together. We build it for HVAC companies.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/free-website-audit" className="btn-primary px-8 py-4">
-              Get Your Free Website Audit <ArrowRight className="h-4 w-4" />
+            <Link href="/book" className="btn-primary px-8 py-4">
+              Get a Free Demo <ArrowRight className="h-4 w-4" />
             </Link>
             <a
               href="https://meloair.net"
@@ -138,8 +138,7 @@ export default function HvacMarketingPage() {
             — real, scrollable builds for your exact niche.
           </p>
           <p className="text-sm text-[var(--text-muted)] leading-relaxed">
-            Pricing is flat and public: builds from $500, Google Business Profile optimization
-            for $150, local SEO from $200/mo. No contracts. See the{' '}
+            Pricing is flat and public: the Front Desk Bundle is $297 setup + $147/mo founding price (first 5 businesses), single agents from $67/mo. No contracts. See the{' '}
             <Link href="/pricing" className="text-brand-400 hover:text-brand-300 transition">
               full pricing breakdown
             </Link>
@@ -173,7 +172,7 @@ export default function HvacMarketingPage() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link href="/book" className="btn-primary px-8 py-4">
-              Book Your Free Audit <ArrowRight className="h-4 w-4" />
+              Get Your Free Demo <ArrowRight className="h-4 w-4" />
             </Link>
             <Link href="/contact" className="btn-ghost px-8 py-4">
               Send a Message

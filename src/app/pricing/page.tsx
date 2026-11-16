@@ -1,180 +1,117 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ArrowRight, CheckCircle, Zap } from 'lucide-react'
+import { ArrowRight, CheckCircle, CreditCard } from 'lucide-react'
+import { SITE, PRICE, AGENTS } from '@/lib/site'
 
-const PLANS = [
-  {
-    name: 'Starter',
-    price: '$500',
-    note: 'build · then $99/mo',
-    desc: 'Perfect for local businesses that need a professional web presence fast.',
-    compare: 'Best if you just need a clean, professional site live fast — nothing you don\'t need.',
-    highlight: false,
-    features: [
-      'Custom homepage design',
-      'Services + About + Contact pages',
-      'Mobile responsive',
-      'Contact / quote form',
-      'Basic on-page SEO',
-      'Google Analytics',
-      'Hosting setup',
-      '$99/mo plan: hosting, updates, daily backups, support',
-    ],
-    cta: '/book',
-    ctaLabel: 'Get Started',
-  },
-  {
-    name: 'Growth',
-    price: '$750',
-    note: 'build · then $299/mo',
-    desc: 'For businesses ready to dominate their local market online.',
-    compare: 'The sweet spot — more pages, Google Business setup, and local SEO working every month. Most clients pick this.',
-    highlight: true,
-    features: [
-      'Everything in Starter',
-      'Up to 8 pages',
-      'Gallery / portfolio section',
-      'FAQ page',
-      'Google Business Profile setup',
-      'Google Maps embed',
-      'Speed optimization',
-      '$299/mo plan: everything in Starter plan + local SEO, GBP management, monthly reports',
-    ],
-    cta: '/book',
-    ctaLabel: 'Most Popular',
-  },
-  {
-    name: 'Scale',
-    price: '$1,200',
-    note: 'build · then $599/mo',
-    desc: 'Complete package for businesses serious about generating leads online.',
-    compare: 'For lead generation as a system — booking, landing pages, and advanced SEO working from day one.',
-    highlight: false,
-    features: [
-      'Everything in Growth',
-      'Unlimited pages',
-      'Online booking integration',
-      'Blog setup',
-      'Custom animations',
-      'Priority response',
-      '$599/mo plan: everything in Growth plan + advanced SEO, landing pages, AI chat, reputation management, lead tracking',
-    ],
-    cta: '/book',
-    ctaLabel: 'Get Started',
-  },
+export const metadata: Metadata = {
+  title: 'Pricing — GR Scale | AI Front Desk for Local Businesses',
+  description: `Front Desk Bundle: website + booking, missed-call text-back and Review Getter for $${PRICE.founding}/mo founding price + $${PRICE.setup} setup. Free demo first. No contracts.`,
+}
+
+const BUNDLE = [
+  'Website with online booking',
+  'Missed-call text-back',
+  'Review Getter (Google reviews by text)',
+  'Setup done for you in 48 hours',
+  'Edits and support by text',
+  'Month to month — cancel anytime',
 ]
 
-const ADDONS = [
-  { name: 'Google Business Profile Optimization', price: '$150',     note: 'one-time'  },
-  { name: 'Extra Landing Page',                   price: '$300',     note: 'per page'  },
-  { name: 'Logo Design',                          price: '$200',     note: 'one-time'  },
-  { name: 'Blog Post Writing',                    price: '$75',      note: 'per post'  },
-  { name: 'Rush Delivery (3–5 days)',             price: '+$200',    note: 'add-on'    },
+const PAY_STEPS = [
+  'We build your free demo first.',
+  'You like it → you get two links by text: the setup fee and the monthly plan.',
+  'We go live within 48 hours of payment.',
 ]
 
 export default function PricingPage() {
+  const canPay = !!(SITE.stripeSetup && SITE.stripeMonthly)
   return (
     <div className="pt-24">
       <section className="section pb-0">
         <div className="container-site text-center max-w-3xl">
           <span className="badge mb-4">Pricing</span>
-          <h1 className="h1 mb-4">Simple, Transparent Pricing</h1>
-          <p className="lead">
-            One build fee + a simple monthly plan that keeps your site fast, secure, and bringing in customers. No hidden fees. You own your site.
-          </p>
+          <h1 className="h1 mb-4">Simple prices. Free demo first.</h1>
+          <p className="lead">One setup fee, one monthly price. No contracts. You see your demo before you pay anything.</p>
         </div>
       </section>
 
-      {/* Plans */}
+      {/* Bundle */}
       <section className="section">
-        <div className="container-site">
-          <div className="pricing-grid max-w-5xl mx-auto">
-            {PLANS.map(p => (
-              <div
-                key={p.name}
-                className={`relative flex flex-col rounded-2xl border p-8 transition-all ${
-                  p.highlight
-                    ? 'border-brand-500/60 bg-gradient-to-b from-brand-500/10 to-transparent shadow-[0_0_40px_rgba(14,165,233,0.15)] scale-105'
-                    : 'border-white/7 bg-[#0d1117] hover:border-white/15'
-                }`}
-              >
-                {p.highlight && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <span className="badge">Most Popular</span>
-                  </div>
-                )}
-                <p className="text-sm font-semibold text-[var(--text-dim)] uppercase tracking-widest mb-2">{p.name}</p>
-                <div className="flex items-baseline gap-1.5 mb-1">
-                  <span className="text-4xl font-extrabold text-white">{p.price}</span>
-                  <span className="text-sm text-[var(--text-muted)]">{p.note}</span>
+        <div className="container-site max-w-4xl">
+          <div className="relative rounded-2xl border border-brand-500/60 bg-gradient-to-b from-brand-500/10 to-transparent shadow-[0_0_40px_rgba(14,165,233,0.15)] p-8 md:p-10">
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2"><span className="badge">Founding price · first {PRICE.foundingSpots} businesses</span></div>
+            <div className="grid gap-10 md:grid-cols-2 items-center">
+              <div>
+                <p className="text-sm font-semibold text-[var(--text-dim)] uppercase tracking-widest mb-2">Front Desk Bundle</p>
+                <div className="flex items-baseline gap-2 mb-1">
+                  <span className="text-5xl font-extrabold text-white">${PRICE.founding}</span>
+                  <span className="text-[var(--text-muted)]">/month</span>
                 </div>
-                <p className="text-sm text-[var(--text-muted)] mb-6 leading-relaxed">{p.desc}</p>
-
-                <ul className="flex flex-col gap-2.5 mb-8 flex-1">
-                  {p.features.map(f => (
-                    <li key={f} className="flex items-start gap-2 text-sm text-[var(--text-muted)]">
-                      <CheckCircle className={`h-4 w-4 shrink-0 mt-0.5 ${p.highlight ? 'text-brand-400' : 'text-green-400'}`} />
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-
-                <p className={`text-xs leading-relaxed mb-5 -mt-3 ${p.highlight ? 'text-brand-300/90' : 'text-[var(--text-dim)]'}`}>
-                  {p.compare}
+                <p className="text-sm text-[var(--text-muted)] mb-6">
+                  + ${PRICE.setup} one-time setup. Regular price ${PRICE.bundle}/mo — founding businesses keep ${PRICE.founding}/mo for as long as they stay.
                 </p>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Link href="/book?plan=Front%20Desk%20Bundle" className="btn-primary justify-center px-6 py-3">Get a free demo <ArrowRight className="h-4 w-4" /></Link>
+                </div>
+              </div>
+              <ul className="flex flex-col gap-3">
+                {BUNDLE.map(t => (
+                  <li key={t} className="flex items-center gap-3 text-sm text-white/90"><CheckCircle className="h-5 w-5 text-emerald-400 shrink-0" /> {t}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
 
-                <Link
-                  href={p.cta}
-                  className={`text-center justify-center ${p.highlight ? 'btn-primary' : 'btn-ghost'}`}
-                >
-                  {p.ctaLabel} <ArrowRight className="h-4 w-4" />
+      {/* Single agents */}
+      <section className="section pt-0">
+        <div className="container-site max-w-5xl">
+          <h2 className="h2 text-center mb-3">Or pick single agents</h2>
+          <p className="lead text-center mb-10">Start with one. Add more any time.</p>
+          <div className="grid gap-5 sm:grid-cols-2">
+            {AGENTS.map(a => (
+              <div key={a.id} className="card flex flex-col">
+                <div className="flex items-start justify-between gap-3 mb-2">
+                  <h3 className="text-lg font-bold text-white">{a.name}</h3>
+                  <span className="text-sm font-bold text-brand-300 whitespace-nowrap">{a.price}</span>
+                </div>
+                <p className="text-sm text-[var(--text-muted)] leading-relaxed flex-1">{a.does}</p>
+                <Link href={`/book?plan=${encodeURIComponent(a.name)}`} className="mt-5 text-sm font-semibold text-brand-400 hover:text-brand-300 transition inline-flex items-center gap-1">
+                  Get a free demo of this <ArrowRight className="h-3.5 w-3.5" />
                 </Link>
               </div>
             ))}
           </div>
+        </div>
+      </section>
 
+      {/* How paying works */}
+      <section className="section bg-[#0d1117]">
+        <div className="container-site max-w-3xl">
+          <h2 className="h2 text-center mb-8">How paying works</h2>
+          <ol className="flex flex-col gap-4">
+            {PAY_STEPS.map((t, i) => (
+              <li key={t} className="card flex items-center gap-4">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand-500/15 text-brand-300 font-bold">{i + 1}</span>
+                <span className="text-sm text-white/90">{t}</span>
+              </li>
+            ))}
+          </ol>
+          {canPay && (
+            <div className="card mt-8 text-center">
+              <CreditCard className="h-6 w-6 text-brand-400 mx-auto mb-3" />
+              <p className="text-sm text-[var(--text-muted)] mb-4">Already saw your demo and ready to start? Pay securely with Stripe:</p>
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                <a href={SITE.stripeSetup} className="btn-primary justify-center px-6 py-3" rel="noopener">Pay ${PRICE.setup} setup</a>
+                <a href={SITE.stripeMonthly} className="btn-ghost justify-center px-6 py-3" rel="noopener">Start ${PRICE.founding}/mo plan</a>
+              </div>
+            </div>
+          )}
           <p className="text-center text-sm text-[var(--text-dim)] mt-8">
-            All prices are in USD. Monthly plans cancel anytime with 14 days notice. Need something custom?{' '}
+            All prices in USD. Month to month — cancel anytime with 14 days&apos; notice. Questions?{' '}
             <Link href="/contact" className="text-brand-400 hover:text-brand-300 transition">Contact us</Link>.
           </p>
-
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm">
-            <span className="text-[var(--text-dim)]">Common questions:</span>
-            <Link href="/faq" className="text-brand-400 hover:text-brand-300 transition">How long does a build take?</Link>
-            <Link href="/faq" className="text-brand-400 hover:text-brand-300 transition">Do I own my site?</Link>
-            <Link href="/faq" className="text-brand-400 hover:text-brand-300 transition">See all FAQs →</Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Add-ons */}
-      <section className="section bg-[#0d1117] pt-0">
-        <div className="container-site max-w-3xl">
-          <h2 className="h2 text-center mb-10">Add-Ons</h2>
-          <div className="flex flex-col gap-3">
-            {ADDONS.map(a => (
-              <div key={a.name} className="card flex items-center justify-between py-4">
-                <div>
-                  <p className="text-sm font-medium text-white">{a.name}</p>
-                  <p className="text-xs text-[var(--text-dim)]">{a.note}</p>
-                </div>
-                <span className="text-sm font-bold text-brand-400">{a.price}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="section">
-        <div className="container-site text-center max-w-2xl">
-          <Zap className="h-10 w-10 text-brand-400 mx-auto mb-4" />
-          <h2 className="h2 mb-4">Book a Free Audit First</h2>
-          <p className="lead mb-8">
-            Not sure which plan is right for you? Book a free call. We&apos;ll audit your online presence and recommend the right package — no sales pressure.
-          </p>
-          <Link href="/book" className="btn-primary px-10 py-4 text-base">
-            Get Your Free Website Audit <ArrowRight className="h-4 w-4" />
-          </Link>
         </div>
       </section>
     </div>

@@ -292,7 +292,7 @@ export default function DemoTheater() {
           <div className="flex flex-col sm:flex-row justify-center gap-3">
             <Link href="/book"
               className="inline-flex items-center justify-center gap-2 rounded-xl bg-sky-500 px-8 py-4 text-sm font-bold text-white shadow-lg shadow-sky-500/25 hover:bg-sky-400 transition">
-              Get Your Free Website Audit <ArrowRight className="h-4 w-4" />
+              Get a Free Demo <ArrowRight className="h-4 w-4" />
             </Link>
             <Link href="/pricing"
               className="inline-flex items-center justify-center gap-2 rounded-xl border border-zinc-700 px-8 py-4 text-sm font-semibold text-zinc-200 hover:border-zinc-500 transition">

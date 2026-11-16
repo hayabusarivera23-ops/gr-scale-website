@@ -5,86 +5,35 @@ const FAQS = [
   {
     category: 'Getting Started',
     items: [
-      {
-        q: 'How do I get started?',
-        a: "Book a free strategy call. We'll look at your current online presence, identify what's hurting you, and recommend the right solution. No payment required at this stage.",
-      },
-      {
-        q: 'Do I need to have any technical knowledge?',
-        a: "None. We handle everything — domain, hosting, design, development, and launch. You tell us what you want and we build it. The most technical thing you'll do is send us your business info.",
-      },
-      {
-        q: 'What information do I need to provide?',
-        a: 'Your business name, logo (if you have one), photos of your work, a list of services, and any preferences for design or color. We can also create content and find photos if you need help.',
-      },
+      { q: 'How do I get started?', a: 'Fill out the free demo form at grscales.com/book. We build a demo for your business and text you the link — usually within 1–2 days. No payment at this stage.' },
+      { q: 'Do I need any technical knowledge?', a: 'None. We set up everything — website, booking, texting and the AI. You keep running your business.' },
+      { q: 'What do you need from me?', a: 'Your business name, services and prices, hours, a few photos of your work and the booking tool you already use (if any). That\'s it.' },
     ],
   },
   {
-    category: 'Timelines & Process',
+    category: 'The AI Agents',
     items: [
-      {
-        q: 'How long does it take to build a website?',
-        a: 'Most websites are completed in 7–14 business days from the time we receive your content. Simple landing pages take 3–5 days. Rush delivery (3–5 days) is available for an additional fee.',
-      },
-      {
-        q: "What happens after I book a call?",
-        a: "We review your current online presence before the call, then walk you through exactly what we found and what we recommend. If you'd like to move forward, we collect a deposit and start building immediately.",
-      },
-      {
-        q: 'How many revisions are included?',
-        a: 'All packages include unlimited revision rounds during the build. We want you to be 100% happy before launch.',
-      },
+      { q: 'What is missed-call text-back?', a: 'When you can\'t answer, the caller gets a text from your business within seconds with your booking link. Most people book instead of calling the next shop.' },
+      { q: 'Does the AI receptionist sound like a robot?', a: 'It sounds like a friendly front-desk person and it always says it is an AI assistant. It answers questions about prices and hours, takes messages and books appointments.' },
+      { q: 'Do I keep my phone number?', a: 'Yes. Everything connects to the number your customers already have.' },
+      { q: 'How does the Review Getter work?', a: 'After a visit, the customer gets a short, friendly text with a direct link to leave you a Google review. More reviews help you show up higher on Google Maps.' },
+      { q: 'Will you ever cold-call or spam my customers?', a: 'No. Texts only go to people who called you or visited you, and they can reply STOP anytime.' },
     ],
   },
   {
     category: 'Pricing & Payment',
     items: [
-      {
-        q: 'How do payments work?',
-        a: 'We collect 50% upfront to start the project and 50% upon completion before the site goes live. We accept credit/debit cards, PayPal, Venmo, and bank transfer.',
-      },
-      {
-        q: 'Are there monthly fees?',
-        a: 'Only if you choose ongoing services like Local SEO ($200/mo) or Monthly Maintenance ($99/mo). The one-time website build is exactly that — one payment, you own it forever.',
-      },
-      {
-        q: 'Do you offer payment plans?',
-        a: "Yes. We can split payments into 3 installments for projects over $600. Ask us about this during the strategy call.",
-      },
+      { q: 'How much does it cost?', a: 'The Front Desk Bundle (website + booking, missed-call text-back, Review Getter) is $297 setup + $197/mo. The first 5 businesses get the founding price: $147/mo for as long as they stay. Single agents start at $67/mo. Full list on the pricing page.' },
+      { q: 'Is there a contract?', a: 'No. Month to month. Cancel anytime with 14 days notice.' },
+      { q: 'When do I pay?', a: 'Only after you see your free demo and say yes. You get a secure Stripe link for the setup fee and the monthly plan.' },
     ],
   },
   {
-    category: 'Your Website',
+    category: 'Timing & Support',
     items: [
-      {
-        q: 'Will I own the website?',
-        a: "Completely. Once the final payment is made, the website and all its code belong to you. We don't hold your website hostage — you can take it anywhere.",
-      },
-      {
-        q: 'What platform do you build on?',
-        a: 'We build primarily on Next.js (for speed and SEO), WordPress (for easy self-management), or Webflow (for design-heavy projects). We recommend what fits your business best.',
-      },
-      {
-        q: 'Will my website show up on Google?',
-        a: "Every website we build includes basic on-page SEO — proper titles, descriptions, headers, and schema markup. For ongoing Google ranking, we offer Local SEO management as a monthly add-on.",
-      },
-      {
-        q: 'What if I want to make changes after launch?',
-        a: 'All packages include 30–90 days of post-launch support for small changes. After that, you can purchase our Monthly Maintenance plan ($99/mo) which includes 2 hours of edits per month.',
-      },
-    ],
-  },
-  {
-    category: 'Local SEO & Google',
-    items: [
-      {
-        q: 'What is Google Business Profile optimization?',
-        a: "Google Business Profile (GBP) is the listing that shows up when someone searches for your service on Google Maps. Optimizing it means more calls, more direction requests, and more customers — often before they even visit your website.",
-      },
-      {
-        q: 'How long does it take to rank on Google?',
-        a: 'Local SEO typically shows results in 3–6 months. Google Business Profile optimization can show results faster — sometimes within weeks. There are no guarantees, but we track results and show you exactly where you stand.',
-      },
+      { q: 'How fast can I be live?', a: 'Within 48 hours after you approve the demo and pay the setup fee.' },
+      { q: 'What if I need changes later?', a: 'Text us. Small edits (prices, hours, photos) are included in your monthly plan.' },
+      { q: 'Who will I work with?', a: 'Gio Rivera, founder of GR Scale, based in Tampa. One person who sets it up and keeps it running.' },
     ],
   },
 ]
@@ -131,10 +80,10 @@ export default function FAQPage() {
       <section className="section bg-[#0d1117]">
         <div className="container-site text-center max-w-2xl">
           <h2 className="h2 mb-4">Still Have Questions?</h2>
-          <p className="lead mb-8">Book a free strategy call and ask us anything.</p>
+          <p className="lead mb-8">Get a free demo — or send us a message.</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link href="/book" className="btn-primary px-8 py-4">
-              Book Free Call <ArrowRight className="h-4 w-4" />
+              Get a Free Demo <ArrowRight className="h-4 w-4" />
             </Link>
             <Link href="/contact" className="btn-ghost px-8 py-4">
               Send a Message

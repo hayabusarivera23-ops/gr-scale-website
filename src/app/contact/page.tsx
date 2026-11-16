@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { Phone, Mail, MapPin, Clock, Send, CheckCircle, AlertCircle } from 'lucide-react'
 import { submitLead } from '@/lib/submitLead'
+import { SITE } from '@/lib/site'
 
 const SERVICES = [
   'Website Design & Build',
@@ -29,12 +30,12 @@ export default function ContactPage() {
     setStatus('sending')
     setErrorMsg('')
     try {
-      const result = await submitLead({
+      await submitLead({
         _subject: `New website inquiry — ${form.business || form.name}`,
         source: 'Contact Form',
         ...form,
       })
-      setStatus(result === 'email-draft' ? 'draft' : 'sent')
+      setStatus('sent')
     } catch (err) {
       setStatus('error')
       setErrorMsg(err instanceof Error ? err.message : 'Something went wrong. Please try again.')
@@ -48,7 +49,7 @@ export default function ContactPage() {
           <span className="badge mb-4">Contact</span>
           <h1 className="h1 mb-4">Let&apos;s Talk</h1>
           <p className="lead">
-            Send us a message or book a call. We typically respond within a few hours during business days.
+            Send a message and Gio gets it on his phone right away. Replies within one business day — usually much faster.
           </p>
         </div>
       </section>
@@ -61,12 +62,14 @@ export default function ContactPage() {
               <div>
                 <h2 className="h3 mb-6">Contact Info</h2>
                 <div className="flex flex-col gap-4">
-                  <a href="tel:+18138695917" className="flex items-center gap-3 text-sm text-[var(--text-muted)] hover:text-white transition group">
-                    <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand-500/10 group-hover:bg-brand-500/20 transition">
-                      <Phone className="h-4 w-4 text-brand-400" />
-                    </div>
-                    (813) 869-5917
-                  </a>
+                  {SITE.phone && (
+                    <a href={`tel:${SITE.phone.tel}`} className="flex items-center gap-3 text-sm text-[var(--text-muted)] hover:text-white transition group">
+                      <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand-500/10 group-hover:bg-brand-500/20 transition">
+                        <Phone className="h-4 w-4 text-brand-400" />
+                      </div>
+                      {SITE.phone.pretty} · AI receptionist 24/7
+                    </a>
+                  )}
                   <a href="mailto:gio@grscales.com" className="flex items-center gap-3 text-sm text-[var(--text-muted)] hover:text-white transition group">
                     <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand-500/10 group-hover:bg-brand-500/20 transition">
                       <Mail className="h-4 w-4 text-brand-400" />

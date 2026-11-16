@@ -27,14 +27,14 @@ const VALUES = [
 const STATS = [
   { number: '2',     label: 'Client sites live on real domains' },
   { number: '13',    label: 'Industry demo sites built'         },
-  { number: '7–14',  label: 'Days from audit to launch'         },
+  { number: '48h',   label: 'From yes to live'                  },
   { number: '100%',  label: 'Mobile responsive'                 },
 ]
 
 const WHY_DIFFERENT = [
   'No agency overhead — you pay for the work, not a floor of account managers',
   'You see a demo for your exact niche before you pay anything',
-  'One dedicated point of contact from audit to launch',
+  'One person you can text, from demo to launch and after',
   'Sites built to rank on Google, not just look good',
   'No long-term contracts on design work',
   'Ongoing support after launch — you\'re not abandoned',
@@ -74,7 +74,7 @@ export default function AboutPage() {
               </p>
 
               <Link href="/book" className="btn-primary">
-                Get Your Free Website Audit <ArrowRight className="h-4 w-4" />
+                Get a Free Demo <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
 
@@ -112,10 +112,10 @@ export default function AboutPage() {
               <div className="card">
                 <p className="text-sm font-semibold text-white mb-2">Ready to grow your business online?</p>
                 <p className="text-xs text-[var(--text-muted)] mb-4 leading-relaxed">
-                  Free 20-minute audit. We review your Google presence and tell you exactly what&apos;s holding you back.
+                  We build a free demo for your business first. You only pay if you love it.
                 </p>
                 <Link href="/book" className="btn-primary text-sm py-2 px-4 justify-center">
-                  Book Free Audit Call <ArrowRight className="h-4 w-4" />
+                  Get a Free Demo <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
             </div>
@@ -201,11 +201,11 @@ export default function AboutPage() {
         <div className="container-site max-w-2xl text-center">
           <h2 className="h2 mb-4">Let&apos;s Talk About Your Business</h2>
           <p className="lead mb-8">
-            Book a free 20-minute call. We&apos;ll audit your Google presence and show you exactly what&apos;s missing — no charge, no obligation.
+            Tell us about your business and we&apos;ll build your free demo — no charge, no obligation.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link href="/book" className="btn-primary px-8 py-4 text-base">
-              Get Your Free Website Audit <ArrowRight className="h-4 w-4" />
+              Get a Free Demo <ArrowRight className="h-4 w-4" />
             </Link>
             <Link href="/contact" className="btn-ghost px-8 py-4 text-base">
               Send a Message

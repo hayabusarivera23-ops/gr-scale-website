@@ -7,7 +7,7 @@ import { Menu, X } from 'lucide-react'
 const LOGO = '/ChatGPT%20Image%20Jul%2012,%202026,%2003_38_02%20PM.png'
 
 const NAV_LINKS = [
-  { href: '/services',  label: 'Services' },
+  { href: '/#agents',   label: 'AI Agents' },
   { href: '/pricing',   label: 'Pricing'  },
   { href: '/demos',     label: 'Demos'    },
   { href: '/about',     label: 'About'    },
@@ -61,7 +61,7 @@ export default function Navbar() {
             Contact
           </Link>
           <Link href="/book" className="btn-primary text-sm py-2 px-5">
-            Book Free Call
+            Free demo
           </Link>
         </div>
 
@@ -94,7 +94,7 @@ export default function Navbar() {
                 Contact
               </Link>
               <Link href="/book" onClick={() => setOpen(false)} className="btn-primary text-center justify-center text-sm py-2">
-                Book Free Call
+                Free demo
               </Link>
             </div>
           </div>

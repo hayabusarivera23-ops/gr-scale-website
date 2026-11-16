@@ -1,23 +1,24 @@
 import Link from 'next/link'
 import { Phone, Mail, MapPin } from 'lucide-react'
+import { SITE } from '@/lib/site'
 
 const LOGO = '/ChatGPT%20Image%20Jul%2012,%202026,%2003_38_02%20PM.png'
 
 const LINKS = {
-  Services: [
-    { label: 'Website Design',   href: '/services#design'    },
-    { label: 'Website Redesign', href: '/services#redesign'  },
-    { label: 'Landing Pages',    href: '/services#landing'   },
-    { label: 'Local SEO',        href: '/services#seo'       },
-    { label: 'Google Business',  href: '/services#gbp'       },
-    { label: 'Maintenance',      href: '/services#maintenance'},
+  'AI Agents': [
+    { label: 'Front Desk Bundle',     href: '/#bundle'  },
+    { label: 'Website + Booking',     href: '/#agents'  },
+    { label: 'Missed-Call Text-Back', href: '/#agents'  },
+    { label: 'Review Getter',         href: '/#agents'  },
+    { label: 'AI Receptionist',       href: '/#agents'  },
   ],
   Company: [
-    { label: 'About',     href: '/about'   },
-    { label: 'Portfolio', href: '/demos'   },
-    { label: 'Pricing',   href: '/pricing' },
-    { label: 'FAQ',       href: '/faq'     },
-    { label: 'Contact',   href: '/contact' },
+    { label: 'Pricing',       href: '/pricing' },
+    { label: 'Free demo',     href: '/book'    },
+    { label: 'Demo sites',    href: '/demos'   },
+    { label: 'About',         href: '/about'   },
+    { label: 'FAQ',           href: '/faq'     },
+    { label: 'Contact',       href: '/contact' },
   ],
 }
 
@@ -38,12 +39,14 @@ export default function Footer() {
               <span className="text-sm font-bold text-white">GR Scale</span>
             </Link>
             <p className="text-sm text-[var(--text-muted)] leading-relaxed max-w-sm">
-              We build fast, modern websites that help local service businesses generate more customers online. Based in Tampa, serving nationwide.
+              AI agents that answer, text back, book and get reviews for local businesses — so you never lose a customer to a missed call. Based in Tampa.
             </p>
             <div className="mt-6 flex flex-col gap-2.5 text-sm text-[var(--text-muted)]">
-              <a href="tel:+18138695917" className="flex items-center gap-2 hover:text-white transition">
-                <Phone className="h-3.5 w-3.5 text-brand-400" /> (813) 869-5917
-              </a>
+              {SITE.phone && (
+                <a href={`tel:${SITE.phone.tel}`} className="flex items-center gap-2 hover:text-white transition">
+                  <Phone className="h-3.5 w-3.5 text-brand-400" /> {SITE.phone.pretty} · AI receptionist 24/7
+                </a>
+              )}
               <a href="mailto:gio@grscales.com" className="flex items-center gap-2 hover:text-white transition">
                 <Mail className="h-3.5 w-3.5 text-brand-400" /> gio@grscales.com
               </a>
@@ -59,7 +62,7 @@ export default function Footer() {
               <p className="mb-4 text-xs font-bold uppercase tracking-widest text-[var(--text-dim)]">{section}</p>
               <ul className="flex flex-col gap-2">
                 {links.map(l => (
-                  <li key={l.href}>
+                  <li key={l.label}>
                     <Link
                       href={l.href}
                       className="text-sm text-[var(--text-muted)] hover:text-white transition"
