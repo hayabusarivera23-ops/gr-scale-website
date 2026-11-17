@@ -18,15 +18,15 @@ const ICONS: Record<string, typeof Bot> = {
 }
 
 const PROBLEMS = [
-  { icon: PhoneMissed, title: 'You’re busy. The phone rings.', text: 'You’re mid-cut or on a job. Nobody picks up — and most people don’t leave a voicemail.' },
-  { icon: ArrowRight, title: 'They call the next shop.', text: 'A missed call isn’t a missed call. It’s a customer who just booked with somebody else.' },
-  { icon: Star, title: 'Fewer reviews, lower on Maps.', text: 'Happy customers forget to review. The shop with more reviews shows up first on Google.' },
+  { icon: PhoneMissed, title: 'You’re busy. The phone rings.', text: 'You’re mid-cut or on a job. Nobody picks up — and plenty of callers won’t leave a voicemail.' },
+  { icon: ArrowRight, title: 'They call the next shop.', text: 'A missed call can be a customer who books with somebody else.' },
+  { icon: Star, title: 'Customers forget to leave reviews.', text: 'Customers rarely think to leave a review unless someone asks. People read reviews before they pick a shop.' },
 ]
 
 const STEPS = [
   { icon: Sparkles, step: '01', title: 'Free demo', text: 'We build a demo for your business — your name, your services, your booking link. You see it before you pay anything.' },
-  { icon: Rocket, step: '02', title: 'We set it all up', text: 'You say yes, we do the setup: website live in 48 hours, Google profile in 3 days, texting as soon as the carriers approve it. You keep your phone number.' },
-  { icon: ShieldCheck, step: '03', title: 'It runs for you', text: 'Customers book online, missed calls get a text back, reviews get requested — every lead lands on your phone.' },
+  { icon: Rocket, step: '02', title: 'We set it all up', text: 'You say yes, we do the setup: website live 48 hours after we have your setup fee and setup form, Google profile in about 3 days, texting once the carriers approve it. You keep your phone number.' },
+  { icon: ShieldCheck, step: '03', title: 'It runs for you', text: 'Customers book online, missed calls get a text back, review requests are easy to send — and leads land on your phone.' },
 ]
 
 const BUNDLE_INCLUDES = [
@@ -36,7 +36,7 @@ const BUNDLE_INCLUDES = [
   'Review Getter + counter QR card',
   'All setup done for you',
   'Edits and support by text',
-  'Month to month — cancel anytime',
+  'Month to month — cancel with 14 days’ notice',
 ]
 
 const REAL_WORK = [
@@ -45,10 +45,10 @@ const REAL_WORK = [
 ]
 
 const FAQS = [
-  { q: 'Does the AI receptionist sound like a robot?', a: 'It sounds like a friendly front-desk person and it always says it’s an AI assistant. It’s in early access right now, so spots are limited.' },
-  { q: 'Why does texting take 1–2 weeks?', a: 'US phone carriers require every business that sends texts to be registered and approved. We file it for you on day one. Your website, booking and Google profile go live while you wait.' },
-  { q: 'Do I need a new phone number?', a: 'No. You keep your number. We connect the agents to it, so nothing changes for your regulars.' },
-  { q: 'Is there a contract?', a: 'No. Month to month. Cancel anytime with 14 days’ notice.' },
+  { q: 'Does the AI receptionist sound like a robot?', a: 'It sounds like a friendly front-desk person and it always says it’s an AI assistant. Calls are recorded only if the caller is told first. It’s in early access right now, so spots are limited.' },
+  { q: 'Why does texting take 1–2 weeks?', a: 'US phone carriers require every business that sends texts to be registered and approved. We file it for you once your site is live, and the timing is up to the carriers. Your website, booking and Google profile go live while you wait.' },
+  { q: 'Do I need a new phone number?', a: 'You keep your number and customers keep calling it. Missed-call texts come from a separate business number we set up for you.' },
+  { q: 'Is there a contract?', a: 'No. Month to month. Cancel with 14 days’ notice.' },
   { q: 'I already have a website. Can I still use this?', a: 'Yes. We plug the agents into the site you have, or build you a new one if yours is slowing you down.' },
   { q: 'What does the free demo cost?', a: 'Nothing. We build it first. If you don’t like it, you don’t pay.' },
   { q: 'Who is behind GR Scale?', a: 'Gio Rivera, based in Tampa. One person you can text, who sets it up and keeps it running.' },
@@ -64,11 +64,11 @@ const FAQ_SCHEMA = {
         { '@type': 'Question', name: 'Is there a free demo?', acceptedAnswer: { '@type': 'Answer',
           text: 'Yes. GR Scale builds a demo for your business first at grscales.com/book. You only pay if you want it.' } },
         { '@type': 'Question', name: 'How fast is setup?', acceptedAnswer: { '@type': 'Answer',
-          text: 'Website live within 48 hours after you approve the demo and pay the setup fee; texting goes live after carrier approval, usually 1-2 weeks.' } },
+          text: 'Website live within 48 hours after we have your setup fee and setup form; texting goes live after carrier approval, and that timing is up to the carriers.' } },
         { '@type': 'Question', name: 'Do I keep my phone number?', acceptedAnswer: { '@type': 'Answer',
-          text: 'Yes. The agents connect to your existing number.' } },
+          text: 'Yes. You keep your number. Missed-call texts are sent from a separate business number we set up for you.' } },
         { '@type': 'Question', name: 'Is there a contract?', acceptedAnswer: { '@type': 'Answer',
-          text: 'No. Month to month, cancel anytime with 14 days notice.' } },
+          text: 'No. Month to month. Cancel with 14 days notice.' } },
       ],
     }
 
@@ -109,7 +109,7 @@ export default function HomePage() {
           </Magnetic>
           {phone ? (
             <a href={`tel:${phone.tel}`} className="btn-ghost px-8 py-4 text-base">
-              <PhoneCall className="h-4 w-4" /> Call our AI: {phone.pretty}
+              <PhoneCall className="h-4 w-4" /> Call {phone.pretty}
             </a>
           ) : (
             <Link href="/agents" className="btn-ghost px-8 py-4 text-base">Browse the agents</Link>
@@ -117,7 +117,7 @@ export default function HomePage() {
         </div>
 
         <div className="reveal-up rd-4 mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm text-[var(--text-muted)]">
-          {['Free demo before you pay', 'Website live in 48 hours', 'No contracts', `Founding price $${PRICE.founding}/mo`].map(t => (
+          {['Free demo before you pay', 'Website live 48 hours after setup', 'No contracts', `Founding price $${PRICE.founding}/mo`].map(t => (
             <span key={t} className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-brand-400" /> {t}</span>
           ))}
         </div>
@@ -131,7 +131,7 @@ export default function HomePage() {
         <div className="container-site max-w-5xl">
           <Reveal className="text-center mb-12">
             <span className="badge mb-4">The problem</span>
-            <h2 className="h2">Every missed call is money walking out the door.</h2>
+            <h2 className="h2">A missed call can be money walking out the door.</h2>
           </Reveal>
           <div className="grid gap-6 md:grid-cols-3">
             {PROBLEMS.map((p, i) => {

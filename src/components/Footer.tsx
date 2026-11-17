@@ -44,12 +44,12 @@ export default function Footer() {
               <span className="text-sm font-bold text-white">GR Scale</span>
             </Link>
             <p className="text-sm text-[var(--text-muted)] leading-relaxed max-w-sm">
-              AI agents that get local businesses found, booked and reviewed — so you never lose a customer to a missed call. Based in Tampa.
+              AI agents that help local businesses get found, booked and reviewed, built to help you stop losing customers to missed calls. Based in Tampa.
             </p>
             <div className="mt-6 flex flex-col gap-2.5 text-sm text-[var(--text-muted)]">
               {SITE.phone && (
                 <a href={`tel:${SITE.phone.tel}`} className="flex min-h-[44px] items-center gap-2 hover:text-white transition">
-                  <Phone className="h-3.5 w-3.5 text-brand-400" /> {SITE.phone.pretty} · AI receptionist 24/7
+                  <Phone className="h-3.5 w-3.5 text-brand-400" /> {SITE.phone.pretty}
                 </a>
               )}
               <a href="mailto:gio@grscales.com" className="flex min-h-[44px] items-center gap-2 hover:text-white transition">

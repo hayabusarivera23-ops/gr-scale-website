@@ -16,7 +16,7 @@ const PLANS = ['Front Desk Bundle', ...AGENTS.map(a => a.name), 'Not sure yet']
 const STEPS = [
   { icon: Sparkles, title: '1. Tell us about your business', desc: 'Takes 60 seconds.' },
   { icon: Rocket, title: '2. We build your free demo', desc: 'Usually within 1–2 days. We text you the link.' },
-  { icon: ShieldCheck, title: '3. Like it? Website live in 48 hours', desc: 'Don’t like it? You pay nothing.' },
+  { icon: ShieldCheck, title: '3. Like it? Live 48 hours after setup', desc: 'The 48 hours start when we have your setup fee and setup form. Don’t like it? You pay nothing.' },
 ]
 
 const input = 'w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-base text-white placeholder:text-[var(--text-dim)] focus:border-brand-500/50 focus:outline-none focus:ring-1 focus:ring-brand-500/30 transition'
@@ -167,7 +167,7 @@ function BookInner() {
 
           {SITE.phone && (
             <div className="card mt-6 flex flex-col sm:flex-row items-center justify-between gap-3 bg-gradient-to-br from-brand-500/10 to-transparent border-brand-500/20">
-              <p className="text-sm text-[var(--text-muted)]">Rather talk? Our AI receptionist answers 24/7 and takes your info.</p>
+              <p className="text-sm text-[var(--text-muted)]">Rather talk? Call us. If an AI assistant answers, it says so first and takes a message.</p>
               <a href={`tel:${SITE.phone.tel}`} className="btn-ghost px-5 py-2.5 text-sm whitespace-nowrap"><PhoneCall className="h-4 w-4" /> {SITE.phone.pretty}</a>
             </div>
           )}

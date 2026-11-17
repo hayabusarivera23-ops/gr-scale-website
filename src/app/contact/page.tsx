@@ -59,7 +59,7 @@ export default function ContactPage() {
                       <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand-500/10 group-hover:bg-brand-500/20 transition">
                         <Phone className="h-4 w-4 text-brand-400" />
                       </div>
-                      {SITE.phone.pretty} · AI receptionist 24/7
+                      {SITE.phone.pretty}
                     </a>
                   )}
                   <a href="mailto:gio@grscales.com" className="flex min-h-[44px] items-center gap-3 text-sm text-[var(--text-muted)] hover:text-white transition group">

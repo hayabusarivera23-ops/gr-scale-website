@@ -40,7 +40,7 @@ function AgentCard({ item }: { item: StoreItem }) {
         <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-500/10 border border-brand-500/20">
           <AgentIcon slug={item.slug} />
         </div>
-        <StatusBadge status={item.status} />
+        <StatusBadge status={item.status} badge={item.badge} />
       </div>
       <h3 id={`a-${item.slug}`} className="text-xl font-bold text-white mb-1">{item.name}</h3>
       <p className="text-sm font-semibold text-brand-300 mb-3">{item.tagline}</p>
@@ -91,7 +91,7 @@ export default function AgentsPage() {
           <div className="relative rounded-2xl border border-brand-500/60 bg-gradient-to-b from-brand-500/10 to-transparent shadow-[0_0_40px_rgba(14,165,233,0.15)] p-6 sm:p-8 md:p-10">
             <div className="flex flex-wrap items-center gap-3 mb-5">
               <span className="badge">Recommended · start here</span>
-              <StatusBadge status={BUNDLE.status} />
+              <StatusBadge status={BUNDLE.status} badge={BUNDLE.badge} />
             </div>
             <div className="grid gap-8 md:grid-cols-2 md:items-center">
               <div>
@@ -140,9 +140,9 @@ export default function AgentsPage() {
           <ul className="flex flex-col gap-3">
             {[
               ['Free demo first.', 'We build a demo for your business before you pay anything.'],
-              ['Texting needs carrier approval.', 'Missed-call text-back and review texts start after U.S. phone carriers approve your business, usually 1–2 weeks. We file it on day one.'],
-              ['Available vs. early access.', 'Available agents are set up for you now. The AI Receptionist is early access with limited spots.'],
-              ['No contracts.', 'Month to month. Cancel anytime with 14 days’ notice.'],
+              ['Texting needs carrier approval.', 'Missed-call text-back and review texts start after U.S. phone carriers approve your business. We file the registration once your site is live, and the timing is up to the carriers (usually 1–2 weeks).'],
+              ['Available vs. early access.', 'Available agents are set up for you now, with texting parts waiting on carrier approval. The AI Receptionist is early access with limited spots.'],
+              ['No contracts.', 'Month to month. Cancel with 14 days’ notice.'],
             ].map(([t, d]) => (
               <li key={t} className="card flex items-start gap-3">
                 <CheckCircle className="h-5 w-5 text-brand-400 shrink-0 mt-0.5" aria-hidden="true" />

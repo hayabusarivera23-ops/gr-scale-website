@@ -16,14 +16,14 @@ export function AgentIcon({ slug, className = 'h-6 w-6 text-brand-400' }: { slug
 }
 
 /** Available / Early access. Text carries the meaning; color is extra. */
-export function StatusBadge({ status }: { status: 'ready' | 'early' }) {
+export function StatusBadge({ status, badge }: { status: 'ready' | 'early'; badge?: string }) {
   const tone = status === 'early'
     ? 'text-amber-300 bg-amber-500/10 border-amber-500/30'
     : 'text-emerald-300 bg-emerald-500/10 border-emerald-500/30'
   return (
-    <span className={`inline-flex items-center gap-1.5 whitespace-nowrap rounded-full border px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider ${tone}`}>
-      <span aria-hidden="true" className={`h-1.5 w-1.5 rounded-full ${status === 'early' ? 'bg-amber-300' : 'bg-emerald-300'}`} />
-      {statusLabel(status)}
+    <span className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-left text-[11px] leading-snug font-bold uppercase tracking-wider ${tone}`}>
+      <span aria-hidden="true" className={`h-1.5 w-1.5 shrink-0 rounded-full ${status === 'early' ? 'bg-amber-300' : 'bg-emerald-300'}`} />
+      {statusLabel({ status, badge })}
     </span>
   )
 }

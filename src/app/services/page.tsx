@@ -14,7 +14,7 @@ const ICONS: Record<string, typeof Bot> = { website: CalendarCheck, google: MapP
 const HOW = [
   { t: 'Free demo', d: 'We build a demo for your business first. You see it before you pay.' },
   { t: 'Setup form', d: 'You say yes, pay the setup, and fill in a 5-minute form: services, prices, hours, photos.' },
-  { t: 'We build it', d: 'Website in 48 hours, Google profile in 3 days, texting after carrier approval.' },
+  { t: 'We build it', d: 'Website within 48 hours after we have your setup fee and setup form, Google profile in about 3 days, texting after carrier approval.' },
   { t: 'It runs', d: 'New bookings, missed callers and reviews come in. Edits and support by text.' },
 ]
 

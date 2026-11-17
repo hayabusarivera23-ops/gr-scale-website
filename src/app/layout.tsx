@@ -38,7 +38,7 @@ const SITE_SCHEMA = {
       '@id': 'https://grscales.com/#business',
       name: 'GR Scale',
       description:
-        'AI agents for local service businesses: website with online booking, Google profile setup, missed-call text-back and Google review requests. An AI receptionist is in early access. Website live in 48 hours after a free demo.',
+        'AI agents for local service businesses: website with online booking, Google profile setup, missed-call text-back and Google review requests. An AI receptionist is in early access. Free demo first; website live within 48 hours after we have your setup fee and setup form.',
       url: 'https://grscales.com',
       logo: 'https://grscales.com' + LOGO,
       image: 'https://grscales.com' + LOGO,

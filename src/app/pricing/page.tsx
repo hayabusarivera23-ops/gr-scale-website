@@ -16,13 +16,13 @@ const BUNDLE = [
   'Review Getter + counter QR card',
   'All setup done for you',
   'Edits and support by text',
-  'Month to month — cancel anytime',
+  'Month to month — cancel with 14 days’ notice',
 ]
 
 const PAY_STEPS = [
   'We build your free demo first.',
   'You like it → you get two links by text: the setup fee and the monthly plan.',
-  'You fill in a 5-minute setup form. Your website goes live within 48 hours, your Google profile within 3 days, and texting as soon as the carriers approve it (usually 1–2 weeks).',
+  'You fill in a 5-minute setup form. Your website goes live within 48 hours after we have that form and your setup fee, your Google profile within about 3 days, and texting once the carriers approve it (usually 1–2 weeks, but the timing is theirs).',
 ]
 
 export default function PricingPage() {
@@ -118,7 +118,7 @@ export default function PricingPage() {
             </div>
           )}
           <p className="text-center text-sm text-[var(--text-dim)] mt-8">
-            All prices in USD. Month to month — cancel anytime with 14 days&apos; notice. Questions?{' '}
+            All prices in USD. Month to month — cancel with 14 days&apos; notice. Questions?{' '}
             <Link href="/contact" className="text-brand-400 underline underline-offset-2 hover:text-brand-300 transition">Contact us</Link>.
           </p>
         </div>

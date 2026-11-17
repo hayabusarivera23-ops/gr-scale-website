@@ -53,7 +53,7 @@ export default async function AgentPage({ params }: Props) {
           priceCurrency: 'USD',
           url,
           // Early access is not generally purchasable yet
-          availability: early ? 'https://schema.org/LimitedAvailability' : 'https://schema.org/InStock',
+          availability: early || item.badge ? 'https://schema.org/LimitedAvailability' : 'https://schema.org/InStock',
           ...(o.unit ? { priceSpecification: { '@type': 'UnitPriceSpecification', price: String(o.price), priceCurrency: 'USD', unitCode: o.unit, billingDuration: 'P1M' } } : {}),
         })),
       },
@@ -94,7 +94,7 @@ export default async function AgentPage({ params }: Props) {
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-500/10 border border-brand-500/20">
                   <AgentIcon slug={item.slug} />
                 </div>
-                <StatusBadge status={item.status} />
+                <StatusBadge status={item.status} badge={item.badge} />
                 {item.kind === 'bundle' && <span className="badge">Recommended</span>}
               </div>
               <h1 className="text-4xl font-extrabold leading-tight tracking-tight md:text-5xl mb-4">{item.name}</h1>
@@ -222,7 +222,7 @@ export default async function AgentPage({ params }: Props) {
                   <AgentIcon slug={o.slug} className="h-5 w-5 text-brand-400" />
                   <span className="font-bold text-white">{o.name}</span>
                   <span className="text-sm text-[var(--text-muted)]">{o.price}</span>
-                  <span className="text-xs text-[var(--text-dim)]">{statusLabel(o.status)}</span>
+                  <span className="text-xs text-[var(--text-dim)]">{statusLabel(o)}</span>
                 </Link>
               </li>
             ))}

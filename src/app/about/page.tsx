@@ -34,7 +34,7 @@ const VALUES = [
 const STATS = [
   { number: '2',     label: 'Client sites live on real domains' },
   { number: '13',    label: 'Industry demo sites built'         },
-  { number: '48h',   label: 'From yes to live'                  },
+  { number: '48h',   label: 'To live, after setup fee + form'   },
   { number: '100%',  label: 'Mobile responsive'                 },
 ]
 

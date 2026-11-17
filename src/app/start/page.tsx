@@ -41,6 +41,10 @@ function StartInner() {
     address: '', hours: '', services: '', booking: '', website: '', gbp: '', bizphone: '', carrier: '',
     photos: '', voice: '', message: '', agree: false, company_url: '',
   })
+  // Carrier-registration details. Kept out of the main payload and added to the notes field on submit,
+  // so the intake receives exactly the same field names as before.
+  const [reg, setReg] = useState({ legal: '', ein: '', ownercell: '' })
+  const setR = (k: keyof typeof reg) => (e: React.ChangeEvent<HTMLInputElement>) => setReg({ ...reg, [k]: e.target.value })
   const set = (k: keyof typeof f) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
     setF({ ...f, [k]: e.target.type === 'checkbox' ? (e.target as HTMLInputElement).checked : e.target.value })
 
@@ -49,7 +53,13 @@ function StartInner() {
     if (!f.agree) { setStatus('error'); setErr('Please check the box to agree to the terms.'); return }
     setStatus('sending'); setErr('')
     try {
-      await submitLead({ form: 'setup', source: 'Client setup form', ...f })
+      const extra = [
+        reg.legal && `Legal business name: ${reg.legal}`,
+        reg.ein && `EIN: ${reg.ein}`,
+        reg.ownercell && `Owner cell for carrier code: ${reg.ownercell}`,
+      ].filter(Boolean).join('\n')
+      const message = [f.message, extra].filter(Boolean).join('\n\n')
+      await submitLead({ form: 'setup', source: 'Client setup form', ...f, message })
       setStatus('sent')
     } catch (er) {
       setStatus('error'); setErr(er instanceof Error ? er.message : 'Something went wrong. Please try again.')
@@ -73,7 +83,7 @@ function StartInner() {
               <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-green-500/10"><CheckCircle className="h-8 w-8 text-green-400" /></div>
               <h2 className="h3 text-white">Got it. Setup starts now.</h2>
               <p className="text-sm text-[var(--text-muted)] max-w-md leading-relaxed">
-                Gio will text you within one business day to confirm. Your website goes live within 48 hours, your Google profile within about 3 days, and texting as soon as the phone carriers approve it (usually 1–2 weeks).
+                Gio will text you within one business day to confirm. Your website goes live within 48 hours after we have this form and your setup fee, your Google profile within about 3 days, and texting once the phone carriers approve it. That timing is up to the carriers.
               </p>
               <Link href="/services" className="text-sm text-brand-400 hover:underline">See what each service includes →</Link>
             </div>
@@ -103,12 +113,20 @@ function StartInner() {
               </div>
 
               <h2 className="h3 mt-10 mb-2">Your shop&apos;s phone</h2>
-              <p className="text-sm text-[var(--text-muted)] mb-6">For missed-call text-back. You keep your number — we only forward calls you don&apos;t answer.</p>
+              <p className="text-sm text-[var(--text-muted)] mb-6">For missed-call text-back. You keep your number. Calls you don&apos;t answer forward to a separate business number we set up, and the text is sent from that number.</p>
               <div className="grid gap-4 sm:grid-cols-2">
                 <Field id="s-bph" title="Number customers call"><input id="s-bph" type="tel" inputMode="tel" className={input} value={f.bizphone} onChange={set('bizphone')} /></Field>
                 <Field id="s-car" title="Phone company">
                   <select id="s-car" className={input + ' bg-[#0d1117]'} value={f.carrier} onChange={set('carrier')}><option value="">Choose…</option>{CARRIERS.map(c => <option key={c} value={c}>{c}</option>)}</select>
                 </Field>
+              </div>
+
+              <h2 className="h3 mt-10 mb-2">For texting approval (optional)</h2>
+              <p className="text-sm text-[var(--text-muted)] mb-6">Only needed if you want texting. U.S. phone carriers ask for these before a business can send texts, and they send a one-time code to the owner&apos;s cell. Skip it now and Gio will ask later.</p>
+              <div className="grid gap-4 sm:grid-cols-2">
+                <Field id="s-legal" title="Legal business name" hint="As it appears on your tax paperwork." wide><input id="s-legal" className={input} value={reg.legal} onChange={setR('legal')} /></Field>
+                <Field id="s-ein" title="EIN" hint="No EIN? Write “sole proprietor”."><input id="s-ein" inputMode="numeric" autoComplete="off" className={input} value={reg.ein} onChange={setR('ein')} placeholder="12-3456789" /></Field>
+                <Field id="s-ocell" title="Owner&apos;s cell" hint="For the carriers&apos; one-time code."><input id="s-ocell" type="tel" inputMode="tel" className={input} value={reg.ownercell} onChange={setR('ownercell')} /></Field>
               </div>
 
               <h2 className="h3 mt-10 mb-6">Look and voice</h2>

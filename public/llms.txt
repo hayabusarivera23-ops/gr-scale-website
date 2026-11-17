@@ -1,21 +1,21 @@
 # GR Scale
 
-> GR Scale sets up AI agents for local service businesses so they never lose a customer to a missed call: a website with online booking, Google Business Profile setup, missed-call text-back and Google review requests. An AI receptionist is in early access. Based in Tampa, Florida. Founded by Gio Rivera. Free demo first; live within 48 hours after approval.
+> GR Scale sets up AI agents for local service businesses built to help them stop losing customers to missed calls: a website with online booking, Google Business Profile setup, missed-call text-back and Google review requests. An AI receptionist is in early access. Based in Tampa, Florida. Founded by Gio Rivera. Free demo first; website live within 48 hours after we have your setup fee and setup form.
 
 ## The agents
 
 - Website + Online Booking — $297 setup + $97/mo — https://grscales.com/agents/website-booking
 - Google Profile Setup — $197 one-time (included in the Front Desk Bundle) — https://grscales.com/agents/google-profile-setup
-- Missed-Call Text-Back — $97/mo (every missed call gets a text with the booking link in seconds; starts after U.S. carrier approval, usually 1-2 weeks) — https://grscales.com/agents/missed-call-text-back
-- Review Getter — $67/mo (counter QR card plus Google review requests by text after each visit; texts start after carrier approval) — https://grscales.com/agents/review-getter
-- AI Receptionist — $297 setup + $297/mo (early access, limited spots, not generally available yet; always says it is an AI assistant) — https://grscales.com/agents/ai-receptionist
+- Missed-Call Text-Back — $97/mo (missed callers get a text with the booking link from a separate business number; the shop keeps its own number; starts after U.S. carrier approval, timing is up to the carriers) — https://grscales.com/agents/missed-call-text-back
+- Review Getter — $67/mo (counter QR card and short link to ask every customer for a Google review; review texts only for customers who agreed to texts, after carrier approval; no promise about ratings or ranking) — https://grscales.com/agents/review-getter
+- AI Receptionist — $297 setup + $297/mo (early access, limited spots, not generally available yet; always says it is an AI assistant; calls recorded only with notice to the caller) — https://grscales.com/agents/ai-receptionist
 
 ## Front Desk Bundle
 
 - Website + booking, Google Profile Setup, missed-call text-back and Review Getter
 - Details: https://grscales.com/agents/front-desk-bundle
 - $297 setup + $197/mo; founding price $147/mo for the first 5 businesses
-- Month to month, cancel anytime with 14 days notice
+- Month to month, cancel with 14 days notice
 
 ## Who it's for
 

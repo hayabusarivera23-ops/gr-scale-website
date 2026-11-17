@@ -14,6 +14,8 @@ export type StoreItem = {
   name: string
   kind: 'bundle' | 'agent'
   status: 'ready' | 'early'
+  /** Full badge text when plain "Available" would overstate it. */
+  badge?: string
   tagline: string
   does: string
   price: string
@@ -36,9 +38,9 @@ export type StoreItem = {
 }
 
 const CARRIER =
-  'Texting only starts after U.S. phone carriers approve your business registration (called 10DLC). We file it on day one. It usually takes 1–2 weeks and we can’t speed the carriers up.'
+  'Texting only starts after U.S. phone carriers approve your business registration (called 10DLC). We file it once your site is live. Approval usually takes 1–2 weeks, but the timing is up to the carriers and we can’t speed them up.'
 
-type Detail = Omit<StoreItem, 'slug' | 'name' | 'kind' | 'status' | 'tagline' | 'does' | 'price' | 'timeline' | 'includes'>
+type Detail = Omit<StoreItem, 'slug' | 'name' | 'kind' | 'status' | 'badge' | 'tagline' | 'does' | 'price' | 'timeline' | 'includes'>
 
 const DETAIL: Record<string, Detail> = {
   website: {
@@ -46,13 +48,13 @@ const DETAIL: Record<string, Detail> = {
     steps: [
       { t: 'We build a free demo', d: 'You get a link to a real page with your name, services and a Book Now button. You see it before you pay.' },
       { t: 'You send your details', d: 'Say yes, pay the setup fee and fill in a 5-minute form. We connect your domain or get you one.' },
-      { t: 'It goes live', d: 'Your site is live within 48 hours. Customers find you, see prices and book without calling.' },
+      { t: 'It goes live', d: 'Your site goes live within 48 hours after we have your setup fee and setup form. Customers can find you, see prices and book without calling.' },
     ],
     ownerDoes: ['Text us when a price, photo or your hours change', 'Keep your booking app calendar up to date'],
     limits: [
       'A website alone does not put you at the top of Google. It gives Google and customers something good to land on.',
       'Booking runs through your booking app (or a free one we set up). We don’t replace it.',
-      'Live in 48 hours starts when we have your setup form and photos.',
+      'The 48 hours start when we have your setup fee and your setup form, including photos.',
       'Small edits are included. A full redesign later is quoted separately.',
     ],
     faqs: [
@@ -62,7 +64,7 @@ const DETAIL: Record<string, Detail> = {
       { q: 'Can you fix my current site instead?', a: 'Usually it’s faster to build a new one. Send it with your demo request and we’ll tell you straight.' },
     ],
     seoTitle: 'Website + Online Booking for Local Businesses',
-    seoDescription: 'A fast, mobile-first website with your services, prices, photos and a Book Now button. Free demo first. $297 setup + $97/mo. Live in 48 hours. Tampa, FL.',
+    seoDescription: 'A fast, mobile-first website with your services, prices, photos and a Book Now button. Free demo first. $297 setup + $97/mo. Live 48 hours after setup fee and form.',
     offers: [{ name: 'Setup', price: 297 }, { name: 'Monthly', price: 97, unit: 'MON' }],
   },
   google: {
@@ -88,52 +90,54 @@ const DETAIL: Record<string, Detail> = {
     offers: [{ name: 'One-time setup', price: 197 }],
   },
   textback: {
-    needs: ['Your business phone number and who your carrier is', 'Your booking link', 'Legal business name and EIN (or your details as a sole proprietor) for carrier registration', 'How you want the text to sound'],
+    needs: ['Your business phone number and who your carrier is', 'Your booking link', 'Legal business name and EIN (or your details as a sole proprietor) for carrier registration', 'The owner’s cell, for a one-time code the carriers send', 'How you want the text to sound'],
     steps: [
-      { t: 'We register your business', d: 'Carriers require every business that texts to be registered. We file it for you on day one.' },
-      { t: 'We connect your number', d: 'Missed calls forward to the system. You keep your number and your regulars notice nothing.' },
-      { t: 'Missed call, instant text', d: 'The caller gets a text in seconds with your booking link. You get a list of everyone who called.' },
+      { t: 'We register your business', d: 'Carriers require every business that texts to be registered. We file it for you once your site is live. Approval timing is up to the carriers.' },
+      { t: 'We set up a second number', d: 'You keep your own number. Calls you don’t answer forward to a separate business number we set up, and the text is sent from that number.' },
+      { t: 'Missed call, text back', d: 'The caller gets a text with your booking link right after the missed call. You get a list of missed callers.' },
     ],
     ownerDoes: ['Turn on call forwarding once (we walk you through it, about 2 minutes)', 'Reply to anyone who texts back with a question'],
     limits: [
       CARRIER,
+      'The text comes from a separate business number we set up, not from your own number. Your number stays yours.',
+      'Calls you don’t answer forward to that number, so they no longer go to your old voicemail.',
       'It sends one text to someone who just called you. It never cold-texts or blasts a list.',
       'It only works for callers on mobile phones. Landline callers can’t receive texts.',
       'It doesn’t answer the call or hold a conversation. That is the AI Receptionist, which is early access.',
       'Callers can reply STOP at any time and they won’t be texted again.',
     ],
     faqs: [
-      { q: 'Do I need a new phone number?', a: 'No. You keep your number. Missed calls forward to the system, which sends the text.' },
-      { q: 'Why can’t it start tomorrow?', a: 'U.S. carriers must approve every business that sends texts. We file on day one; approval usually takes 1–2 weeks.' },
+      { q: 'Do I need a new phone number?', a: 'You keep your number and customers keep calling it. We set up a separate business number, and the text-back is sent from that one.' },
+      { q: 'Why can’t it start tomorrow?', a: 'U.S. carriers must approve every business that sends texts. We file once your site is live. Approval usually takes 1–2 weeks, but the timing is up to the carriers.' },
       { q: 'What does the text say?', a: 'Something short in your voice, like: “Sorry we missed you, this is Mike’s Barbershop. Book here: (your link).” You approve the wording first.' },
       { q: 'Is there a setup fee?', a: 'Not for text-back on its own. It’s $97 a month. In the Front Desk Bundle it’s included.' },
     ],
     seoTitle: 'Missed-Call Text-Back for Local Businesses',
-    seoDescription: 'When you can’t pick up, the caller gets a text in seconds with your booking link. $97/mo, keep your number. Starts after carrier approval (1–2 weeks).',
+    seoDescription: 'When you can’t pick up, the caller gets a text with your booking link from a separate business number. $97/mo, keep your number. Starts after carrier approval.',
     offers: [{ name: 'Monthly', price: 97, unit: 'MON' }],
   },
   reviews: {
-    needs: ['Your Google Business Profile (we pull your review link from it)', 'Your logo, for the counter card', 'For review texts: how you’ll send us each day’s customers, or your booking app'],
+    needs: ['Your Google Business Profile (we pull your review link from it)', 'Your logo, for the counter card', 'For review texts: which customers agreed to get a text from you'],
     steps: [
-      { t: 'We make your review link and QR card', d: 'One short link and a printable counter card that open your Google review page. Ready in 48 hours.' },
-      { t: 'We set up the review text', d: 'A short, friendly request written in your voice. It starts once carriers approve texting.' },
-      { t: 'Customers leave reviews', d: 'After a visit they scan the card or tap the text. Each month we send you the count of new reviews.' },
+      { t: 'We make your review link and QR card', d: 'One short link and a printable counter card that open your Google review page. Ready within 48 hours after we have your setup fee and setup form.' },
+      { t: 'We set up the review text', d: 'A short, friendly request written in your voice, for customers who agreed to get texts from you. It starts once carriers approve texting.' },
+      { t: 'You ask, they review', d: 'Customers scan the card or tap the link. Each month we send you the count of new reviews.' },
     ],
-    ownerDoes: ['Put the QR card on your counter or mirror', 'Give us a way to know who visited: your booking app, or a quick text of the day’s customers'],
+    ownerDoes: ['Put the QR card on your counter or mirror', 'Ask every customer the same way', 'For review texts: tell us which customers agreed to get a text from you'],
     limits: [
       CARRIER + ' The QR card and link work right away.',
-      'We ask every customer the same way. We don’t filter out unhappy customers and we don’t write, buy or remove reviews. Google’s rules don’t allow it.',
-      'We can’t promise a number of reviews or a star rating.',
-      'If your booking app can’t share visits automatically, review texts need a quick list from you.',
+      'Every customer is asked the same way. We don’t filter out unhappy customers, we don’t offer anything in exchange for a review and we don’t write, buy or remove reviews. Google’s rules don’t allow it.',
+      'We can’t promise a number of reviews, a star rating or a Google ranking.',
+      'Review texts go only to customers who agreed to get texts from your business. A visit alone isn’t permission.',
     ],
     faqs: [
-      { q: 'Do you write the reviews?', a: 'No. Real customers write them. We just make asking automatic and make leaving one take two taps.' },
-      { q: 'Can I use only the QR card?', a: 'Yes. The card and link work from day two with no carrier approval needed.' },
-      { q: 'Will customers get spammed?', a: 'No. One request after a visit. They can reply STOP and won’t hear from us again.' },
-      { q: 'Do more reviews help me on Google Maps?', a: 'Reviews are one of the things Google says it looks at for local results. We can’t promise a ranking, but more recent reviews help people choose you.' },
+      { q: 'Do you write the reviews?', a: 'No. Real customers write them. We make it easy to ask every customer and quick for them to leave one.' },
+      { q: 'Can I use only the QR card?', a: 'Yes. The card and link need no carrier approval.' },
+      { q: 'Will customers get spammed?', a: 'No. One request, only to customers who agreed to get texts from you. They can reply STOP and won’t be texted again.' },
+      { q: 'Will more reviews move me up on Google Maps?', a: 'We can’t promise that. Google decides rankings. What we do is make it easy to ask every customer for a review.' },
     ],
     seoTitle: 'Review Getter: More Google Reviews for Local Businesses',
-    seoDescription: 'A counter QR card plus a friendly review request after each visit. $67/mo. QR card in 48 hours; review texts start after carrier approval. No fake reviews.',
+    seoDescription: 'A counter QR card and short link that make it easy to ask every customer for a Google review. $67/mo. Review texts start after carrier approval. No fake reviews.',
     offers: [{ name: 'Monthly', price: 67, unit: 'MON' }],
   },
   receptionist: {
@@ -141,13 +145,14 @@ const DETAIL: Record<string, Detail> = {
     steps: [
       { t: 'Join early access', d: 'Tell us about your business. Spots are limited while we test, and we’ll tell you honestly if it’s a fit.' },
       { t: 'We teach it your business', d: 'Prices, hours, services and how you like the phone answered. You call it and test it before customers do.' },
-      { t: 'It answers', d: 'It picks up, says it’s an AI assistant, answers questions, takes a message or books, then sends you a summary.' },
+      { t: 'It answers', d: 'It picks up, says it’s an AI assistant, answers questions, takes a message or books, then sends you the message.' },
     ],
-    ownerDoes: ['Test-call it and tell us what to fix', 'Read the call summaries', 'Call back anyone it couldn’t help'],
+    ownerDoes: ['Test-call it and tell us what to fix', 'Read the messages it sends you', 'Call back anyone it couldn’t help'],
     limits: [
       'This is early access. It is not generally available yet and we’re taking a small number of businesses.',
       'It always tells callers it’s an AI assistant. We won’t set it up to pretend to be a person.',
-      'It can get things wrong. Please read the summaries, especially in the first weeks.',
+      'Calls are recorded or transcribed only if the caller is told at the start of the call. Without that notice, nothing is recorded.',
+      'It can get things wrong. Please read the messages it sends you, especially in the first weeks.',
       'It answers from what you give us. It won’t quote custom jobs, diagnose problems or handle emergencies.',
       'Text confirmations to callers depend on the same carrier approval as our other texting.',
     ],
@@ -168,6 +173,7 @@ const fromAgent = (a: Agent): StoreItem => ({
   name: a.name,
   kind: 'agent',
   status: a.status,
+  badge: a.badge,
   tagline: a.short,
   does: a.does,
   price: a.price,
@@ -188,7 +194,8 @@ export const BUNDLE: StoreItem = {
   does: 'Your website with online booking, Google profile setup, missed-call text-back and the Review Getter, all set up for you and working together.',
   price: `$${PRICE.setup} setup + $${PRICE.founding}/mo`,
   priceNote: `Founding price for the first ${PRICE.foundingSpots} businesses, kept for as long as you stay. Then $${PRICE.bundle}/mo.`,
-  timeline: 'Website in 48 hours · Google profile in 3 days · texting after carrier approval',
+  badge: 'Available · texting starts after carrier approval',
+  timeline: 'Website 48 hours after we have your setup fee and setup form · Google profile in about 3 days · texting after carrier approval',
   includes: [
     'Website with online booking',
     'Google Profile Setup (normally $197)',
@@ -196,13 +203,13 @@ export const BUNDLE: StoreItem = {
     'Review Getter + counter QR card',
     'All setup done for you',
     'Edits and support by text',
-    'Month to month, cancel anytime',
+    'Month to month, cancel with 14 days’ notice',
   ],
   needs: ['Business name, address, hours, services and prices', '5–10 photos of your work', 'Your phone number and carrier', 'Access to your Google Business Profile', 'Your booking link, if you have one'],
   steps: [
     { t: 'Free demo', d: 'We build a demo for your business first: your name, your services, your booking link. You see it before you pay.' },
     { t: 'One 5-minute form', d: 'Say yes, pay the setup fee and send your details once. We use them for all four parts.' },
-    { t: 'It goes live in order', d: 'Website in 48 hours, Google profile in about 3 days, texting as soon as carriers approve it (usually 1–2 weeks).' },
+    { t: 'It goes live in order', d: 'Website within 48 hours after we have your setup fee and setup form, Google profile in about 3 days, texting once carriers approve it. That timing is up to the carriers.' },
   ],
   ownerDoes: ['Accept our Google manager invite', 'Turn on call forwarding once (about 2 minutes, we walk you through it)', 'Put the QR card on your counter', 'Text us when prices or hours change'],
   limits: [
@@ -214,7 +221,7 @@ export const BUNDLE: StoreItem = {
   faqs: [
     { q: 'What’s the difference between $147 and $197 a month?', a: `$${PRICE.founding}/mo is the founding price for the first ${PRICE.foundingSpots} businesses, and they keep it for as long as they stay. After those spots are taken the bundle is $${PRICE.bundle}/mo.` },
     { q: 'How much do I save compared to buying each one?', a: 'Bought one by one, the website ($97/mo), text-back ($97/mo) and Review Getter ($67/mo) add up to $261 a month, plus $197 for Google Profile Setup. The bundle covers all four.' },
-    { q: 'Is there a contract?', a: 'No. Month to month. Cancel anytime with 14 days’ notice.' },
+    { q: 'Is there a contract?', a: 'No. Month to month. Cancel with 14 days’ notice.' },
     { q: 'What if I only want one part?', a: 'Every agent is sold on its own too. Start with one and add more later.' },
     { q: 'When do I pay?', a: 'Only after you’ve seen your free demo and said yes.' },
   ],
@@ -229,4 +236,4 @@ export const getItem = (slug: string) => STORE.find(i => i.slug === slug)
 export const itemHref = (i: { slug: string }) => `/agents/${i.slug}`
 export const bookHref = (i: { name: string }) => `/book?plan=${encodeURIComponent(i.name)}`
 export const BUNDLE_AGENT_NAMES = inBundle.map(a => a.name)
-export const statusLabel = (s: 'ready' | 'early') => (s === 'early' ? 'Early access' : 'Available')
+export const statusLabel = (i: { status: 'ready' | 'early'; badge?: string }) => i.badge || (i.status === 'early' ? 'Early access' : 'Available')

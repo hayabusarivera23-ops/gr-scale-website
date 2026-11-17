@@ -40,7 +40,7 @@ export async function submitLead(payload: Record<string, unknown>): Promise<Subm
   throw new Error(
     msg ||
       (SITE.phone
-        ? `Something went wrong. Please call ${SITE.phone.pretty} — our AI receptionist answers 24/7.`
+        ? `Something went wrong. Please try again in a minute, or call ${SITE.phone.pretty}.`
         : 'Something went wrong sending your request. Please try again in a minute.'),
   )
 }
