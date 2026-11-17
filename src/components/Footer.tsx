@@ -2,18 +2,20 @@ import Link from 'next/link'
 import { Phone, Mail, MapPin } from 'lucide-react'
 import { SITE } from '@/lib/site'
 
-const LOGO = '/ChatGPT%20Image%20Jul%2012,%202026,%2003_38_02%20PM.png'
+const LOGO = '/logo.png'
 
 const LINKS = {
-  Services: [
-    { label: 'Front Desk Bundle',     href: '/pricing'                },
-    { label: 'Website + Booking',     href: '/services#website'       },
-    { label: 'Google Profile Setup',  href: '/services#google'        },
-    { label: 'Missed-Call Text-Back', href: '/services#textback'      },
-    { label: 'Review Getter',         href: '/services#reviews'       },
-    { label: 'AI Receptionist',       href: '/services#receptionist'  },
+  Agents: [
+    { label: 'All agents',            href: '/agents'                        },
+    { label: 'Front Desk Bundle',     href: '/agents/front-desk-bundle'      },
+    { label: 'Website + Booking',     href: '/agents/website-booking'        },
+    { label: 'Google Profile Setup',  href: '/agents/google-profile-setup'   },
+    { label: 'Missed-Call Text-Back', href: '/agents/missed-call-text-back'  },
+    { label: 'Review Getter',         href: '/agents/review-getter'          },
+    { label: 'AI Receptionist',       href: '/agents/ai-receptionist'        },
   ],
   Company: [
+    { label: 'Services',      href: '/services' },
     { label: 'Pricing',       href: '/pricing' },
     { label: 'Free demo',     href: '/book'    },
     { label: 'Demo sites',    href: '/demos'   },
@@ -34,23 +36,23 @@ export default function Footer() {
         <div className="grid gap-12 md:grid-cols-4">
           {/* Brand */}
           <div className="md:col-span-2">
-            <Link href="/" className="flex items-center gap-2.5 mb-4">
+            <Link href="/" className="inline-flex min-h-[44px] items-center gap-2.5 mb-4">
               <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-white overflow-hidden">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={LOGO} alt="GR Scale logo" className="h-full w-full object-cover" />
+                <img src={LOGO} alt="" width={36} height={36} loading="lazy" className="h-full w-full object-cover" />
               </div>
               <span className="text-sm font-bold text-white">GR Scale</span>
             </Link>
             <p className="text-sm text-[var(--text-muted)] leading-relaxed max-w-sm">
-              AI agents that answer, text back, book and get reviews for local businesses — so you never lose a customer to a missed call. Based in Tampa.
+              AI agents that get local businesses found, booked and reviewed — so you never lose a customer to a missed call. Based in Tampa.
             </p>
             <div className="mt-6 flex flex-col gap-2.5 text-sm text-[var(--text-muted)]">
               {SITE.phone && (
-                <a href={`tel:${SITE.phone.tel}`} className="flex items-center gap-2 hover:text-white transition">
+                <a href={`tel:${SITE.phone.tel}`} className="flex min-h-[44px] items-center gap-2 hover:text-white transition">
                   <Phone className="h-3.5 w-3.5 text-brand-400" /> {SITE.phone.pretty} · AI receptionist 24/7
                 </a>
               )}
-              <a href="mailto:gio@grscales.com" className="flex items-center gap-2 hover:text-white transition">
+              <a href="mailto:gio@grscales.com" className="flex min-h-[44px] items-center gap-2 hover:text-white transition">
                 <Mail className="h-3.5 w-3.5 text-brand-400" /> gio@grscales.com
               </a>
               <span className="flex items-center gap-2">
@@ -63,12 +65,12 @@ export default function Footer() {
           {Object.entries(LINKS).map(([section, links]) => (
             <div key={section}>
               <p className="mb-4 text-xs font-bold uppercase tracking-widest text-[var(--text-dim)]">{section}</p>
-              <ul className="flex flex-col gap-2">
+              <ul className="flex flex-col">
                 {links.map(l => (
                   <li key={l.label}>
                     <Link
                       href={l.href}
-                      className="text-sm text-[var(--text-muted)] hover:text-white transition"
+                      className="flex min-h-[44px] items-center text-sm text-[var(--text-muted)] hover:text-white transition md:min-h-[32px]"
                     >
                       {l.label}
                     </Link>

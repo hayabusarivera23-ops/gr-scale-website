@@ -1,5 +1,12 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowRight, Target, Zap, Search, Users, CheckCircle } from 'lucide-react'
+
+export const metadata: Metadata = {
+  title: 'About — GR Scale | Built in Tampa by Gio Rivera',
+  description: 'GR Scale is a one-person Tampa business that sets up websites, booking, Google profiles, missed-call text-back and review requests for local service businesses.',
+  alternates: { canonical: '/about' },
+}
 
 const VALUES = [
   {

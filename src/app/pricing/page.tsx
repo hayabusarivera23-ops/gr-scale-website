@@ -5,7 +5,8 @@ import { SITE, PRICE, AGENTS } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: 'Pricing — GR Scale | AI Front Desk for Local Businesses',
-  description: `Front Desk Bundle: website + booking, missed-call text-back and Review Getter for $${PRICE.founding}/mo founding price + $${PRICE.setup} setup. Free demo first. No contracts.`,
+  description: `Front Desk Bundle: website + booking, Google profile setup, missed-call text-back and Review Getter for $${PRICE.founding}/mo founding price + $${PRICE.setup} setup. No contracts.`,
+  alternates: { canonical: '/pricing' },
 }
 
 const BUNDLE = [
@@ -53,6 +54,7 @@ export default function PricingPage() {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3">
                   <Link href="/book?plan=Front%20Desk%20Bundle" className="btn-primary justify-center px-6 py-3">Get a free demo <ArrowRight className="h-4 w-4" /></Link>
+                  <Link href="/agents/front-desk-bundle" className="btn-ghost justify-center px-6 py-3">How the bundle works</Link>
                 </div>
               </div>
               <ul className="flex flex-col gap-3">
@@ -79,9 +81,14 @@ export default function PricingPage() {
                 </div>
                 <p className="text-sm text-[var(--text-muted)] leading-relaxed flex-1">{a.does}</p>
                 <p className="mt-3 text-xs text-[var(--text-dim)]">{a.status === 'early' ? 'Early access · ' : ''}{a.setup}</p>
-                <Link href={`/book?plan=${encodeURIComponent(a.name)}`} className="mt-5 text-sm font-semibold text-brand-400 hover:text-brand-300 transition inline-flex items-center gap-1">
-                  Get a free demo of this <ArrowRight className="h-3.5 w-3.5" />
-                </Link>
+                <div className="mt-3 flex flex-wrap gap-x-6">
+                  <Link href={`/book?plan=${encodeURIComponent(a.name)}`} aria-label={`${a.status === 'early' ? 'Join early access for' : 'Get a free demo of'} ${a.name}`} className="min-h-[44px] text-sm font-semibold text-brand-400 hover:text-brand-300 transition inline-flex items-center gap-1">
+                    {a.status === 'early' ? 'Join early access' : 'Get a free demo'} <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+                  </Link>
+                  <Link href={`/agents/${a.slug}`} aria-label={`How ${a.name} works`} className="min-h-[44px] text-sm font-semibold text-[var(--text-muted)] hover:text-white transition inline-flex items-center">
+                    How it works
+                  </Link>
+                </div>
               </div>
             ))}
           </div>
@@ -112,7 +119,7 @@ export default function PricingPage() {
           )}
           <p className="text-center text-sm text-[var(--text-dim)] mt-8">
             All prices in USD. Month to month — cancel anytime with 14 days&apos; notice. Questions?{' '}
-            <Link href="/contact" className="text-brand-400 hover:text-brand-300 transition">Contact us</Link>.
+            <Link href="/contact" className="text-brand-400 underline underline-offset-2 hover:text-brand-300 transition">Contact us</Link>.
           </p>
         </div>
       </section>

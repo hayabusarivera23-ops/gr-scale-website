@@ -1,17 +1,19 @@
 # GR Scale
 
-> GR Scale sets up AI agents for local service businesses so they never lose a customer to a missed call: a website with online booking, missed-call text-back, Google review requests and a 24/7 AI receptionist. Based in Tampa, Florida. Founded by Gio Rivera. Free demo first; live within 48 hours after approval.
+> GR Scale sets up AI agents for local service businesses so they never lose a customer to a missed call: a website with online booking, Google Business Profile setup, missed-call text-back and Google review requests. An AI receptionist is in early access. Based in Tampa, Florida. Founded by Gio Rivera. Free demo first; live within 48 hours after approval.
 
 ## The agents
 
-- Website + Online Booking — $297 setup + $97/mo
-- Missed-Call Text-Back — $97/mo (every missed call gets a text with the booking link in seconds)
-- Review Getter — $67/mo (Google review requests by text after each visit)
-- AI Receptionist — $297 setup + $297/mo (answers calls 24/7, always says it is an AI assistant)
+- Website + Online Booking — $297 setup + $97/mo — https://grscales.com/agents/website-booking
+- Google Profile Setup — $197 one-time (included in the Front Desk Bundle) — https://grscales.com/agents/google-profile-setup
+- Missed-Call Text-Back — $97/mo (every missed call gets a text with the booking link in seconds; starts after U.S. carrier approval, usually 1-2 weeks) — https://grscales.com/agents/missed-call-text-back
+- Review Getter — $67/mo (counter QR card plus Google review requests by text after each visit; texts start after carrier approval) — https://grscales.com/agents/review-getter
+- AI Receptionist — $297 setup + $297/mo (early access, limited spots, not generally available yet; always says it is an AI assistant) — https://grscales.com/agents/ai-receptionist
 
 ## Front Desk Bundle
 
-- Website + booking, missed-call text-back and Review Getter
+- Website + booking, Google Profile Setup, missed-call text-back and Review Getter
+- Details: https://grscales.com/agents/front-desk-bundle
 - $297 setup + $197/mo; founding price $147/mo for the first 5 businesses
 - Month to month, cancel anytime with 14 days notice
 
@@ -26,6 +28,7 @@ Barbershops, salons, HVAC, lawn care, auto detailers and other local service bus
 
 ## Contact
 
+- Agent store (all agents and prices): https://grscales.com/agents
 - Free demo: https://grscales.com/book
 - Pricing: https://grscales.com/pricing
 - Email: gio@grscales.com

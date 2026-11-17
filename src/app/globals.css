@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-
 :root {
   --bg: #080b10;
   --bg-card: #0d1117;
@@ -14,12 +12,16 @@
   --brand-dim: rgba(14,165,233,0.15);
   --text: #f0f6fc;
   --text-muted: #8b949e;
-  --text-dim: #484f58;
+  --text-dim: #7d8590; /* was #484f58 (2.2:1 on the card color, unreadable); now 4.9:1+ */
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 html { scroll-behavior: smooth; }
+
+/* Keyboard focus is always visible */
+:focus-visible { outline: 2px solid #7dd3fc; outline-offset: 2px; border-radius: 6px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
 body {
   background: var(--bg);
@@ -41,8 +43,8 @@ body {
 
 /* ── Components ── */
 .btn-primary {
-  @apply inline-flex items-center gap-2 rounded-xl bg-brand-500 px-6 py-3 text-sm font-semibold text-white
-         transition-all hover:bg-brand-400 hover:shadow-[0_0_24px_rgba(14,165,233,0.4)] active:scale-95;
+  @apply inline-flex items-center gap-2 rounded-xl bg-[#0279b8] px-6 py-3 text-sm font-semibold text-white
+         transition-all hover:bg-brand-600 hover:shadow-[0_0_24px_rgba(14,165,233,0.4)] active:scale-95;
 }
 .btn-ghost {
   @apply inline-flex items-center gap-2 rounded-xl border border-white/10 px-6 py-3 text-sm font-semibold text-white/80

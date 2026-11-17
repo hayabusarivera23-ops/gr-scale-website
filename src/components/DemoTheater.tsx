@@ -172,8 +172,8 @@ export default function DemoTheater() {
       <section className="px-4 pt-10 pb-6">
         <div className="max-w-6xl mx-auto flex flex-wrap justify-center gap-2">
           {['All', ...NICHES].map(n => (
-            <button key={n} onClick={() => setFilter(n)}
-              className={`rounded-full border px-4 py-1.5 text-xs font-bold transition ${
+            <button key={n} onClick={() => setFilter(n)} aria-pressed={filter === n}
+              className={`min-h-[44px] rounded-full border px-4 py-1.5 text-xs font-bold transition ${
                 filter === n
                   ? 'border-sky-500/60 bg-sky-500/15 text-sky-300'
                   : 'border-zinc-800 bg-zinc-900/60 text-zinc-400 hover:border-zinc-600 hover:text-zinc-200'

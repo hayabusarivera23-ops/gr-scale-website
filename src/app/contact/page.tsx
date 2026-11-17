@@ -4,17 +4,9 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { Phone, Mail, MapPin, Clock, Send, CheckCircle, AlertCircle } from 'lucide-react'
 import { submitLead } from '@/lib/submitLead'
-import { SITE } from '@/lib/site'
+import { SITE, AGENTS } from '@/lib/site'
 
-const SERVICES = [
-  'Website Design & Build',
-  'Website Redesign',
-  'Google Business Profile',
-  'Local SEO',
-  'Landing Page',
-  'Monthly Maintenance',
-  'Not Sure Yet',
-]
+const SERVICES = ['Front Desk Bundle', ...AGENTS.map(a => a.name), 'Something else', 'Not sure yet']
 
 export default function ContactPage() {
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'draft' | 'error'>('idle')
@@ -31,7 +23,7 @@ export default function ContactPage() {
     setErrorMsg('')
     try {
       await submitLead({
-        _subject: `New website inquiry — ${form.business || form.name}`,
+        _subject: `New GR Scale inquiry — ${form.business || form.name}`,
         source: 'Contact Form',
         ...form,
       })
@@ -70,7 +62,7 @@ export default function ContactPage() {
                       {SITE.phone.pretty} · AI receptionist 24/7
                     </a>
                   )}
-                  <a href="mailto:gio@grscales.com" className="flex items-center gap-3 text-sm text-[var(--text-muted)] hover:text-white transition group">
+                  <a href="mailto:gio@grscales.com" className="flex min-h-[44px] items-center gap-3 text-sm text-[var(--text-muted)] hover:text-white transition group">
                     <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand-500/10 group-hover:bg-brand-500/20 transition">
                       <Mail className="h-4 w-4 text-brand-400" />
                     </div>
@@ -93,12 +85,12 @@ export default function ContactPage() {
 
               {/* Book CTA */}
               <div className="card bg-gradient-to-br from-brand-500/15 to-transparent border-brand-500/20">
-                <h3 className="text-sm font-semibold text-white mb-2">Want to Skip the Form?</h3>
+                <h3 className="text-sm font-semibold text-white mb-2">Want to see it first?</h3>
                 <p className="text-xs text-[var(--text-muted)] mb-4 leading-relaxed">
-                  Book a free 20-minute strategy call directly on our calendar.
+                  Ask for a free demo. We build it for your business before you pay anything.
                 </p>
-                <Link href="/book" className="btn-primary text-sm py-2 justify-center text-center">
-                  Book Free Call
+                <Link href="/book" className="btn-primary text-sm py-3 justify-center text-center">
+                  Get a free demo
                 </Link>
               </div>
             </div>
@@ -112,7 +104,7 @@ export default function ContactPage() {
                   <p className="text-sm text-[var(--text-muted)] max-w-sm leading-relaxed">
                     {draft
                       ? 'Your email app should open with the message filled in. Press send there, or call/text us directly.'
-                      : 'Thanks for reaching out. We&apos;ll get back to you within a few hours.'}
+                      : 'Thanks for reaching out. We’ll get back to you within one business day. '}
                     In the meantime, feel free to{' '}
                     <Link href="/demos" className="text-brand-400 hover:underline">view our demo sites</Link>.
                   </p>
@@ -122,67 +114,77 @@ export default function ContactPage() {
                   <h2 className="h3 mb-6">Send Us a Message</h2>
                   <div className="grid gap-4 sm:grid-cols-2">
                     <div>
-                      <label className="text-xs font-medium text-[var(--text-dim)] uppercase tracking-wider mb-1.5 block">Your Name *</label>
+                      <label htmlFor="c-name" className="text-xs font-medium text-[var(--text-dim)] uppercase tracking-wider mb-1.5 block">Your Name *</label>
                       <input
+                        id="c-name"
+                        autoComplete="name"
                         required
                         type="text"
                         placeholder="John Smith"
                         value={form.name}
                         onChange={e => setForm({ ...form, name: e.target.value })}
-                        className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-[var(--text-dim)] focus:border-brand-500/50 focus:outline-none focus:ring-1 focus:ring-brand-500/30 transition"
+                        className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-base text-white placeholder:text-[var(--text-dim)] focus:border-brand-500/50 focus:outline-none focus:ring-1 focus:ring-brand-500/30 transition"
                       />
                     </div>
                     <div>
-                      <label className="text-xs font-medium text-[var(--text-dim)] uppercase tracking-wider mb-1.5 block">Business Name *</label>
+                      <label htmlFor="c-biz" className="text-xs font-medium text-[var(--text-dim)] uppercase tracking-wider mb-1.5 block">Business Name *</label>
                       <input
+                        id="c-biz"
+                        autoComplete="organization"
                         required
                         type="text"
                         placeholder="Smith's HVAC"
                         value={form.business}
                         onChange={e => setForm({ ...form, business: e.target.value })}
-                        className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-[var(--text-dim)] focus:border-brand-500/50 focus:outline-none focus:ring-1 focus:ring-brand-500/30 transition"
+                        className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-base text-white placeholder:text-[var(--text-dim)] focus:border-brand-500/50 focus:outline-none focus:ring-1 focus:ring-brand-500/30 transition"
                       />
                     </div>
                     <div>
-                      <label className="text-xs font-medium text-[var(--text-dim)] uppercase tracking-wider mb-1.5 block">Phone *</label>
+                      <label htmlFor="c-phone" className="text-xs font-medium text-[var(--text-dim)] uppercase tracking-wider mb-1.5 block">Phone *</label>
                       <input
+                        id="c-phone"
+                        autoComplete="tel"
                         required
                         type="tel"
                         placeholder="(813) 555-0100"
                         value={form.phone}
                         onChange={e => setForm({ ...form, phone: e.target.value })}
-                        className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-[var(--text-dim)] focus:border-brand-500/50 focus:outline-none focus:ring-1 focus:ring-brand-500/30 transition"
+                        className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-base text-white placeholder:text-[var(--text-dim)] focus:border-brand-500/50 focus:outline-none focus:ring-1 focus:ring-brand-500/30 transition"
                       />
                     </div>
                     <div>
-                      <label className="text-xs font-medium text-[var(--text-dim)] uppercase tracking-wider mb-1.5 block">Email</label>
+                      <label htmlFor="c-email" className="text-xs font-medium text-[var(--text-dim)] uppercase tracking-wider mb-1.5 block">Email</label>
                       <input
+                        id="c-email"
+                        autoComplete="email"
                         type="email"
                         placeholder="john@smithhvac.com"
                         value={form.email}
                         onChange={e => setForm({ ...form, email: e.target.value })}
-                        className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-[var(--text-dim)] focus:border-brand-500/50 focus:outline-none focus:ring-1 focus:ring-brand-500/30 transition"
+                        className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-base text-white placeholder:text-[var(--text-dim)] focus:border-brand-500/50 focus:outline-none focus:ring-1 focus:ring-brand-500/30 transition"
                       />
                     </div>
                     <div className="sm:col-span-2">
-                      <label className="text-xs font-medium text-[var(--text-dim)] uppercase tracking-wider mb-1.5 block">Interested In</label>
+                      <label htmlFor="c-service" className="text-xs font-medium text-[var(--text-dim)] uppercase tracking-wider mb-1.5 block">Interested In</label>
                       <select
+                        id="c-service"
                         value={form.service}
                         onChange={e => setForm({ ...form, service: e.target.value })}
-                        className="w-full rounded-lg border border-white/10 bg-[#0d1117] px-4 py-2.5 text-sm text-[var(--text-muted)] focus:border-brand-500/50 focus:outline-none focus:ring-1 focus:ring-brand-500/30 transition"
+                        className="w-full rounded-lg border border-white/10 bg-[#0d1117] px-4 py-3 text-base text-white focus:border-brand-500/50 focus:outline-none focus:ring-1 focus:ring-brand-500/30 transition"
                       >
-                        <option value="">Select a service...</option>
+                        <option value="">Choose…</option>
                         {SERVICES.map(s => <option key={s} value={s}>{s}</option>)}
                       </select>
                     </div>
                     <div className="sm:col-span-2">
-                      <label className="text-xs font-medium text-[var(--text-dim)] uppercase tracking-wider mb-1.5 block">Message</label>
+                      <label htmlFor="c-msg" className="text-xs font-medium text-[var(--text-dim)] uppercase tracking-wider mb-1.5 block">Message</label>
                       <textarea
+                        id="c-msg"
                         rows={4}
                         placeholder="Tell us about your business and what you're looking for..."
                         value={form.message}
                         onChange={e => setForm({ ...form, message: e.target.value })}
-                        className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-[var(--text-dim)] focus:border-brand-500/50 focus:outline-none focus:ring-1 focus:ring-brand-500/30 transition resize-none"
+                        className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-base text-white placeholder:text-[var(--text-dim)] focus:border-brand-500/50 focus:outline-none focus:ring-1 focus:ring-brand-500/30 transition resize-none"
                       />
                     </div>
                   </div>
@@ -201,7 +203,7 @@ export default function ContactPage() {
                       </div>
                     )}
                     <p className="text-xs text-[var(--text-dim)] text-center mt-3">
-                      We respond within a few hours. No spam, ever.
+                      We reply within one business day. No spam, ever.
                     </p>
                   </div>
                 </form>

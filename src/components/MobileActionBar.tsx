@@ -45,16 +45,16 @@ export default function MobileActionBar() {
       <div className="mx-auto max-w-md flex items-center gap-2 rounded-2xl border border-white/10 bg-[#0d1117]/95 backdrop-blur p-2 shadow-[0_-8px_32px_rgba(0,0,0,0.5)]">
         {SITE.phone && (
           <a href={`tel:${SITE.phone.tel}`}
-            className="flex-1 inline-flex items-center justify-center gap-2 rounded-xl border border-white/10 px-4 py-2.5 text-sm font-bold text-white/90 hover:bg-white/5 transition">
+            className="flex-1 inline-flex items-center justify-center gap-2 rounded-xl border border-white/10 px-4 py-3 text-sm font-bold text-white/90 hover:bg-white/5 transition" tabIndex={visible ? 0 : -1}>
             <Phone className="h-4 w-4 text-brand-400" /> Call
           </a>
         )}
         <Link href="/book"
-          className="flex-[1.5] inline-flex items-center justify-center gap-2 rounded-xl bg-brand-500 px-4 py-2.5 text-sm font-bold text-white shadow-lg shadow-brand-500/25">
+          className="flex-[1.5] inline-flex items-center justify-center gap-2 rounded-xl bg-[#0279b8] px-4 py-3 text-sm font-bold text-white shadow-lg shadow-brand-500/25" tabIndex={visible ? 0 : -1}>
           Get a free demo
         </Link>
-        <button onClick={dismiss} aria-label="Dismiss action bar"
-          className="flex h-9 w-9 items-center justify-center rounded-xl text-zinc-500 hover:text-zinc-300 hover:bg-white/5 transition shrink-0">
+        <button onClick={dismiss} aria-label="Dismiss action bar" tabIndex={visible ? 0 : -1}
+          className="flex h-11 w-11 items-center justify-center rounded-xl text-zinc-400 hover:text-zinc-300 hover:bg-white/5 transition shrink-0">
           <X className="h-4 w-4" />
         </button>
       </div>

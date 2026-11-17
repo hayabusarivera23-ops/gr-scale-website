@@ -18,6 +18,8 @@ const PHONE_DIGITS = digits(RAW_PHONE).replace(/^1(?=\d{10}$)/, '')
 export const SITE = {
   name: 'GR Scale',
   url: 'https://grscales.com',
+  logo: '/logo.png',
+  ogImage: '/og.jpg',
   city: 'Tampa, FL',
   /** Lead form → Day OS (Biz → GR Scale) */
   intakeUrl: 'https://gio-day-os.vercel.app/api/intake',
@@ -47,6 +49,8 @@ export const STAGES: { id: Stage; title: string; line: string }[] = [
 
 export type Agent = {
   id: string
+  /** URL of the agent's own page: /agents/<slug> */
+  slug: string
   name: string
   short: string
   does: string
@@ -62,6 +66,7 @@ export type Agent = {
 export const AGENTS: Agent[] = [
   {
     id: 'website',
+    slug: 'website-booking',
     name: 'Website + Online Booking',
     short: 'A fast site where customers book themselves.',
     does: 'Mobile-first website with your services, prices, photos, Google Maps and a Book Now button. Customers pick a time without calling.',
@@ -74,6 +79,7 @@ export const AGENTS: Agent[] = [
   },
   {
     id: 'google',
+    slug: 'google-profile-setup',
     name: 'Google Profile Setup',
     short: 'Show up on Google Maps the right way.',
     does: 'We set up or clean up your Google Business Profile: correct name, phone and hours, services, photos, booking link and a short description that matches what people search.',
@@ -86,6 +92,7 @@ export const AGENTS: Agent[] = [
   },
   {
     id: 'textback',
+    slug: 'missed-call-text-back',
     name: 'Missed-Call Text-Back',
     short: 'Every missed call gets a text in seconds.',
     does: 'When you can’t pick up, the caller instantly gets a text with your booking link — so they book with you instead of calling the next shop.',
@@ -98,6 +105,7 @@ export const AGENTS: Agent[] = [
   },
   {
     id: 'receptionist',
+    slug: 'ai-receptionist',
     name: 'AI Receptionist',
     short: 'An AI that answers your phone 24/7.',
     does: 'Answers every call, answers questions about prices and hours, takes messages and books appointments — and always says it’s an AI assistant.',
@@ -110,6 +118,7 @@ export const AGENTS: Agent[] = [
   },
   {
     id: 'reviews',
+    slug: 'review-getter',
     name: 'Review Getter',
     short: 'More 5-star Google reviews on autopilot.',
     does: 'After each visit, customers get a friendly request for a Google review, plus a QR card for your counter. More reviews = higher on Google Maps.',

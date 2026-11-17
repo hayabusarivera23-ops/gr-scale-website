@@ -1,12 +1,19 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
+
+export const metadata: Metadata = {
+  title: 'FAQ — GR Scale | Prices, Setup Time, Texting and Contracts',
+  description: 'Straight answers about GR Scale: what it costs, how the free demo works, why texting needs carrier approval, how fast you go live and how to cancel.',
+  alternates: { canonical: '/faq' },
+}
 
 const FAQS = [
   {
     category: 'Getting Started',
     items: [
       { q: 'How do I get started?', a: 'Fill out the free demo form at grscales.com/book. We build a demo for your business and text you the link — usually within 1–2 days. No payment at this stage.' },
-      { q: 'Do I need any technical knowledge?', a: 'None. We set up everything — website, booking, texting and the AI. You keep running your business.' },
+      { q: 'Do I need any technical knowledge?', a: 'None. We set up everything — website, booking, Google profile and texting. You keep running your business.' },
       { q: 'What do you need from me?', a: 'Your business name, services and prices, hours, a few photos of your work and the booking tool you already use (if any). That\'s it.' },
     ],
   },
@@ -14,7 +21,7 @@ const FAQS = [
     category: 'The AI Agents',
     items: [
       { q: 'What is missed-call text-back?', a: 'When you can\'t answer, the caller gets a text from your business within seconds with your booking link. Most people book instead of calling the next shop.' },
-      { q: 'Does the AI receptionist sound like a robot?', a: 'It sounds like a friendly front-desk person and it always says it is an AI assistant. It answers questions about prices and hours, takes messages and books appointments.' },
+      { q: 'Does the AI receptionist sound like a robot?', a: 'It sounds like a friendly front-desk person and it always says it is an AI assistant. It answers questions about prices and hours, takes messages and books appointments. It is in early access right now, so spots are limited, and it is not part of the Front Desk Bundle.' },
       { q: 'Do I keep my phone number?', a: 'Yes. Everything connects to the number your customers already have.' },
       { q: 'How does the Review Getter work?', a: 'After a visit, the customer gets a short, friendly text with a direct link to leave you a Google review. More reviews help you show up higher on Google Maps.' },
       { q: 'Will you ever cold-call or spam my customers?', a: 'No. Texts only go to people who called you or visited you, and they can reply STOP anytime.' },
@@ -23,7 +30,7 @@ const FAQS = [
   {
     category: 'Pricing & Payment',
     items: [
-      { q: 'How much does it cost?', a: 'The Front Desk Bundle (website + booking, missed-call text-back, Review Getter) is $297 setup + $197/mo. The first 5 businesses get the founding price: $147/mo for as long as they stay. Single agents start at $67/mo. Full list on the pricing page.' },
+      { q: 'How much does it cost?', a: 'The Front Desk Bundle (website + booking, Google profile setup, missed-call text-back, Review Getter) is $297 setup + $197/mo. The first 5 businesses get the founding price: $147/mo for as long as they stay. Single agents start at $67/mo. Every agent and price is in the agent store at grscales.com/agents.' },
       { q: 'Is there a contract?', a: 'No. Month to month. Cancel anytime with 14 days notice.' },
       { q: 'When do I pay?', a: 'Only after you see your free demo and say yes. You get a secure Stripe link for the setup fee and the monthly plan.' },
     ],

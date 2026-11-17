@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import {
   ArrowRight, CheckCircle, PhoneMissed, MessageSquareText, Star, Bot, CalendarCheck,
@@ -5,6 +6,8 @@ import {
 } from 'lucide-react'
 import { Reveal, TypeWords, Magnetic, Aurora, GlowDivider, Marquee, ScrollProgress } from '@/components/FX'
 import { SITE, PRICE, AGENTS, STAGES } from '@/lib/site'
+
+export const metadata: Metadata = { alternates: { canonical: '/' } }
 
 const ICONS: Record<string, typeof Bot> = {
   website: CalendarCheck,
@@ -23,7 +26,7 @@ const PROBLEMS = [
 const STEPS = [
   { icon: Sparkles, step: '01', title: 'Free demo', text: 'We build a demo for your business — your name, your services, your booking link. You see it before you pay anything.' },
   { icon: Rocket, step: '02', title: 'We set it all up', text: 'You say yes, we do the setup: website live in 48 hours, Google profile in 3 days, texting as soon as the carriers approve it. You keep your phone number.' },
-  { icon: ShieldCheck, step: '03', title: 'It runs for you', text: 'Calls answered, missed calls texted back, reviews requested — every lead lands on your phone.' },
+  { icon: ShieldCheck, step: '03', title: 'It runs for you', text: 'Customers book online, missed calls get a text back, reviews get requested — every lead lands on your phone.' },
 ]
 
 const BUNDLE_INCLUDES = [
@@ -51,10 +54,29 @@ const FAQS = [
   { q: 'Who is behind GR Scale?', a: 'Gio Rivera, based in Tampa. One person you can text, who sets it up and keeps it running.' },
 ]
 
+const FAQ_SCHEMA = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+      '@id': 'https://grscales.com/#faq',
+      mainEntity: [
+        { '@type': 'Question', name: 'How much does GR Scale cost?', acceptedAnswer: { '@type': 'Answer',
+          text: `The Front Desk Bundle (website + booking, Google profile setup, missed-call text-back, Review Getter) is $${PRICE.setup} setup and $${PRICE.bundle}/month — $${PRICE.founding}/month for the first ${PRICE.foundingSpots} founding businesses. Single agents start at $67/month. No contracts.` } },
+        { '@type': 'Question', name: 'Is there a free demo?', acceptedAnswer: { '@type': 'Answer',
+          text: 'Yes. GR Scale builds a demo for your business first at grscales.com/book. You only pay if you want it.' } },
+        { '@type': 'Question', name: 'How fast is setup?', acceptedAnswer: { '@type': 'Answer',
+          text: 'Website live within 48 hours after you approve the demo and pay the setup fee; texting goes live after carrier approval, usually 1-2 weeks.' } },
+        { '@type': 'Question', name: 'Do I keep my phone number?', acceptedAnswer: { '@type': 'Answer',
+          text: 'Yes. The agents connect to your existing number.' } },
+        { '@type': 'Question', name: 'Is there a contract?', acceptedAnswer: { '@type': 'Answer',
+          text: 'No. Month to month, cancel anytime with 14 days notice.' } },
+      ],
+    }
+
 export default function HomePage() {
   const phone = SITE.phone
   return (
     <div className="overflow-x-hidden">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_SCHEMA) }} />
       {/* ── HERO ── */}
       <section className="relative flex min-h-[92vh] flex-col items-center justify-center px-4 pt-28 pb-16 text-center overflow-hidden">
         <ScrollProgress />
@@ -90,7 +112,7 @@ export default function HomePage() {
               <PhoneCall className="h-4 w-4" /> Call our AI: {phone.pretty}
             </a>
           ) : (
-            <Link href="/pricing" className="btn-ghost px-8 py-4 text-base">See pricing</Link>
+            <Link href="/agents" className="btn-ghost px-8 py-4 text-base">Browse the agents</Link>
           )}
         </div>
 
@@ -132,9 +154,9 @@ export default function HomePage() {
       <section id="agents" className="section">
         <div className="container-site max-w-6xl">
           <Reveal className="text-center mb-12">
-            <span className="badge mb-4">Services</span>
-            <h2 className="h2 mb-4">Everything your business needs to run.</h2>
-            <p className="lead max-w-2xl mx-auto">Get found, get booked, get reviews. Start with one service or get the bundle that covers all three.</p>
+            <span className="badge mb-4">Agent store</span>
+            <h2 className="h2 mb-4">Pick the agents your business needs.</h2>
+            <p className="lead max-w-2xl mx-auto">Get found, get booked, get reviews. Start with one agent, or take the Front Desk Bundle that covers all three.</p>
           </Reveal>
           <div className="flex flex-col gap-10">
             {STAGES.map(st => (
@@ -148,7 +170,7 @@ export default function HomePage() {
                     const Icon = ICONS[a.id] || Bot
                     return (
                       <Reveal key={a.id} delay={i * 100}>
-                        <div className="card h-full flex flex-col">
+                        <Link href={`/agents/${a.slug}`} className="card h-full flex flex-col" aria-label={`${a.name}: ${a.price}. See how it works`}>
                           <div className="flex items-start justify-between gap-4 mb-4">
                             <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-500/10 border border-brand-500/20">
                               <Icon className="h-6 w-6 text-brand-400" />
@@ -164,7 +186,8 @@ export default function HomePage() {
                             <p className="text-sm font-bold text-white">{a.price}</p>
                             <p className="text-xs text-[var(--text-dim)] text-right">{a.setup}</p>
                           </div>
-                        </div>
+                          <p className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-400">See how it works <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" /></p>
+                        </Link>
                       </Reveal>
                     )
                   })}
@@ -173,7 +196,7 @@ export default function HomePage() {
             ))}
           </div>
           <div className="text-center mt-10">
-            <Link href="/services" className="btn-ghost">See exactly what you get with each service <ArrowRight className="h-4 w-4" /></Link>
+            <Link href="/agents" className="btn-primary px-8 py-4 text-base">Browse all agents <ArrowRight className="h-4 w-4" /></Link>
           </div>
         </div>
       </section>
@@ -185,7 +208,7 @@ export default function HomePage() {
             <div className="card glow-brand border-brand-500/30 p-8 md:p-12">
               <div className="grid gap-10 md:grid-cols-2 items-center">
                 <div>
-                  <span className="badge mb-4">Most shops pick this</span>
+                  <span className="badge mb-4">Recommended · start here</span>
                   <h2 className="h2 mb-3">Front Desk Bundle</h2>
                   <p className="text-[var(--text-muted)] mb-6">Website + booking, Google profile setup, missed-call text-back and the Review Getter — everything a local business needs to get found, booked and reviewed.</p>
                   <div className="flex items-end gap-2 mb-1">
@@ -198,7 +221,7 @@ export default function HomePage() {
                   </p>
                   <div className="mt-8 flex flex-col sm:flex-row gap-3">
                     <Link href="/book?plan=Front%20Desk%20Bundle" className="btn-primary px-6 py-3">Get a free demo <ArrowRight className="h-4 w-4" /></Link>
-                    <Link href="/pricing" className="btn-ghost px-6 py-3">All prices</Link>
+                    <Link href="/agents/front-desk-bundle" className="btn-ghost px-6 py-3">How the bundle works</Link>
                   </div>
                 </div>
                 <ul className="flex flex-col gap-3">
@@ -273,8 +296,8 @@ export default function HomePage() {
           </Reveal>
           <div className="flex flex-col gap-3">
             {FAQS.map(f => (
-              <details key={f.q} className="card group cursor-pointer">
-                <summary className="flex items-center justify-between gap-4 text-base font-semibold text-white list-none">
+              <details key={f.q} className="card group">
+                <summary className="flex min-h-[44px] cursor-pointer items-center justify-between gap-4 text-base font-semibold text-white list-none">
                   {f.q}
                   <span className="text-brand-400 text-xl leading-none transition group-open:rotate-45">+</span>
                 </summary>

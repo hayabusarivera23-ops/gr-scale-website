@@ -20,7 +20,7 @@ const FAQS = [
   },
   {
     q: 'How much does a barbershop website cost?',
-    a: 'With us: the Front Desk Bundle — website with online booking, missed-call text-back and Google review requests — is $297 setup + $197/mo, or $147/mo founding price for the first 5 businesses. No contracts. We build a free demo first. Full breakdown on our pricing page.',
+    a: 'With us: the Front Desk Bundle — website with online booking, Google profile setup, missed-call text-back and Google review requests — is $297 setup + $197/mo, or $147/mo founding price for the first 5 businesses. No contracts. We build a free demo first. Full breakdown on our pricing page.',
   },
 ]
 

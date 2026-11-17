@@ -4,8 +4,8 @@ import { ArrowRight, CheckCircle, Clock, CalendarCheck, MapPin, MessageSquareTex
 import { AGENTS, STAGES, PRICE } from '@/lib/site'
 
 export const metadata: Metadata = {
-  title: 'Services — GR Scale | Website, Google Profile, Text-Back, Reviews, AI Receptionist',
-  description: 'Everything a local business needs to get found, get booked and get reviews: website with online booking, Google Business Profile setup, missed-call text-back, Review Getter and an AI receptionist. Tampa, FL.',
+  title: 'Services — GR Scale | Get Found, Get Booked, Get Reviews',
+  description: 'Website with online booking, Google Business Profile setup, missed-call text-back, Review Getter and an early-access AI receptionist for local businesses in Tampa, FL.',
   alternates: { canonical: '/services' },
 }
 
@@ -28,7 +28,7 @@ export default function ServicesPage() {
           <p className="lead">Pick one service or get the Front Desk Bundle. Every service starts with a free demo, and there are no contracts.</p>
           <div className="mt-6 flex flex-wrap justify-center gap-2">
             {AGENTS.map(a => (
-              <a key={a.id} href={`#${a.id}`} className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/90 hover:border-brand-500/50 transition">{a.name}</a>
+              <a key={a.id} href={`#${a.id}`} className="inline-flex min-h-[44px] items-center rounded-full border border-white/10 bg-white/5 px-4 text-sm text-white/90 hover:border-brand-500/50 transition">{a.name}</a>
             ))}
           </div>
         </div>
@@ -71,6 +71,9 @@ export default function ServicesPage() {
                         </ul>
                         <Link href={`/book?plan=${encodeURIComponent(a.name)}`} className="btn-primary mt-6 w-full justify-center py-3">
                           {a.status === 'early' ? 'Join early access' : 'Get a free demo'} <ArrowRight className="h-4 w-4" />
+                        </Link>
+                        <Link href={`/agents/${a.slug}`} aria-label={`How ${a.name} works, limits and FAQ`} className="mt-2 flex min-h-[44px] items-center justify-center text-sm font-semibold text-brand-400 hover:text-brand-300 transition">
+                          How it works, limits and FAQ
                         </Link>
                       </div>
                     </div>

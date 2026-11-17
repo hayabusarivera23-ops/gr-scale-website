@@ -5,13 +5,13 @@ import Footer from '@/components/Footer'
 import MobileActionBar from '@/components/MobileActionBar'
 import { SITE, PRICE, AGENTS } from '@/lib/site'
 
-const LOGO = '/ChatGPT%20Image%20Jul%2012,%202026,%2003_38_02%20PM.png'
+const LOGO = SITE.logo
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://grscales.com'),
   title: 'GR Scale — AI Front Desk for Local Businesses | Tampa',
   description:
-    'Never lose a customer to a missed call. GR Scale sets up AI agents for local businesses: website + online booking, missed-call text-back, Google review requests and a 24/7 AI receptionist. Free demo first. Founding price $147/mo.',
+    'AI agents for local businesses: website + booking, Google profile setup, missed-call text-back and review requests. Free demo first. Bundle from $147/mo.',
   keywords:
     'missed call text back, AI receptionist, barbershop booking website, AI for small business, Google review automation, Tampa barbershop website, local business automation',
   icons: {
@@ -23,7 +23,8 @@ export const metadata: Metadata = {
     description: 'AI agents that answer, text back, book and get reviews for local businesses. Free demo first.',
     type: 'website',
     url: 'https://grscales.com',
-    images: [LOGO],
+    siteName: 'GR Scale',
+    images: [{ url: SITE.ogImage, width: 1200, height: 800, alt: 'GR Scale' }],
   },
 }
 
@@ -37,7 +38,7 @@ const SITE_SCHEMA = {
       '@id': 'https://grscales.com/#business',
       name: 'GR Scale',
       description:
-        'AI agents for local service businesses: website with online booking, missed-call text-back, Google review requests and a 24/7 AI receptionist. Website live in 48 hours after a free demo.',
+        'AI agents for local service businesses: website with online booking, Google profile setup, missed-call text-back and Google review requests. An AI receptionist is in early access. Website live in 48 hours after a free demo.',
       url: 'https://grscales.com',
       logo: 'https://grscales.com' + LOGO,
       image: 'https://grscales.com' + LOGO,
@@ -52,33 +53,16 @@ const SITE_SCHEMA = {
         { '@type': 'City', name: 'Wesley Chapel' },
         { '@type': 'City', name: 'St. Petersburg' },
       ],
-      priceRange: '$297 setup + $67 - $297/mo',
+      priceRange: '$67 - $297/mo',
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
         name: 'AI agents',
         itemListElement: [
-          { '@type': 'Offer', name: 'Front Desk Bundle', price: String(PRICE.founding), priceCurrency: 'USD',
-            description: `Website + online booking, missed-call text-back and Review Getter. $${PRICE.setup} setup, then $${PRICE.bundle}/month ($${PRICE.founding}/month founding price for the first ${PRICE.foundingSpots} businesses).` },
-          ...AGENTS.map(a => ({ '@type': 'Offer', name: a.name, priceCurrency: 'USD', description: `${a.does} Price: ${a.price}.` })),
+          { '@type': 'Offer', name: 'Front Desk Bundle', price: String(PRICE.founding), priceCurrency: 'USD', url: `${SITE.url}/agents/front-desk-bundle`,
+            description: `Website + online booking, Google profile setup, missed-call text-back and Review Getter. $${PRICE.setup} setup, then $${PRICE.bundle}/month ($${PRICE.founding}/month founding price for the first ${PRICE.foundingSpots} businesses).` },
+          ...AGENTS.map(a => ({ '@type': 'Offer', name: a.name, url: `${SITE.url}/agents/${a.slug}`, description: `${a.does} Price: ${a.price}.${a.status === 'early' ? ' Early access.' : ''}` })),
         ],
       },
-      sameAs: ['https://meloair.net', 'https://lexthebarber.com'],
-    },
-    {
-      '@type': 'FAQPage',
-      '@id': 'https://grscales.com/#faq',
-      mainEntity: [
-        { '@type': 'Question', name: 'How much does GR Scale cost?', acceptedAnswer: { '@type': 'Answer',
-          text: `The Front Desk Bundle (website + booking, missed-call text-back, Review Getter) is $${PRICE.setup} setup and $${PRICE.bundle}/month — $${PRICE.founding}/month for the first ${PRICE.foundingSpots} founding businesses. Single agents start at $67/month. No contracts.` } },
-        { '@type': 'Question', name: 'Is there a free demo?', acceptedAnswer: { '@type': 'Answer',
-          text: 'Yes. GR Scale builds a demo for your business first at grscales.com/book. You only pay if you want it.' } },
-        { '@type': 'Question', name: 'How fast is setup?', acceptedAnswer: { '@type': 'Answer',
-          text: 'Website live within 48 hours after you approve the demo and pay the setup fee; texting goes live after carrier approval, usually 1-2 weeks.' } },
-        { '@type': 'Question', name: 'Do I keep my phone number?', acceptedAnswer: { '@type': 'Answer',
-          text: 'Yes. The agents connect to your existing number.' } },
-        { '@type': 'Question', name: 'Is there a contract?', acceptedAnswer: { '@type': 'Answer',
-          text: 'No. Month to month, cancel anytime with 14 days notice.' } },
-      ],
     },
   ],
 }
@@ -87,12 +71,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body>
+        <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-[60] focus:rounded-lg focus:bg-[#0279b8] focus:px-4 focus:py-3 focus:text-sm focus:font-semibold focus:text-white">Skip to content</a>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(SITE_SCHEMA) }}
         />
         <Navbar />
-        <main>{children}</main>
+        <main id="main">{children}</main>
         <Footer />
         <MobileActionBar />
       </body>
