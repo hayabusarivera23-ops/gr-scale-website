@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     apple: LOGO,
   },
   openGraph: {
-    title: 'GR Scale — Never lose another customer to a missed call',
+    title: 'GR Scale — Stop losing customers to missed calls',
     description: 'AI agents that answer, text back, book and get reviews for local businesses. Free demo first.',
     type: 'website',
     url: 'https://grscales.com',
@@ -38,7 +38,7 @@ const SITE_SCHEMA = {
       '@id': 'https://grscales.com/#business',
       name: 'GR Scale',
       description:
-        'AI agents for local service businesses: website with online booking, Google profile setup, missed-call text-back and Google review requests. An AI receptionist is in early access. Free demo first; website live within 48 hours after we have your setup fee and setup form.',
+        'AI agents for local service businesses: website with online booking, Google profile setup, missed-call text-back and Google review requests. An AI receptionist is in early access. Free demo first; website live within 48 hours after your setup fee is paid and your setup form, with photos, is in.',
       url: 'https://grscales.com',
       logo: 'https://grscales.com' + LOGO,
       image: 'https://grscales.com' + LOGO,

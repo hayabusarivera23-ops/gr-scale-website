@@ -1,13 +1,13 @@
 # GR Scale
 
-> GR Scale sets up AI agents for local service businesses built to help them stop losing customers to missed calls: a website with online booking, Google Business Profile setup, missed-call text-back and Google review requests. An AI receptionist is in early access. Based in Tampa, Florida. Founded by Gio Rivera. Free demo first; website live within 48 hours after we have your setup fee and setup form.
+> GR Scale sets up AI agents for local service businesses built to help them stop losing customers to missed calls: a website with online booking, Google Business Profile setup, missed-call text-back and Google review requests. An AI receptionist is in early access. Based in Tampa, Florida. Founded by Gio Rivera. Free demo first; website live within 48 hours after the setup fee is paid and the setup form, with photos, is in. GR Scale is a new business.
 
 ## The agents
 
 - Website + Online Booking — $297 setup + $97/mo — https://grscales.com/agents/website-booking
 - Google Profile Setup — $197 one-time (included in the Front Desk Bundle) — https://grscales.com/agents/google-profile-setup
 - Missed-Call Text-Back — $97/mo (missed callers get a text with the booking link from a separate business number; the shop keeps its own number; starts after U.S. carrier approval, timing is up to the carriers) — https://grscales.com/agents/missed-call-text-back
-- Review Getter — $67/mo (counter QR card and short link to ask every customer for a Google review; review texts only for customers who agreed to texts, after carrier approval; no promise about ratings or ranking) — https://grscales.com/agents/review-getter
+- Review Getter — $67/mo (phone app, counter QR card and short link to ask every customer for a Google review; the owner taps Send and the request goes from the owner's own phone, only to customers who agreed to texts; no carrier approval needed; no promise about ratings or ranking) — https://grscales.com/agents/review-getter
 - AI Receptionist — $297 setup + $297/mo (early access, limited spots, not generally available yet; always says it is an AI assistant; calls recorded only with notice to the caller) — https://grscales.com/agents/ai-receptionist
 
 ## Front Desk Bundle
@@ -21,10 +21,12 @@
 
 Barbershops, salons, HVAC, lawn care, auto detailers and other local service businesses in Tampa Bay (Tampa, Lutz, Carrollwood, Temple Terrace, Brandon, Wesley Chapel).
 
-## Proof of work
+## Sites Gio has built
 
-- meloair.net — Melo Air, HVAC (Tampa, FL)
-- lexthebarber.com — Lex The Barber (Orlando, FL)
+Built for two family businesses. They are not paying GR Scale customers.
+
+- meloair.net — Melo Air, HVAC (Tampa, FL), his stepdad's company
+- lexthebarber.com — Lex The Barber (Orlando, FL), his dad's barbershop
 
 ## Contact
 

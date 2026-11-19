@@ -22,7 +22,7 @@ const BUNDLE = [
 const PAY_STEPS = [
   'We build your free demo first.',
   'You like it → you get two links by text: the setup fee and the monthly plan.',
-  'You fill in a 5-minute setup form. Your website goes live within 48 hours after we have that form and your setup fee, your Google profile within about 3 days, and texting once the carriers approve it (usually 1–2 weeks, but the timing is theirs).',
+  'You fill in a 5-minute setup form. Your website goes live within 48 hours after your setup fee is paid and your setup form, with photos, is in, your Google profile within about 3 days, and texting once the carriers approve it (usually 1–2 weeks, but the timing is theirs).',
 ]
 
 export default function PricingPage() {

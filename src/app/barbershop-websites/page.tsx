@@ -5,7 +5,7 @@ import { ArrowRight, Calendar, Gauge, Scissors, MapPin, Star, Smartphone } from 
 export const metadata: Metadata = {
   title: 'Barbershop Websites: Get Found and Booked | GR Scale',
   description:
-    'How barbershops get seen, trusted, and booked — fast websites, Google Business Profile, reviews, and booking links that fill chairs. Real client work live.',
+    'How barbershops get seen, trusted, and booked — fast websites, Google Business Profile, reviews, and booking links built to help fill chairs.',
   alternates: { canonical: 'https://grscales.com/barbershop-websites' },
 }
 
@@ -54,7 +54,7 @@ export default function BarbershopWebsitesPage() {
       <section className="section pb-0">
         <div className="container-site text-center max-w-3xl">
           <span className="badge mb-4">Barbershop Websites</span>
-          <h1 className="h1 mb-4">A Barbershop Website That Fills Chairs</h1>
+          <h1 className="h1 mb-4">A Barbershop Website Built to Fill Chairs</h1>
           <p className="lead mb-8">
             Your cuts bring people back. Getting them in the chair the first time is a
             system — a fast site, your Google profile, reviews, and a booking link working
@@ -70,7 +70,7 @@ export default function BarbershopWebsitesPage() {
               rel="noopener noreferrer"
               className="btn-ghost px-8 py-4"
             >
-              See a Real Barber Client Site
+              See a Barber Site I Built
             </a>
           </div>
         </div>
@@ -87,7 +87,7 @@ export default function BarbershopWebsitesPage() {
             decides whether you get the booking.
           </p>
           <p className="text-sm text-[var(--text-muted)] leading-relaxed">
-            Most barber sites we audit are either a dead template from 2019, a bare Booksy
+            Many barber sites are either a dead template from 2019, a bare Booksy
             page with no story, or nothing at all. The shop with a clean page, real cut
             photos, and a working book button wins the new client. Our{' '}
             <Link href="/services" className="text-brand-400 hover:text-brand-300 transition">
@@ -102,7 +102,7 @@ export default function BarbershopWebsitesPage() {
         <div className="container-site max-w-5xl">
           <div className="text-center max-w-3xl mx-auto mb-12">
             <h2 className="h2 mb-4">What a barbershop website needs to get booked</h2>
-            <p className="lead">Six things we check on every barber site we audit.</p>
+            <p className="lead">Six things we check on barber sites.</p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {MUST_HAVES.map(item => (
@@ -118,9 +118,9 @@ export default function BarbershopWebsitesPage() {
 
       <section className="section">
         <div className="container-site max-w-3xl">
-          <h2 className="h2 mb-4">Proof, not promises</h2>
+          <h2 className="h2 mb-4">A site I&apos;ve built</h2>
           <p className="text-sm text-[var(--text-muted)] leading-relaxed mb-4">
-            Lex The Barber is a working Orlando barber. We built his complete site —
+            Lex The Barber is my dad&apos;s Orlando barbershop, not a paying customer. I built his complete site —
             booking integration, cut gallery, and full service menu, mobile-first because
             that is where his clients find him — live on his own domain at{' '}
             <a

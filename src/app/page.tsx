@@ -25,7 +25,7 @@ const PROBLEMS = [
 
 const STEPS = [
   { icon: Sparkles, step: '01', title: 'Free demo', text: 'We build a demo for your business — your name, your services, your booking link. You see it before you pay anything.' },
-  { icon: Rocket, step: '02', title: 'We set it all up', text: 'You say yes, we do the setup: website live 48 hours after we have your setup fee and setup form, Google profile in about 3 days, texting once the carriers approve it. You keep your phone number.' },
+  { icon: Rocket, step: '02', title: 'We set it all up', text: 'You say yes, we do the setup: website live within 48 hours after your setup fee is paid and your setup form, with photos, is in, Google profile in about 3 days, texting once the carriers approve it. You keep your phone number.' },
   { icon: ShieldCheck, step: '03', title: 'It runs for you', text: 'Customers book online, missed calls get a text back, review requests are easy to send — and leads land on your phone.' },
 ]
 
@@ -39,14 +39,14 @@ const BUNDLE_INCLUDES = [
   'Month to month — cancel with 14 days’ notice',
 ]
 
-const REAL_WORK = [
+const BUILT_SITES = [
   { name: 'Melo Air', niche: 'HVAC · Tampa', url: 'https://meloair.net', domain: 'meloair.net' },
   { name: 'LexTheBarber', niche: 'Barbershop · Orlando', url: 'https://lexthebarber.com', domain: 'lexthebarber.com' },
 ]
 
 const FAQS = [
   { q: 'Does the AI receptionist sound like a robot?', a: 'It sounds like a friendly front-desk person and it always says it’s an AI assistant. Calls are recorded only if the caller is told first. It’s in early access right now, so spots are limited.' },
-  { q: 'Why does texting take 1–2 weeks?', a: 'US phone carriers require every business that sends texts to be registered and approved. We file it for you once your site is live, and the timing is up to the carriers. Your website, booking and Google profile go live while you wait.' },
+  { q: 'Why does texting take 1–2 weeks?', a: 'US phone carriers require every business that sends automatic texts to be registered and approved. We file it for you once your site is live, and the timing is up to the carriers. Your website, booking and Google profile go live while you wait.' },
   { q: 'Do I need a new phone number?', a: 'You keep your number and customers keep calling it. Missed-call texts come from a separate business number we set up for you.' },
   { q: 'Is there a contract?', a: 'No. Month to month. Cancel with 14 days’ notice.' },
   { q: 'I already have a website. Can I still use this?', a: 'Yes. We plug the agents into the site you have, or build you a new one if yours is slowing you down.' },
@@ -64,7 +64,7 @@ const FAQ_SCHEMA = {
         { '@type': 'Question', name: 'Is there a free demo?', acceptedAnswer: { '@type': 'Answer',
           text: 'Yes. GR Scale builds a demo for your business first at grscales.com/book. You only pay if you want it.' } },
         { '@type': 'Question', name: 'How fast is setup?', acceptedAnswer: { '@type': 'Answer',
-          text: 'Website live within 48 hours after we have your setup fee and setup form; texting goes live after carrier approval, and that timing is up to the carriers.' } },
+          text: 'Website live within 48 hours after your setup fee is paid and your setup form, with photos, is in; texting goes live after carrier approval, and that timing is up to the carriers.' } },
         { '@type': 'Question', name: 'Do I keep my phone number?', acceptedAnswer: { '@type': 'Answer',
           text: 'Yes. You keep your number. Missed-call texts are sent from a separate business number we set up for you.' } },
         { '@type': 'Question', name: 'Is there a contract?', acceptedAnswer: { '@type': 'Answer',
@@ -91,8 +91,8 @@ export default function HomePage() {
         </div>
 
         <h1 className="h1 reveal-up rd-1 mb-5 max-w-4xl">
-          Never lose another customer to a{' '}
-          <span className="text-gradient">missed call.</span>
+          Stop losing customers to{' '}
+          <span className="text-gradient">missed calls.</span>
         </h1>
 
         <p className="lead reveal-up rd-2 mb-8 max-w-2xl">
@@ -117,7 +117,7 @@ export default function HomePage() {
         </div>
 
         <div className="reveal-up rd-4 mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm text-[var(--text-muted)]">
-          {['Free demo before you pay', 'Website live 48 hours after setup', 'No contracts', `Founding price $${PRICE.founding}/mo`].map(t => (
+          {['Free demo before you pay', 'Website live 48 hours after fee + form', 'No contracts', `Founding price $${PRICE.founding}/mo`].map(t => (
             <span key={t} className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-brand-400" /> {t}</span>
           ))}
         </div>
@@ -264,16 +264,16 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── REAL WORK ── */}
+      {/* ── SITES I'VE BUILT ── */}
       <section className="section bg-[#0d1117]">
         <div className="container-site max-w-4xl">
           <Reveal className="text-center mb-10">
-            <span className="badge mb-4">Real work</span>
-            <h2 className="h2 mb-3">Built for real local businesses.</h2>
-            <p className="lead">Live right now on their own domains.</p>
+            <span className="badge mb-4">Sites I&apos;ve built</span>
+            <h2 className="h2 mb-3">Built for two family businesses.</h2>
+            <p className="lead">Gio built both of these sites for family. They are not paying GR Scale customers.</p>
           </Reveal>
           <div className="grid gap-6 sm:grid-cols-2">
-            {REAL_WORK.map(w => (
+            {BUILT_SITES.map(w => (
               <a key={w.domain} href={w.url} target="_blank" rel="noopener noreferrer" className="card group block">
                 <p className="text-xs font-semibold uppercase tracking-wider text-brand-400 mb-2">{w.niche}</p>
                 <h3 className="text-xl font-bold text-white mb-1">{w.name}</h3>

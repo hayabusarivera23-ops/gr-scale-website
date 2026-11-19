@@ -81,9 +81,9 @@ function StartInner() {
           {status === 'sent' ? (
             <div className="card flex flex-col items-center text-center py-16 gap-4" role="status">
               <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-green-500/10"><CheckCircle className="h-8 w-8 text-green-400" /></div>
-              <h2 className="h3 text-white">Got it. Setup starts now.</h2>
+              <h2 className="h3 text-white">Got it. Setup starts once your setup fee and photos are in.</h2>
               <p className="text-sm text-[var(--text-muted)] max-w-md leading-relaxed">
-                Gio will text you within one business day to confirm. Your website goes live within 48 hours after we have this form and your setup fee, your Google profile within about 3 days, and texting once the phone carriers approve it. That timing is up to the carriers.
+                Gio will text you within one business day to confirm. The 48 hours for your website start when your setup fee is paid and this form, with your photos, is in. Your Google profile follows within about 3 days, and automatic texting once the phone carriers approve it. That timing is up to the carriers.
               </p>
               <Link href="/services" className="text-sm text-brand-400 hover:underline">See what each service includes →</Link>
             </div>

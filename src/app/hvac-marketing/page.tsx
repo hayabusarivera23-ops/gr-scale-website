@@ -70,7 +70,7 @@ export default function HvacMarketingPage() {
               rel="noopener noreferrer"
               className="btn-ghost px-8 py-4"
             >
-              See a Real HVAC Client Site
+              See an HVAC Site I Built
             </a>
           </div>
         </div>
@@ -87,7 +87,7 @@ export default function HvacMarketingPage() {
             calling you feel safe and easy.
           </p>
           <p className="text-sm text-[var(--text-muted)] leading-relaxed">
-            Most HVAC companies we audit have one half working — solid reviews with a site
+            Many HVAC companies have one half working — solid reviews with a site
             from 2015, or a decent site with an abandoned Google profile. The call goes to the
             competitor with both. Our{' '}
             <Link href="/services" className="text-brand-400 hover:text-brand-300 transition">
@@ -102,7 +102,7 @@ export default function HvacMarketingPage() {
         <div className="container-site max-w-5xl">
           <div className="text-center max-w-3xl mx-auto mb-12">
             <h2 className="h2 mb-4">What an HVAC website needs to book jobs</h2>
-            <p className="lead">Six things we check on every HVAC site we audit.</p>
+            <p className="lead">Six things we check on HVAC sites.</p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {MUST_HAVES.map(item => (
@@ -118,9 +118,9 @@ export default function HvacMarketingPage() {
 
       <section className="section">
         <div className="container-site max-w-3xl">
-          <h2 className="h2 mb-4">Proof, not promises</h2>
+          <h2 className="h2 mb-4">A site I&apos;ve built</h2>
           <p className="text-sm text-[var(--text-muted)] leading-relaxed mb-4">
-            Melo Air is a working Tampa HVAC company. We built their complete website —
+            Melo Air is my stepdad&apos;s Tampa AC company, not a paying customer. I built their complete website —
             services, financing, and a quote flow designed to turn visitors into calls — live
             on their own domain at{' '}
             <a

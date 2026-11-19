@@ -152,8 +152,8 @@ export default function AgentsPage() {
           <ul className="flex flex-col gap-3">
             {[
               ['Free demo first.', 'We build a demo for your business before you pay anything.'],
-              ['Texting needs carrier approval.', 'Missed-call text-back and review texts start after U.S. phone carriers approve your business. We file the registration once your site is live, and the timing is up to the carriers (usually 1–2 weeks).'],
-              ['Available vs. early access.', 'Available agents are set up for you now, with texting parts waiting on carrier approval. The AI Receptionist is early access with limited spots.'],
+              ['Automatic texting needs carrier approval.', 'Missed-call text-back starts after U.S. phone carriers approve your business. The Review Getter sends from your own phone and needs no approval; only an automatic review text would wait. We file the registration once your site is live, and the timing is up to the carriers (usually 1–2 weeks).'],
+              ['Available vs. early access.', 'Available agents are set up for you now, with automatic texting waiting on carrier approval. The AI Receptionist is early access with limited spots.'],
               ['No contracts.', 'Month to month. Cancel with 14 days’ notice.'],
             ].map(([t, d]) => (
               <li key={t} className="card flex items-start gap-3">

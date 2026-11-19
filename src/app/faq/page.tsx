@@ -4,7 +4,7 @@ import { ArrowRight } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'FAQ — GR Scale | Prices, Setup Time, Texting and Contracts',
-  description: 'Straight answers about GR Scale: what it costs, how the free demo works, why texting needs carrier approval, how fast you go live and how to cancel.',
+  description: 'Straight answers about GR Scale: what it costs, how the free demo works, why automatic texting needs carrier approval, how fast you go live and how to cancel.',
   alternates: { canonical: '/faq' },
 }
 
@@ -23,7 +23,7 @@ const FAQS = [
       { q: 'What is missed-call text-back?', a: 'When you can\'t answer, the caller gets a text with your booking link, so they have an easy way to book instead of calling the next shop. The text comes from a separate business number we set up for you.' },
       { q: 'Does the AI receptionist sound like a robot?', a: 'It sounds like a friendly front-desk person and it always says it is an AI assistant. It answers questions about prices and hours, takes messages and books appointments. Calls are recorded only if the caller is told first. It is in early access right now, so spots are limited, and it is not part of the Front Desk Bundle.' },
       { q: 'Do I keep my phone number?', a: 'Yes. Customers keep calling the number they already have. Missed-call texts are sent from a separate business number we set up for you.' },
-      { q: 'How does the Review Getter work?', a: 'You get a counter QR card and a short link that open your Google review page, so it is easy to ask every customer. Customers who agreed to get texts from you can also get one short review request by text once carriers approve texting. We can\'t promise ratings or rankings.' },
+      { q: 'How does the Review Getter work?', a: 'You get a counter QR card and a short link that open your Google review page, so it is easy to ask every customer. The Review Getter also runs on your own phone: you tap Send and your Messages app opens with one short request, for customers who agreed to get texts from you. That needs no carrier approval. Only an automatic review text would wait for carrier approval. We can\'t promise ratings or rankings.' },
       { q: 'Will you ever cold-call or spam my customers?', a: 'No. A missed-call text goes only to someone who just called you. Review texts go only to customers who agreed to get texts from you. Anyone can reply STOP anytime.' },
     ],
   },
@@ -38,7 +38,7 @@ const FAQS = [
   {
     category: 'Timing & Support',
     items: [
-      { q: 'How fast can I be live?', a: 'Your website goes live within 48 hours after we have your setup fee and setup form. Your Google profile takes about 3 days. Texting (missed-call text-back and review texts) goes live once the phone carriers approve your business, usually 1–2 weeks, though the timing is up to the carriers. We file that for you once your site is live.' },
+      { q: 'How fast can I be live?', a: 'Your website goes live within 48 hours after your setup fee is paid and your setup form, with photos, is in. Your Google profile takes about 3 days. The Review Getter works from your own phone as soon as it is set up. Automatic texting (missed-call text-back) goes live once the phone carriers approve your business, usually 1–2 weeks, though the timing is up to the carriers. We file that for you once your site is live.' },
       { q: 'What if I need changes later?', a: 'Text us. Small edits (prices, hours, photos) are included in your monthly plan.' },
       { q: 'Who will I work with?', a: 'Gio Rivera, founder of GR Scale, based in Tampa. One person who sets it up and keeps it running.' },
     ],

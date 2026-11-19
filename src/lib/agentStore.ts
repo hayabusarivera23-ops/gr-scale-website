@@ -38,7 +38,7 @@ export type StoreItem = {
 }
 
 const CARRIER =
-  'Texting only starts after U.S. phone carriers approve your business registration (called 10DLC). We file it once your site is live. Approval usually takes 1–2 weeks, but the timing is up to the carriers and we can’t speed them up.'
+  'Automatic texting only starts after U.S. phone carriers approve your business registration (called 10DLC). We file it once your site is live. Approval usually takes 1–2 weeks, but the timing is up to the carriers and we can’t speed them up.'
 
 type Detail = Omit<StoreItem, 'slug' | 'name' | 'kind' | 'status' | 'badge' | 'tagline' | 'does' | 'price' | 'timeline' | 'includes'>
 
@@ -48,13 +48,13 @@ const DETAIL: Record<string, Detail> = {
     steps: [
       { t: 'We build a free demo', d: 'You get a link to a real page with your name, services and a Book Now button. You see it before you pay.' },
       { t: 'You send your details', d: 'Say yes, pay the setup fee and fill in a 5-minute form. We connect your domain or get you one.' },
-      { t: 'It goes live', d: 'Your site goes live within 48 hours after we have your setup fee and setup form. Customers can find you, see prices and book without calling.' },
+      { t: 'It goes live', d: 'Your site goes live within 48 hours after your setup fee is paid and your setup form, with photos, is in. Customers can find you, see prices and book without calling.' },
     ],
     ownerDoes: ['Text us when a price, photo or your hours change', 'Keep your booking app calendar up to date'],
     limits: [
       'A website alone does not put you at the top of Google. It gives Google and customers something good to land on.',
       'Booking runs through your booking app (or a free one we set up). We don’t replace it.',
-      'The 48 hours start when we have your setup fee and your setup form, including photos.',
+      'The 48 hours start when your setup fee is paid and your setup form, with photos, is in.',
       'Small edits are included. A full redesign later is quoted separately.',
     ],
     faqs: [
@@ -64,7 +64,7 @@ const DETAIL: Record<string, Detail> = {
       { q: 'Can you fix my current site instead?', a: 'Usually it’s faster to build a new one. Send it with your demo request and we’ll tell you straight.' },
     ],
     seoTitle: 'Website + Online Booking for Local Businesses',
-    seoDescription: 'A fast, mobile-first website with your services, prices, photos and a Book Now button. Free demo first. $297 setup + $97/mo. Live 48 hours after setup fee and form.',
+    seoDescription: 'A fast, mobile-first website with your services, prices, photos and a Book Now button. Free demo first. $297 setup + $97/mo. Live 48 hours after setup fee and form with photos.',
     offers: [{ name: 'Setup', price: 297 }, { name: 'Monthly', price: 97, unit: 'MON' }],
   },
   google: {
@@ -117,27 +117,27 @@ const DETAIL: Record<string, Detail> = {
     offers: [{ name: 'Monthly', price: 97, unit: 'MON' }],
   },
   reviews: {
-    needs: ['Your Google Business Profile (we pull your review link from it)', 'Your logo, for the counter card', 'For review texts: which customers agreed to get a text from you'],
+    needs: ['Your Google Business Profile (we pull your review link from it)', 'Your logo, for the counter card', 'Your own phone, for the Review Getter app'],
     steps: [
-      { t: 'We make your review link and QR card', d: 'One short link and a printable counter card that open your Google review page. Ready within 48 hours after we have your setup fee and setup form.' },
-      { t: 'We set up the review text', d: 'A short, friendly request written in your voice, for customers who agreed to get texts from you. It starts once carriers approve texting.' },
-      { t: 'You ask, they review', d: 'Customers scan the card or tap the link. Each month we send you the count of new reviews.' },
+      { t: 'We make your review link and QR card', d: 'One short link and a printable counter card that open your Google review page. Ready within 48 hours after your setup fee is paid and your setup form, with photos, is in.' },
+      { t: 'We put the Review Getter on your phone', d: 'A simple app with a short, friendly request written in your voice. You type the customer’s first name and number, tick that they agreed, and tap Send. Your own Messages app opens with the text ready. No carrier approval needed.' },
+      { t: 'You ask, they review', d: 'Customers scan the card or tap the link in your text. Each month we send you the count of new reviews.' },
     ],
-    ownerDoes: ['Put the QR card on your counter or mirror', 'Ask every customer the same way', 'For review texts: tell us which customers agreed to get a text from you'],
+    ownerDoes: ['Put the QR card on your counter or mirror', 'Ask every customer the same way', 'Before you tap Send, ask the customer if a text is OK'],
     limits: [
-      CARRIER + ' The QR card and link work right away.',
+      'The Review Getter sends from your own phone, so it needs no carrier approval. Only an automatic review text, sent without you tapping Send, would wait for carrier approval, and that version is not switched on.',
       'Every customer is asked the same way. We don’t filter out unhappy customers, we don’t offer anything in exchange for a review and we don’t write, buy or remove reviews. Google’s rules don’t allow it.',
       'We can’t promise a number of reviews, a star rating or a Google ranking.',
       'Review texts go only to customers who agreed to get texts from your business. A visit alone isn’t permission.',
     ],
     faqs: [
       { q: 'Do you write the reviews?', a: 'No. Real customers write them. We make it easy to ask every customer and quick for them to leave one.' },
-      { q: 'Can I use only the QR card?', a: 'Yes. The card and link need no carrier approval.' },
-      { q: 'Will customers get spammed?', a: 'No. One request, only to customers who agreed to get texts from you. They can reply STOP and won’t be texted again.' },
+      { q: 'Do I have to wait for carrier approval?', a: 'No. The Review Getter sends from your own phone, and the QR card and link work without texting at all. Only an automatic review text would wait for carrier approval.' },
+      { q: 'Will customers get spammed?', a: 'No. One request, sent by you, only to customers who agreed to get texts from you. If someone replies STOP, don’t text them again.' },
       { q: 'Will more reviews move me up on Google Maps?', a: 'We can’t promise that. Google decides rankings. What we do is make it easy to ask every customer for a review.' },
     ],
     seoTitle: 'Review Getter: More Google Reviews for Local Businesses',
-    seoDescription: 'A counter QR card and short link that make it easy to ask every customer for a Google review. $67/mo. Review texts start after carrier approval. No fake reviews.',
+    seoDescription: 'A counter QR card and short link that make it easy to ask every customer for a Google review. $67/mo. Sends from your own phone, no carrier approval needed. No fake reviews.',
     offers: [{ name: 'Monthly', price: 67, unit: 'MON' }],
   },
   receptionist: {
@@ -195,7 +195,7 @@ export const BUNDLE: StoreItem = {
   price: `$${PRICE.setup} setup + $${PRICE.founding}/mo`,
   priceNote: `Founding price for the first ${PRICE.foundingSpots} businesses, kept for as long as you stay. Then $${PRICE.bundle}/mo.`,
   badge: 'Available · texting starts after carrier approval',
-  timeline: 'Website 48 hours after we have your setup fee and setup form · Google profile in about 3 days · texting after carrier approval',
+  timeline: 'Website 48 hours after setup fee paid and setup form with photos in · Google profile in about 3 days · automatic texting after carrier approval',
   includes: [
     'Website with online booking',
     'Google Profile Setup (normally $197)',
@@ -209,7 +209,7 @@ export const BUNDLE: StoreItem = {
   steps: [
     { t: 'Free demo', d: 'We build a demo for your business first: your name, your services, your booking link. You see it before you pay.' },
     { t: 'One 5-minute form', d: 'Say yes, pay the setup fee and send your details once. We use them for all four parts.' },
-    { t: 'It goes live in order', d: 'Website within 48 hours after we have your setup fee and setup form, Google profile in about 3 days, texting once carriers approve it. That timing is up to the carriers.' },
+    { t: 'It goes live in order', d: 'Website within 48 hours after your setup fee is paid and your setup form, with photos, is in, Google profile in about 3 days, missed-call text-back once carriers approve it. That timing is up to the carriers.' },
   ],
   ownerDoes: ['Accept our Google manager invite', 'Turn on call forwarding once (about 2 minutes, we walk you through it)', 'Put the QR card on your counter', 'Text us when prices or hours change'],
   limits: [

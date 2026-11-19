@@ -87,7 +87,7 @@ export default function RoofingMarketingPage() {
             gets the inspection.
           </p>
           <p className="text-sm text-[var(--text-muted)] leading-relaxed">
-            Most roofing sites we audit are dead templates: broken images, demo phone
+            Many roofing sites are dead templates: broken images, demo phone
             numbers still wired to buttons, footers that say 2019. The company with a
             clean page, real job photos, and a working call button wins the homeowner.
             Our{' '}
@@ -103,7 +103,7 @@ export default function RoofingMarketingPage() {
         <div className="container-site max-w-5xl">
           <div className="text-center max-w-3xl mx-auto mb-12">
             <h2 className="h2 mb-4">What a roofing website needs to win the job</h2>
-            <p className="lead">Six things we check on every roofing site we audit.</p>
+            <p className="lead">Six things we check on roofing sites.</p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {MUST_HAVES.map(item => (
@@ -119,7 +119,7 @@ export default function RoofingMarketingPage() {
 
       <section className="section">
         <div className="container-site max-w-3xl">
-          <h2 className="h2 mb-4">Proof, not promises</h2>
+          <h2 className="h2 mb-4">See a live build</h2>
           <p className="text-sm text-[var(--text-muted)] leading-relaxed mb-4">
             See exactly what your site could look like: our{' '}
             <a
@@ -131,8 +131,8 @@ export default function RoofingMarketingPage() {
               live roofing build
             </a>{' '}
             is a real, scrollable site with a storm-damage lead flow and free-inspection
-            form — not a mockup. And for a working trades client on their own domain,
-            Melo Air is a Tampa HVAC company we built end to end at{' '}
+            form — not a mockup. And for a live trades site on its own domain,
+            Melo Air is my stepdad&apos;s Tampa AC company (family, not a paying customer), built at{' '}
             <a
               href="https://meloair.net"
               target="_blank"

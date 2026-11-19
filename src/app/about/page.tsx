@@ -12,29 +12,29 @@ const VALUES = [
   {
     icon: Zap,
     title: 'Speed Over Everything',
-    desc: '7–14 day builds. Fast replies. Quick revisions. Big agencies take months — your business can\'t wait that long. We move fast because results matter now.',
+    desc: 'Your website goes live within 48 hours after your setup fee is paid and your setup form, with photos, is in. Fast replies and quick edits by text, from the person who built it.',
   },
   {
     icon: Target,
-    title: 'Revenue-First Design',
-    desc: "We don't build pretty websites for a portfolio. Every layout, every headline, every button is built to get someone to call you. If it doesn't help you get customers, it doesn't go in.",
+    title: 'Built to Get the Call',
+    desc: "I don't build pretty websites for a portfolio. Every layout, headline and button is there to make it easy to call or book you. If it doesn't help with that, it doesn't go in.",
   },
   {
     icon: Search,
     title: 'Built to Be Found',
-    desc: 'A website nobody sees is a business card in a drawer. Every site ships mobile-first, fast-loading, and structured to rank for the searches your customers actually type.',
+    desc: 'A website nobody sees is a business card in a drawer. Every site ships mobile-first and fast-loading, with the page structure Google reads. I can\'t promise a ranking.',
   },
   {
     icon: Users,
-    title: 'Niche Specialists',
-    desc: 'We only work with local service businesses — HVAC, plumbing, roofing, landscaping, barbershops, and more. We know what converts in these niches because that\'s all we do.',
+    title: 'Local Service Businesses Only',
+    desc: 'GR Scale is built for local service businesses: barbershops first, plus HVAC, plumbing, roofing, landscaping and similar trades. It is a new business, so you would be one of the first customers.',
   },
 ]
 
 const STATS = [
-  { number: '2',     label: 'Client sites live on real domains' },
+  { number: '2',     label: 'Sites built for family businesses' },
   { number: '13',    label: 'Industry demo sites built'         },
-  { number: '48h',   label: 'To live, after setup fee + form'   },
+  { number: '48h',   label: 'To live, after fee + form with photos' },
   { number: '100%',  label: 'Mobile responsive'                 },
 ]
 
@@ -42,9 +42,9 @@ const WHY_DIFFERENT = [
   'No agency overhead — you pay for the work, not a floor of account managers',
   'You see a demo for your exact niche before you pay anything',
   'One person you can text, from demo to launch and after',
-  'Sites built to rank on Google, not just look good',
+  'Sites built so Google and customers can read them, not just look good',
   'No long-term contracts on design work',
-  'Ongoing support after launch — you\'re not abandoned',
+  'Edits and support by text after launch',
 ]
 
 const NICHES = [
@@ -69,7 +69,7 @@ export default function AboutPage() {
               </h1>
 
               <p className="text-[var(--text-muted)] leading-relaxed mb-5">
-                GR Scale exists because of a pattern we kept seeing: great local businesses — the best barber in town, the plumber everyone recommends, the HVAC company with hundreds of 5-star reviews — losing customers every day to competitors with worse service and better websites.
+                I&apos;m Gio Rivera. I&apos;m 18, I live in Tampa, and I started GR Scale after building websites for two businesses in my own family: my stepdad&apos;s AC company and my dad&apos;s barbershop. GR Scale is new and I run it myself.
               </p>
 
               <p className="text-[var(--text-muted)] leading-relaxed mb-5">
@@ -77,7 +77,7 @@ export default function AboutPage() {
               </p>
 
               <p className="text-[var(--text-muted)] leading-relaxed mb-8">
-                So that&apos;s the entire job here: make sure the business that deserves the call gets the call. Fast, modern, mobile-first websites for local service businesses — built in days, not months, and built to convert searches into phone calls.
+                So that&apos;s the job here: make it easy for the person searching to find you, call you and book you. Fast, modern, mobile-first websites for local service businesses, with online booking, your Google profile and review requests set up for you.
               </p>
 
               <Link href="/book" className="btn-primary">
@@ -85,7 +85,7 @@ export default function AboutPage() {
               </Link>
             </div>
 
-            {/* Right column: stats + real work */}
+            {/* Right column: stats + sites built */}
             <div className="flex flex-col gap-4">
               <div className="grid grid-cols-2 gap-4">
                 {STATS.map(s => (
@@ -96,17 +96,17 @@ export default function AboutPage() {
                 ))}
               </div>
 
-              {/* Real work callout */}
+              {/* Sites built callout */}
               <div className="card bg-gradient-to-br from-brand-500/15 to-transparent border-brand-500/20">
-                <p className="text-sm font-semibold text-white mb-3">See the work, not promises:</p>
+                <p className="text-sm font-semibold text-white mb-3">Sites I&apos;ve built (both for family businesses, not paying customers):</p>
                 <div className="flex flex-col gap-2">
                   <a href="https://meloair.net" target="_blank" rel="noopener noreferrer"
                      className="flex items-center gap-2 text-sm text-brand-400 hover:text-brand-300 transition">
-                    <ArrowRight className="h-3.5 w-3.5" /> meloair.net — Tampa HVAC company
+                    <ArrowRight className="h-3.5 w-3.5" /> meloair.net — my stepdad&apos;s Tampa AC company
                   </a>
                   <a href="https://lexthebarber.com" target="_blank" rel="noopener noreferrer"
                      className="flex items-center gap-2 text-sm text-brand-400 hover:text-brand-300 transition">
-                    <ArrowRight className="h-3.5 w-3.5" /> lexthebarber.com — Orlando barbershop
+                    <ArrowRight className="h-3.5 w-3.5" /> lexthebarber.com — my dad&apos;s Orlando barbershop
                   </a>
                   <Link href="/demos"
                      className="flex items-center gap-2 text-sm text-brand-400 hover:text-brand-300 transition">
@@ -137,7 +137,7 @@ export default function AboutPage() {
             <span className="badge mb-4">How We Work</span>
             <h2 className="h2 mb-4">What Makes GR Scale Different</h2>
             <p className="lead max-w-2xl mx-auto">
-              We&apos;re not a big agency with 50 clients and a project manager who doesn&apos;t know your name. We&apos;re lean, fast, and focused on one thing: getting you more customers.
+              GR Scale is not a big agency with a project manager who doesn&apos;t know your name. It&apos;s one person, and the aim is simple: make it easier for customers to find you and book you.
             </p>
           </div>
 
@@ -163,7 +163,7 @@ export default function AboutPage() {
         <div className="container-site max-w-3xl">
           <div className="text-center mb-12">
             <span className="badge mb-4">The Difference</span>
-            <h2 className="h2 mb-4">Why Businesses Choose Us Over a Big Agency</h2>
+            <h2 className="h2 mb-4">How This Differs From a Big Agency</h2>
           </div>
 
           <div className="grid gap-3 sm:grid-cols-2">
@@ -181,9 +181,9 @@ export default function AboutPage() {
       <section className="section bg-[#0d1117]">
         <div className="container-site max-w-3xl text-center">
           <span className="badge mb-4">Who We Work With</span>
-          <h2 className="h2 mb-6">Local Service Businesses Nationwide</h2>
+          <h2 className="h2 mb-6">Local Service Businesses, Starting in Tampa Bay</h2>
           <p className="lead mb-10">
-            Based in Tampa, working with service businesses anywhere in the U.S. If your customers find you on Google, we can help you get more of them.
+            Based in Tampa and starting with Tampa Bay shops. Everything is set up online, so a service business elsewhere in the U.S. can ask too.
           </p>
 
           <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 mb-8">
@@ -197,7 +197,7 @@ export default function AboutPage() {
           <p className="text-sm text-[var(--text-muted)]">
             Don&apos;t see your niche?{' '}
             <Link href="/contact" className="text-brand-400 hover:text-brand-300 transition">
-              Reach out — we probably work with it.
+              Reach out and ask.
             </Link>
           </p>
         </div>

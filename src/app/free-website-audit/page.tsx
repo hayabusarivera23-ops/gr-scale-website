@@ -104,7 +104,7 @@ export default function FreeWebsiteAuditPage() {
         <div className="container-site max-w-5xl">
           <div className="text-center max-w-3xl mx-auto mb-12">
             <h2 className="h2 mb-4">The six checks in every audit</h2>
-            <p className="lead">Same checklist we run on every client site before we touch it.</p>
+            <p className="lead">The same checklist we use before we build a site.</p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {CHECKS.map(item => (
@@ -120,9 +120,9 @@ export default function FreeWebsiteAuditPage() {
 
       <section className="section">
         <div className="container-site max-w-3xl">
-          <h2 className="h2 mb-4">Audited by people who build</h2>
+          <h2 className="h2 mb-4">Audited by the person who builds</h2>
           <p className="text-sm text-[var(--text-muted)] leading-relaxed mb-4">
-            This is not an automated PDF report. The same team that built{' '}
+            This is not an automated PDF report. Gio, who built{' '}
             <a
               href="https://meloair.net"
               target="_blank"
@@ -131,7 +131,7 @@ export default function FreeWebsiteAuditPage() {
             >
               meloair.net
             </a>{' '}
-            for a working Tampa HVAC company and{' '}
+            for his stepdad&apos;s Tampa AC company and{' '}
             <a
               href="https://lexthebarber.com"
               target="_blank"
@@ -140,7 +140,7 @@ export default function FreeWebsiteAuditPage() {
             >
               lexthebarber.com
             </a>{' '}
-            for an Orlando barber reads your audit — so every finding comes with
+            for his dad&apos;s Orlando barbershop (family businesses, not paying customers), reads your audit — so every finding comes with
             what it would actually take to fix it.
           </p>
           <p className="text-sm text-[var(--text-muted)] leading-relaxed">
