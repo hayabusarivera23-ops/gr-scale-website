@@ -69,7 +69,7 @@ export default function AboutPage() {
               </h1>
 
               <p className="text-[var(--text-muted)] leading-relaxed mb-5">
-                I&apos;m Gio Rivera. I&apos;m 18, I live in Tampa, and I started GR Scale after building websites for two businesses in my own family: my stepdad&apos;s AC company and my dad&apos;s barbershop. GR Scale is new and I run it myself.
+                I&apos;m Gio Rivera. I&apos;m 18, I live in Tampa, and I started GR Scale after building websites for two businesses in my own family: my stepdad&apos;s AC company and my dad&apos;s mobile barber business. GR Scale is new and I run it myself.
               </p>
 
               <p className="text-[var(--text-muted)] leading-relaxed mb-5">
@@ -106,7 +106,7 @@ export default function AboutPage() {
                   </a>
                   <a href="https://lexthebarber.com" target="_blank" rel="noopener noreferrer"
                      className="flex items-center gap-2 text-sm text-brand-400 hover:text-brand-300 transition">
-                    <ArrowRight className="h-3.5 w-3.5" /> lexthebarber.com — my dad&apos;s Orlando barbershop
+                    <ArrowRight className="h-3.5 w-3.5" /> lexthebarber.com — my dad, a mobile barber in Tampa Bay
                   </a>
                   <Link href="/demos"
                      className="flex items-center gap-2 text-sm text-brand-400 hover:text-brand-300 transition">

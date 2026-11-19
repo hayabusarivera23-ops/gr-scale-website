@@ -140,7 +140,7 @@ export default function FreeWebsiteAuditPage() {
             >
               lexthebarber.com
             </a>{' '}
-            for his dad&apos;s Orlando barbershop (family businesses, not paying customers), reads your audit — so every finding comes with
+            for his dad, a mobile barber in Tampa Bay (family businesses, not paying customers), reads your audit — so every finding comes with
             what it would actually take to fix it.
           </p>
           <p className="text-sm text-[var(--text-muted)] leading-relaxed">

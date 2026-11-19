@@ -41,7 +41,7 @@ const BUNDLE_INCLUDES = [
 
 const BUILT_SITES = [
   { name: 'Melo Air', niche: 'HVAC · Tampa', url: 'https://meloair.net', domain: 'meloair.net' },
-  { name: 'LexTheBarber', niche: 'Barbershop · Orlando', url: 'https://lexthebarber.com', domain: 'lexthebarber.com' },
+  { name: 'LexTheBarber', niche: 'Mobile barber · Tampa Bay', url: 'https://lexthebarber.com', domain: 'lexthebarber.com' },
 ]
 
 const FAQS = [

@@ -120,7 +120,7 @@ export default function BarbershopWebsitesPage() {
         <div className="container-site max-w-3xl">
           <h2 className="h2 mb-4">A site I&apos;ve built</h2>
           <p className="text-sm text-[var(--text-muted)] leading-relaxed mb-4">
-            Lex The Barber is my dad&apos;s Orlando barbershop, not a paying customer. I built his complete site —
+            Lex The Barber is my dad, a mobile barber serving Tampa Bay, not a paying customer. I built his complete site —
             booking integration, cut gallery, and full service menu, mobile-first because
             that is where his clients find him — live on his own domain at{' '}
             <a
