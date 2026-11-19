@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowRight, CheckCircle, Clock } from 'lucide-react'
 import { SITE, PRICE } from '@/lib/site'
-import { STORE, BUNDLE, itemHref, bookHref, type StoreItem } from '@/lib/agentStore'
+import { STORE, BUNDLE, itemHref, bookHref, sampleFor, type StoreItem } from '@/lib/agentStore'
 import { AgentIcon, StatusBadge, JsonLd } from '@/components/AgentBits'
 
 export const metadata: Metadata = {
@@ -31,6 +31,16 @@ const SCHEMA = {
       ],
     },
   ],
+}
+
+function SampleLink({ item, className = 'mt-3 self-center' }: { item: StoreItem; className?: string }) {
+  const sample = sampleFor(item)
+  if (!sample) return null
+  return (
+    <Link href={sample.href} className={`inline-flex min-h-[44px] items-center gap-1.5 text-sm font-semibold text-brand-400 hover:text-brand-300 transition ${className}`} aria-label={`${sample.label}: ${item.name}`}>
+      {sample.label} <ArrowRight className="h-4 w-4" aria-hidden="true" />
+    </Link>
+  )
 }
 
 function AgentCard({ item }: { item: StoreItem }) {
@@ -68,6 +78,7 @@ function AgentCard({ item }: { item: StoreItem }) {
           How it works
         </Link>
       </div>
+      <SampleLink item={item} />
     </article>
   )
 }
@@ -106,6 +117,7 @@ export default function AgentsPage() {
                   <Link href={bookHref(BUNDLE)} className="btn-primary justify-center px-6 py-3">Get a free demo <ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
                   <Link href={itemHref(BUNDLE)} className="btn-ghost justify-center px-6 py-3" aria-label="How the Front Desk Bundle works">How it works</Link>
                 </div>
+                <SampleLink item={BUNDLE} className="mt-3" />
               </div>
               <div>
                 <ul className="flex flex-col gap-3">

@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Phone, Mail, MapPin } from 'lucide-react'
+import { Phone, Mail, MapPin, Instagram } from 'lucide-react'
 import { SITE } from '@/lib/site'
 
 const LOGO = '/logo.png'
@@ -54,6 +54,9 @@ export default function Footer() {
               )}
               <a href="mailto:gio@grscales.com" className="flex min-h-[44px] items-center gap-2 hover:text-white transition">
                 <Mail className="h-3.5 w-3.5 text-brand-400" /> gio@grscales.com
+              </a>
+              <a href={SITE.instagram.url} target="_blank" rel="noopener noreferrer" className="flex min-h-[44px] items-center gap-2 hover:text-white transition" aria-label={`GR Scale on Instagram, @${SITE.instagram.handle} (opens in a new tab)`}>
+                <Instagram className="h-3.5 w-3.5 text-brand-400" aria-hidden="true" /> @{SITE.instagram.handle}
               </a>
               <span className="flex items-center gap-2">
                 <MapPin className="h-3.5 w-3.5 text-brand-400" /> Tampa, Florida

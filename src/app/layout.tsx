@@ -44,6 +44,7 @@ const SITE_SCHEMA = {
       image: 'https://grscales.com' + LOGO,
       ...(SITE.phone ? { telephone: SITE.phone.tel } : {}),
       email: 'gio@grscales.com',
+      sameAs: [SITE.instagram.url],
       founder: { '@type': 'Person', name: 'Gio Rivera' },
       address: { '@type': 'PostalAddress', addressLocality: 'Tampa', addressRegion: 'FL', addressCountry: 'US' },
       areaServed: [

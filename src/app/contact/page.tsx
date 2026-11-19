@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { Phone, Mail, MapPin, Clock, Send, CheckCircle, AlertCircle } from 'lucide-react'
+import { Phone, Mail, MapPin, Clock, Send, CheckCircle, AlertCircle, Instagram } from 'lucide-react'
 import { submitLead } from '@/lib/submitLead'
 import { SITE, AGENTS } from '@/lib/site'
 
@@ -67,6 +67,12 @@ export default function ContactPage() {
                       <Mail className="h-4 w-4 text-brand-400" />
                     </div>
                     gio@grscales.com
+                  </a>
+                  <a href={SITE.instagram.url} target="_blank" rel="noopener noreferrer" className="flex min-h-[44px] items-center gap-3 text-sm text-[var(--text-muted)] hover:text-white transition group" aria-label={`GR Scale on Instagram, @${SITE.instagram.handle} (opens in a new tab)`}>
+                    <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand-500/10 group-hover:bg-brand-500/20 transition">
+                      <Instagram className="h-4 w-4 text-brand-400" aria-hidden="true" />
+                    </div>
+                    @{SITE.instagram.handle}
                   </a>
                   <span className="flex items-center gap-3 text-sm text-[var(--text-muted)]">
                     <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand-500/10">

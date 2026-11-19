@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0E1116">
+<meta name="description" content="Ask every customer for a Google review with one tap.">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Reviews">
+<title>SAMPLE — Review Getter by GR Scale</title>
+<meta name="robots" content="noindex">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<!-- GR Scale demo copy: SAMPLE banner -->
+<div role="note" style="background:#FFD54A;color:#111;font:600 .9rem/1.35 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;padding:6px 12px;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px 12px;text-align:center"><span><strong style="letter-spacing:.06em">SAMPLE</strong> Review Getter. Try it: Send opens your own Messages app, nothing is sent from this page. The review link is a placeholder.</span><a href="/demos" style="color:#111;text-decoration:underline;display:inline-flex;align-items:center;min-height:44px;padding:0 4px">Back to GR Scale demos</a></div>
+
+<header class="top">
+  <div>
+    <p class="eyebrow">Review Getter</p>
+    <h1 id="shop-title">Your Shop</h1>
+  </div>
+  <span id="net" class="net" role="status" aria-live="polite"></span>
+</header>
+
+<main id="main" tabindex="-1">
+
+  <!-- SEND -->
+  <section id="view-send" class="view" aria-labelledby="send-h">
+    <h2 id="send-h" class="sr-only">Send a review request</h2>
+    <form id="send-form" novalidate>
+      <div class="field">
+        <label for="first">Customer first name</label>
+        <input id="first" name="first" type="text" autocomplete="off" autocapitalize="words" enterkeyhint="next" maxlength="40" required aria-describedby="first-err">
+        <p class="err" id="first-err" hidden></p>
+      </div>
+      <div class="field">
+        <label for="phone">Customer mobile number</label>
+        <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="off" enterkeyhint="done" maxlength="20" required aria-describedby="phone-help phone-err">
+        <p class="help" id="phone-help">US number, like 813 555 0123</p>
+        <p class="err" id="phone-err" hidden></p>
+      </div>
+      <div class="field">
+        <label class="check" for="consent">
+          <input id="consent" name="consent" type="checkbox" required aria-describedby="consent-err">
+          <span class="box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+          <span>Customer said OK to a text</span>
+        </label>
+        <p class="err" id="consent-err" hidden></p>
+      </div>
+
+      <div id="repeat" class="notice" hidden role="status"></div>
+
+      <button id="send-btn" class="btn primary" type="submit">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l16-8-6 16-2.5-6.5z"/></svg>
+        Send review request
+      </button>
+      <p class="help center">Opens your Messages app with the text ready. Tap send there.</p>
+    </form>
+
+    <div id="sent" class="toast" role="status" aria-live="polite" hidden></div>
+
+    <button id="qr-btn" class="btn ghost" type="button">
+      <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h2v2h-2zM18 18h2v2h-2zM14 18h2v2h-2zM18 14h2v2h-2z"/></svg>
+      Show QR
+    </button>
+
+    <details class="preview">
+      <summary>See the message</summary>
+      <p id="msg-preview" class="msg"></p>
+    </details>
+  </section>
+
+  <!-- LOG -->
+  <section id="view-log" class="view" aria-labelledby="log-h" hidden>
+    <h2 id="log-h">Who was asked</h2>
+    <div class="stats">
+      <div class="stat"><span class="num" id="week-count">0</span><span class="lbl">This week</span></div>
+      <div class="stat"><span class="num" id="last-week-count">0</span><span class="lbl">Last week</span></div>
+      <div class="stat"><span class="num" id="total-count">0</span><span class="lbl">All time</span></div>
+    </div>
+    <p class="help">Saved on this phone only. Last 4 digits only, never the full number.</p>
+    <div class="row">
+      <button id="export-btn" class="btn ghost" type="button">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>
+        Export CSV
+      </button>
+      <button id="clear-btn" class="btn ghost danger" type="button">Clear log</button>
+    </div>
+    <p id="log-empty" class="empty">No requests yet. Your first one shows up here.</p>
+    <ul id="log-list" class="log" aria-label="Review requests, newest first"></ul>
+  </section>
+
+  <!-- SETTINGS -->
+  <section id="view-settings" class="view" aria-labelledby="set-h" hidden>
+    <h2 id="set-h">Shop settings</h2>
+    <form id="settings-form" novalidate>
+      <div class="field">
+        <label for="s-shop">Shop name</label>
+        <input id="s-shop" type="text" maxlength="60" required aria-describedby="s-shop-err">
+        <p class="err" id="s-shop-err" hidden></p>
+      </div>
+      <div class="field">
+        <label for="s-link">Google review link</label>
+        <input id="s-link" type="url" inputmode="url" autocapitalize="off" spellcheck="false" required aria-describedby="s-link-help s-link-err">
+        <p class="help" id="s-link-help">From business.google.com: Read reviews, then Get more reviews, then copy the link.</p>
+        <p class="err" id="s-link-err" hidden></p>
+      </div>
+      <div class="field">
+        <label for="s-msg">Message</label>
+        <textarea id="s-msg" rows="5" maxlength="320" required aria-describedby="s-msg-help s-msg-err"></textarea>
+        <p class="help" id="s-msg-help">Must keep [LINK] and "Reply STOP to opt out". No rewards, no "were you happy?" questions.</p>
+        <p class="err" id="s-msg-err" hidden></p>
+      </div>
+      <button class="btn primary" type="submit">Save settings</button>
+      <button id="reset-btn" class="btn ghost" type="button">Reset to default</button>
+      <div id="saved" class="toast" role="status" aria-live="polite" hidden></div>
+    </form>
+  </section>
+</main>
+
+<nav class="tabs" aria-label="Sections">
+  <button class="tab" type="button" data-view="send" aria-current="page">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l16-8-6 16-2.5-6.5z"/></svg><span>Send</span>
+  </button>
+  <button class="tab" type="button" data-view="log">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01"/></svg><span>Log</span>
+  </button>
+  <button class="tab" type="button" data-view="settings">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg><span>Settings</span>
+  </button>
+</nav>
+
+<div id="qr-screen" class="qr-screen" role="dialog" aria-modal="true" aria-labelledby="qr-h" hidden>
+  <h2 id="qr-h">Scan to review <span id="qr-shop"></span></h2>
+  <div id="qr-code" class="qr-code" role="img" aria-label="QR code for the shop's Google review page"></div>
+  <p class="qr-sub">Point your phone camera here</p>
+  <button id="qr-close" class="btn dark" type="button">Close</button>
+</div>
+
+<script src="vendor/qrcode.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

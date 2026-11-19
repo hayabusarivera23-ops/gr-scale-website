@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { ArrowRight, CheckCircle, Clock, AlertTriangle, ChevronRight } from 'lucide-react'
 import { SITE } from '@/lib/site'
-import { STORE, BUNDLE, BUNDLE_AGENT_NAMES, getItem, itemHref, bookHref, statusLabel } from '@/lib/agentStore'
+import { STORE, BUNDLE, BUNDLE_AGENT_NAMES, getItem, itemHref, bookHref, statusLabel, sampleFor } from '@/lib/agentStore'
 import { AgentIcon, StatusBadge, JsonLd } from '@/components/AgentBits'
 
 export const dynamicParams = false
@@ -32,6 +32,7 @@ export default async function AgentPage({ params }: Props) {
   const early = item.status === 'early'
   const cta = early ? 'Join early access' : 'Get a free demo'
   const inBundle = item.kind === 'agent' && BUNDLE_AGENT_NAMES.includes(item.name)
+  const sample = sampleFor(item)
   const others = STORE.filter(i => i.slug !== item.slug && i.kind === 'agent').slice(0, 4)
 
   const schema = {
@@ -100,6 +101,11 @@ export default async function AgentPage({ params }: Props) {
               <h1 className="text-4xl font-extrabold leading-tight tracking-tight md:text-5xl mb-4">{item.name}</h1>
               <p className="text-lg font-semibold text-brand-300 mb-3">{item.tagline}</p>
               <p className="lead">{item.does}</p>
+              {sample && (
+                <Link href={sample.href} className="btn-ghost mt-6 justify-center px-6 py-3" data-test="see-sample">
+                  {sample.label} <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </Link>
+              )}
             </div>
 
             {/* Price box */}

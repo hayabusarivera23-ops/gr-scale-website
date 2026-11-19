@@ -109,7 +109,7 @@ const DETAIL: Record<string, Detail> = {
     faqs: [
       { q: 'Do I need a new phone number?', a: 'You keep your number and customers keep calling it. We set up a separate business number, and the text-back is sent from that one.' },
       { q: 'Why can’t it start tomorrow?', a: 'U.S. carriers must approve every business that sends texts. We file once your site is live. Approval usually takes 1–2 weeks, but the timing is up to the carriers.' },
-      { q: 'What does the text say?', a: 'Something short in your voice, like: “Sorry we missed you, this is Mike’s Barbershop. Book here: (your link).” You approve the wording first.' },
+      { q: 'What does the text say?', a: 'One short text with your shop’s name and booking link: “Hi, this is (your shop) - sorry we missed your call. Book here: (your link) or reply and we\'ll get back to you. Reply STOP to opt out.” You approve the wording first.' },
       { q: 'Is there a setup fee?', a: 'Not for text-back on its own. It’s $97 a month. In the Front Desk Bundle it’s included.' },
     ],
     seoTitle: 'Missed-Call Text-Back for Local Businesses',
@@ -237,3 +237,15 @@ export const itemHref = (i: { slug: string }) => `/agents/${i.slug}`
 export const bookHref = (i: { name: string }) => `/book?plan=${encodeURIComponent(i.name)}`
 export const BUNDLE_AGENT_NAMES = inBundle.map(a => a.name)
 export const statusLabel = (i: { status: 'ready' | 'early'; badge?: string }) => i.badge || (i.status === 'early' ? 'Early access' : 'Available')
+
+/**
+ * "See a sample" targets on /demos. Only agents with a real, working sample
+ * get a link; Google Profile Setup and the AI Receptionist have none yet.
+ */
+const SAMPLES: Record<string, { href: string; label: string }> = {
+  [BUNDLE_SLUG]: { href: '/demos', label: 'See a sample' },
+  'website-booking': { href: '/demos#barbershop', label: 'See a sample' },
+  'missed-call-text-back': { href: '/demos#text-back', label: 'See a sample' },
+  'review-getter': { href: '/demos#review-getter', label: 'See a sample' },
+}
+export const sampleFor = (i: { slug: string }) => SAMPLES[i.slug]

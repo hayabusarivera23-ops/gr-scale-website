@@ -23,6 +23,8 @@ export const SITE = {
   city: 'Tampa, FL',
   /** Lead form → Day OS (Biz → GR Scale) */
   intakeUrl: 'https://gio-day-os.vercel.app/api/intake',
+  /** GR Scale's own Instagram (confirmed by Gio, Nov 17 2026) */
+  instagram: { handle: 'grscales', url: 'https://www.instagram.com/grscales/' },
   phone: PHONE_DIGITS.length === 10 ? {
     tel: '+1' + PHONE_DIGITS,
     pretty: `(${PHONE_DIGITS.slice(0, 3)}) ${PHONE_DIGITS.slice(3, 6)}-${PHONE_DIGITS.slice(6)}`,
